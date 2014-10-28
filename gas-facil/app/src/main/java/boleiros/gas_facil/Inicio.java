@@ -8,6 +8,9 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,6 +20,9 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import boleiros.gas_facil.adapter.ProdutoAdapter;
+import boleiros.gas_facil.modelo.ProdutoManager;
 
 
 public class Inicio extends Activity
@@ -112,7 +118,8 @@ public class Inicio extends Activity
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
-
+        private RecyclerView mRecyclerView;
+        private ProdutoAdapter mAdapter;
         /**
          * Returns a new instance of this fragment for the given section
          * number.
@@ -132,7 +139,17 @@ public class Inicio extends Activity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_inicio, container, false);
+            mRecyclerView = (RecyclerView)rootView.findViewById(R.id.list);
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+            mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
+            mAdapter = new ProdutoAdapter(ProdutoManager.getInstance().getprodutos(), R.layout.card_layout, this.getActivity());
+            mRecyclerView.setAdapter(mAdapter);
             return rootView;
+
+
+
+
         }
 
         @Override
