@@ -1,11 +1,16 @@
 package boleiros.gas_facil.adapter;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.parse.ParseException;
+import com.parse.ParseFile;
 
 import java.util.List;
 
@@ -37,6 +42,13 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Produto produto = produtos.get(i);
         viewHolder.countryName.setText(produto.getType());
+        viewHolder.precoProduto.setText(produto.getPrice());
+
+        try {
+            viewHolder.produtoImage.setImageBitmap(decodeSampledBitmapFromResource(produto.getPhotoFile(),1000,1000));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -46,13 +58,59 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView countryName;
-        public ImageView countryImage;
+        public ImageView produtoImage;
+        public TextView precoProduto;
 
         public ViewHolder(View itemView) {
             super(itemView);
             countryName = (TextView) itemView.findViewById(R.id.countryName);
-            countryImage = (ImageView)itemView.findViewById(R.id.countryImage);
+            precoProduto = (TextView) itemView.findViewById(R.id.precoProduto);
+
+            produtoImage = (ImageView)itemView.findViewById(R.id.produtoImagem);
         }
 
     }
+    public static Bitmap decodeSampledBitmapFromResource(ParseFile pf,
+                                                         int reqWidth,
+                                                         int reqHeight) throws ParseException {
+
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeByteArray(pf.getData(), 0, pf.getData().length, options);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth,
+                reqHeight);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeByteArray(pf.getData(), 0, pf.getData().length, options);
+    }
+
+    public static int calculateInSampleSize(BitmapFactory.Options options,
+                                            int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            // Calculate ratios of height and width to requested height and
+            // width
+            final int heightRatio = Math.round((float) height
+                    / (float) reqHeight);
+            final int widthRatio = Math.round((float) width / (float) reqWidth);
+
+            // Choose the smallest ratio as inSampleSize value, this will
+            // guarantee
+            // a final image with both dimensions larger than or equal to the
+            // requested height and width.
+            inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+        }
+
+        return inSampleSize;
+    }
+
 }

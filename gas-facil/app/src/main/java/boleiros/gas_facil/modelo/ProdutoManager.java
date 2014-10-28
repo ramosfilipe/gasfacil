@@ -35,7 +35,7 @@ public class ProdutoManager {
         return  produtos;
     }
     public void consultaAoParse() {
-        ParseQuery<Produto> query = ParseQuery.getQuery("produto");
+        ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
         query.orderByDescending("createdAt");
         //query.setLimit(10);
         query.findInBackground(new FindCallback<Produto>() {
