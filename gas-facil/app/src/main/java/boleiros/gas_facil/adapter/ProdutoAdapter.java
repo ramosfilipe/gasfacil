@@ -20,7 +20,7 @@ import boleiros.gas_facil.modelo.Produto;
 /**
  * Created by filipe on 28/10/14.
  */
-public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHolder> {
+public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHolder>{
 
     private List<Produto> produtos;
     private int rowLayout;

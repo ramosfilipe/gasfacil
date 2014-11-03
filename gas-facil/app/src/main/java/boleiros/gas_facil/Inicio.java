@@ -3,6 +3,7 @@ package boleiros.gas_facil;
 import android.app.Activity;
 
 import android.app.ActionBar;
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
@@ -20,8 +21,11 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import boleiros.gas_facil.adapter.ProdutoAdapter;
+import boleiros.gas_facil.adapter.RecyclerItemClickListener;
+import boleiros.gas_facil.dialogos.QuantidadeDeProdutoDialogo;
 import boleiros.gas_facil.modelo.ProdutoManager;
 
 
@@ -138,18 +142,25 @@ public class Inicio extends Activity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_inicio, container, false);
+             View rootView = inflater.inflate(R.layout.fragment_inicio, container, false);
             mRecyclerView = (RecyclerView)rootView.findViewById(R.id.list);
             mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
             mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
             mAdapter = new ProdutoAdapter(ProdutoManager.getInstance().getprodutos(), R.layout.card_layout, this.getActivity());
             mRecyclerView.setAdapter(mAdapter);
+            mRecyclerView.addOnItemTouchListener(
+                    new RecyclerItemClickListener(rootView.getContext(), new RecyclerItemClickListener.OnItemClickListener() {
+                        @Override public void onItemClick(View view, int position) {
+                            DialogFragment newFragment = new QuantidadeDeProdutoDialogo();
+
+                            newFragment.show(getFragmentManager(), "quantidade");
+
+                        }
+                    })
+            );
+
             return rootView;
-
-
-
-
         }
 
         @Override
