@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">gas-facil</string>
+    <string name="app_name">Gás Fácil</string>
     <string name="title_section1">Produtos</string>
     <string name="title_section2">Histórico</string>
     <string name="title_section3">Perfil</string>
@@ -9,5 +9,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Login</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_login_signup">LoginSignup</string>
+    <string name="title_activity_parse_application">ParseApplication</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

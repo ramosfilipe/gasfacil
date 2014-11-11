@@ -141,8 +141,13 @@ public class Inicio extends Activity
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
+<<<<<<< HEAD
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_inicio, container, false);
+=======
                 Bundle savedInstanceState) {
              View rootView = inflater.inflate(R.layout.fragment_inicio, container, false);
+>>>>>>> e38cbd95867bf482aec39b4dcc6d5f9a9142d153
             mRecyclerView = (RecyclerView)rootView.findViewById(R.id.list);
             mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
             mRecyclerView.setItemAnimator(new DefaultItemAnimator());

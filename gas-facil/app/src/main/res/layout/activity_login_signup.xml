@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dip"
+    android:id="@+id/relativeInfos">
+
+    <TextView
+    android:id="@+id/txtNome"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Username" />
+
+<EditText
+android:id="@+id/campoUsername"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:layout_below="@+id/txtNome"
+android:inputType="text" />
+
+<TextView
+android:id="@+id/txtSenha"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+    android:text="Senha:"
+    android:layout_below="@+id/campoUsername"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true" />
+
+<EditText
+android:id="@+id/campoSenha"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+    android:inputType="textPassword"
+    android:layout_below="@+id/txtSenha"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true" />
+
+<Button
+android:id="@+id/login"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+    android:text="Entrar"
+    android:layout_below="@+id/campoSenha"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true" />
+
+<Button
+android:id="@+id/signup"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:layout_below="@+id/login"
+    android:text="Novo usuario" />
+
+
+</RelativeLayout>
