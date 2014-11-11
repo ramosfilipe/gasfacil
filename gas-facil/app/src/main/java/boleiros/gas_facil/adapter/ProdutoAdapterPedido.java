@@ -18,18 +18,22 @@ import boleiros.gas_facil.R;
 import boleiros.gas_facil.modelo.Produto;
 
 /**
- * Created by filipe on 28/10/14.
+ * Created by filipe on 11/11/14.
  */
-public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHolder>{
+public class ProdutoAdapterPedido extends RecyclerView.Adapter<ProdutoAdapterPedido.ViewHolder> {
+
+
+
 
     private List<Produto> produtos;
-    private int rowLayout;
+    private int rowLayout,quantidade;
     private Context mContext;
 
-    public ProdutoAdapter(List<Produto> produtos, int rowLayout, Context context) {
+    public ProdutoAdapterPedido(List<Produto> produtos,int quantidade, int rowLayout, Context context) {
         this.produtos = produtos;
         this.rowLayout = rowLayout;
         this.mContext = context;
+        this.quantidade = quantidade;
     }
 
     @Override
@@ -38,14 +42,17 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
         return new ViewHolder(v);
     }
 
+
+
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Produto produto = produtos.get(i);
-        viewHolder.countryName.setText(produto.getType());
-        viewHolder.precoProduto.setText("R$"+produto.getPrice());
+        viewHolder.countryName.setText(""+quantidade);
+        double dbl = Double.parseDouble( produtos.get(i).getPrice() );
+
+        viewHolder.precoProduto.setText("R$"+dbl*quantidade+"0");
 
         try {
-            viewHolder.produtoImage.setImageBitmap(decodeSampledBitmapFromResource(produto.getPhotoFile(),1000,1000));
+            viewHolder.produtoImage.setImageBitmap(decodeSampledBitmapFromResource(produtos.get(i).getPhotoFile(),1000,1000));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -53,8 +60,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return produtos == null ? 0 : produtos.size();
-    }
+        return produtos == null ? 0 : produtos.size();    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView countryName;
@@ -65,7 +71,6 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
             super(itemView);
             countryName = (TextView) itemView.findViewById(R.id.countryName);
             precoProduto = (TextView) itemView.findViewById(R.id.precoProduto);
-
             produtoImage = (ImageView)itemView.findViewById(R.id.produtoImagem);
         }
 

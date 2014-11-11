@@ -13,7 +13,9 @@ public class Pedido extends ParseObject {
 
     public Pedido() {
     }
-
+    public void setProduto(Produto produto){
+        put("produto",produto);
+    }
     public String getPrice() {
         return getString("price");
     }
@@ -42,5 +44,11 @@ public class Pedido extends ParseObject {
         put("problemaEmVenda", bool);
     }
 
+    public void setQuantidade(int quantidade){
+        put("quantidade",quantidade);
+    }
+    public int getQuantidade(){
+        return getInt("quantidade");
+    }
 
 }

@@ -27,6 +27,7 @@ import boleiros.gas_facil.adapter.ProdutoAdapter;
 import boleiros.gas_facil.adapter.RecyclerItemClickListener;
 import boleiros.gas_facil.dialogos.QuantidadeDeProdutoDialogo;
 import boleiros.gas_facil.modelo.ProdutoManager;
+import boleiros.gas_facil.util.ActivityStore;
 
 
 public class Inicio extends Activity
@@ -60,6 +61,7 @@ public class Inicio extends Activity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
+
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
@@ -141,13 +143,9 @@ public class Inicio extends Activity
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-<<<<<<< HEAD
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_inicio, container, false);
-=======
-                Bundle savedInstanceState) {
-             View rootView = inflater.inflate(R.layout.fragment_inicio, container, false);
->>>>>>> e38cbd95867bf482aec39b4dcc6d5f9a9142d153
+
             mRecyclerView = (RecyclerView)rootView.findViewById(R.id.list);
             mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
             mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -157,10 +155,9 @@ public class Inicio extends Activity
             mRecyclerView.addOnItemTouchListener(
                     new RecyclerItemClickListener(rootView.getContext(), new RecyclerItemClickListener.OnItemClickListener() {
                         @Override public void onItemClick(View view, int position) {
-                            DialogFragment newFragment = new QuantidadeDeProdutoDialogo();
-
+                            QuantidadeDeProdutoDialogo newFragment = new QuantidadeDeProdutoDialogo();
+                            ActivityStore.getInstance(getActivity()).setProduto(ProdutoManager.getInstance().getprodutos().get(position));
                             newFragment.show(getFragmentManager(), "quantidade");
-
                         }
                     })
             );

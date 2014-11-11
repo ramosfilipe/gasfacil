@@ -7,6 +7,7 @@ import com.parse.ParseUser;
 
 import android.app.Application;
 
+import boleiros.gas_facil.modelo.Pedido;
 import boleiros.gas_facil.modelo.Produto;
 
 /**
@@ -20,13 +21,14 @@ public class GasFacil extends Application {
         Parse.initialize(this, "rMJLW7qybdglATi4FowrRFwmVqZkLoxuo6vntg1c", "tGepZhs91zXpb0n36dAhRnlFTmki3Mjm10spl3Fi");
 
         Parse.enableLocalDatastore(this);
-
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
 
         ParseObject.registerSubclass(Produto.class);
+        ParseObject.registerSubclass(Pedido.class);
+
     }
 }
 
