@@ -64,7 +64,13 @@ public class EfetuarPedido extends Activity {
                         Toast.makeText(getApplicationContext(),
                                 "Ops... Verifique o campo Dinheiro",
                                 Toast.LENGTH_LONG).show();
-                    } else {
+                    }
+                    if((dinheiroDbl - valorDoPedido)>100){
+                        Toast.makeText(getApplicationContext(),
+                                "Ops... Favor não exceder 100 reais de troco",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    else {
 
                         Pedido pedido = new Pedido();
                         pedido.setProduto(aux.get(0));
