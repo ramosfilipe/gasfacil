@@ -3,31 +3,28 @@ package boleiros.gas_facil;
 import android.app.Activity;
 
 import android.app.ActionBar;
-import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Context;
+import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import boleiros.gas_facil.adapter.ProdutoAdapter;
 import boleiros.gas_facil.adapter.RecyclerItemClickListener;
 import boleiros.gas_facil.dialogos.QuantidadeDeProdutoDialogo;
+import boleiros.gas_facil.login.LoginSignup;
 import boleiros.gas_facil.modelo.ProdutoManager;
+import boleiros.gas_facil.perfil.Perfil;
 import boleiros.gas_facil.util.ActivityStore;
 
 
@@ -74,6 +71,7 @@ public class Inicio extends Activity
         switch (number) {
             case 1:
                 mTitle = getString(R.string.title_section1);
+
                 break;
             case 2:
                 mTitle = getString(R.string.title_section2);
@@ -112,7 +110,8 @@ public class Inicio extends Activity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(Inicio.this,LoginSignup.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

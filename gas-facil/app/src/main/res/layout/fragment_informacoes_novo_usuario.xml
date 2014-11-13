@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="boleiros.gas_facil.InformacoesNovoUsuario"
+    tools:context="boleiros.gas_facil.login.InformacoesNovoUsuario"
     android:id="@+id/frame">
 
     <RelativeLayout
