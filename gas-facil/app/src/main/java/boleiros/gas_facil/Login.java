@@ -15,11 +15,9 @@ public class Login extends Activity {
         super.onCreate(savedInstanceState);
 
         // Determine whether the current user is an anonymous user
-        if(ParseUser.getCurrentUser().getUsername() != null){
-            System.out.println(ParseUser.getCurrentUser().getUsername() );
-        }else{
-        }
         if (ParseAnonymousUtils.isLinked(ParseUser.getCurrentUser())) {
+            System.out.println("Anonimo");
+
             // If user is anonymous, send the user to LoginSignupActivity.class
             Intent intent = new Intent(Login.this,
                     LoginSignup.class);
@@ -31,11 +29,12 @@ public class Login extends Activity {
             ParseUser currentUser = ParseUser.getCurrentUser();
             if (currentUser != null) {
                 // Send logged in users to Welcome.class
+                System.out.println("AQ");
                 Intent intent = new Intent(Login.this, Inicio.class);
                 startActivity(intent);
                 finish();
             } else {
-
+                System.out.println("ESSE");
                 // Send user to LoginSignupActivity.class
                 Intent intent = new Intent(Login.this,
                         LoginSignup.class);

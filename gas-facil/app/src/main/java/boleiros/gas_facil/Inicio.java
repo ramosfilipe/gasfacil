@@ -7,6 +7,7 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -31,7 +32,7 @@ import boleiros.gas_facil.util.ActivityStore;
 
 
 public class Inicio extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, Perfil.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -47,6 +48,7 @@ public class Inicio extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
+
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -115,6 +117,11 @@ public class Inicio extends Activity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -123,9 +130,10 @@ public class Inicio extends Activity
          * The fragment argument representing the section number for this
          * fragment.
          */
-        private static final String ARG_SECTION_NUMBER = "section_number";
         private RecyclerView mRecyclerView;
         private ProdutoAdapter mAdapter;
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
         /**
          * Returns a new instance of this fragment for the given section
          * number.
@@ -145,9 +153,8 @@ public class Inicio extends Activity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_inicio, container, false);
-
             mRecyclerView = (RecyclerView)rootView.findViewById(R.id.list);
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
             mAdapter = new ProdutoAdapter(ProdutoManager.getInstance().getprodutos(), R.layout.card_layout, this.getActivity());

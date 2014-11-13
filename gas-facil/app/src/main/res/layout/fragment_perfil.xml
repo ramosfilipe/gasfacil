@@ -1,0 +1,112 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="boleiros.gas_facil.Perfil">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=" Nome"
+        android:id="@+id/textViewNomePerfil"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="17dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/editTextNome"
+        android:editable="false"
+        android:visibility="invisible"
+        android:layout_below="@+id/textViewNomePerfil"
+        android:layout_toRightOf="@+id/textViewNomePerfil"
+        android:layout_toEndOf="@+id/textViewNomePerfil"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textViewNomePerfil"
+        android:layout_toRightOf="@+id/textViewNomePerfil"
+        android:layout_toEndOf="@+id/textViewNomePerfil" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=" Endereço"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/editTextNome"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textViewEnderecoPerfil"
+        android:layout_alignTop="@+id/editTextEndereco"
+        android:layout_alignLeft="@+id/editTextEndereco"
+        android:layout_alignStart="@+id/editTextEndereco" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextEndereco"
+        android:visibility="invisible"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/editTextNome"
+        android:layout_alignStart="@+id/editTextNome"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/editTextTelefone"
+        android:layout_below="@+id/textViewTelefoneInutil"
+        android:layout_alignLeft="@+id/editTextEndereco"
+        android:layout_alignStart="@+id/editTextEndereco"
+        android:layout_alignRight="@+id/editTextEndereco"
+        android:layout_alignEnd="@+id/editTextEndereco"
+        android:visibility="invisible" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EDITAR PERFIL"
+        android:id="@+id/buttonEditarPerfil"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=" Telefone"
+        android:id="@+id/textViewTelefoneInutil"
+        android:layout_below="@+id/editTextEndereco"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textViewTelefonePerfil"
+        android:layout_below="@+id/textViewTelefoneInutil"
+        android:layout_alignLeft="@+id/editTextTelefone"
+        android:layout_alignStart="@+id/editTextTelefone" />
+
+</RelativeLayout>

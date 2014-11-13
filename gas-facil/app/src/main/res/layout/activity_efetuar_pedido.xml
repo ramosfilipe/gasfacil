@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Dinheiro:"
-        android:id="@+id/textView"
+        android:id="@+id/textViewNomePerfil"
         android:layout_below="@+id/listEfetuarPedido"
         android:layout_alignLeft="@+id/listEfetuarPedido"
         android:layout_alignStart="@+id/listEfetuarPedido" />
@@ -38,10 +38,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editTextDinheiro"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_below="@+id/textView"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
+        android:layout_toEndOf="@+id/textViewNomePerfil"
+        android:layout_below="@+id/textViewNomePerfil"
+        android:layout_alignLeft="@+id/textViewNomePerfil"
+        android:layout_alignStart="@+id/textViewNomePerfil"
         android:layout_alignRight="@+id/listEfetuarPedido"
         android:layout_alignEnd="@+id/listEfetuarPedido" />
 

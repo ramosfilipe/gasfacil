@@ -4,6 +4,9 @@ package boleiros.gas_facil;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -198,6 +201,19 @@ public class NavigationDrawerFragment extends Fragment {
         }
         if (mCallbacks != null) {
             mCallbacks.onNavigationDrawerItemSelected(position);
+        }
+        if(position == 0){
+        }
+        if(position == 1){
+
+
+        }
+        if(position == 2){
+            Fragment perfil =new Perfil();
+            FragmentManager frag = getFragmentManager();
+            FragmentTransaction fragTrans = frag.beginTransaction();
+            fragTrans.replace(R.id.container,perfil );
+            fragTrans.commit();
         }
     }
 
