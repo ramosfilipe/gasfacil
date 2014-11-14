@@ -1,6 +1,7 @@
 package boleiros.gas_facil.pedido;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -46,6 +47,7 @@ public class EfetuarPedido extends Activity {
                 R.layout.card_layout, this);
         mRecyclerView.setAdapter(mAdapter);
         final int qtd = ActivityStore.getInstance(this).getQuantidadeDeProdutoDesejadaPeloUser();
+
         Button confirmar = (Button) findViewById(R.id.buttonConfirmar);
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +73,8 @@ public class EfetuarPedido extends Activity {
                                 Toast.LENGTH_LONG).show();
                     }
                     else {
-
+                        final ProgressDialog pDialog = ProgressDialog.show(EfetuarPedido.this, null,
+                                "Comprando...");
                         Pedido pedido = new Pedido();
                         pedido.setProduto(aux.get(0));
                         pedido.setComprador(ParseUser.getCurrentUser());
@@ -81,11 +84,14 @@ public class EfetuarPedido extends Activity {
                             @Override
                             public void done(com.parse.ParseException e) {
                                 if (e != null) {
+                                    pDialog.dismiss();
                                     Toast.makeText(getApplicationContext(),
                                             "Ops... Tente comprar novamente",
                                             Toast.LENGTH_LONG).show();
 
                                 } else {
+                                    pDialog.dismiss();
+
                                     Toast.makeText(getApplicationContext(), "Produto Comprado!",
                                             Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(getApplicationContext(), Inicio.class);
