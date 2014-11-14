@@ -1,6 +1,7 @@
 package boleiros.gas_facil.perfil;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -77,6 +78,8 @@ public class Perfil extends Fragment {
     public void setInformacoes(){
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereEqualTo("objectId", ParseUser.getCurrentUser().getObjectId());
+        final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
+                "Carregando");
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
             public void done(List<ParseUser> parseUsers, com.parse.ParseException e) {
@@ -93,6 +96,7 @@ public class Perfil extends Fragment {
                 editTextNome.setText(user.getString("nome"));
                 txtViewTelefone.setText(user.getString("telefone"));
                 editTextTelefone.setText(user.getString("telefone"));
+                pDialog.dismiss();
             }
         });
     }
@@ -147,6 +151,8 @@ public class Perfil extends Fragment {
                     final String newTelefone = editTextTelefone.getText().toString();
                     if(!newNome.equals("") && !newEndereco.equals("") && !newTelefone.equals("")){
                     ParseQuery<ParseUser> query = ParseUser.getQuery();
+                        final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
+                                "Carregando");
                     query.getInBackground(ParseUser.getCurrentUser().getObjectId(),new GetCallback<ParseUser>() {
                         @Override
                         public void done(ParseUser parseUser, com.parse.ParseException e) {
@@ -161,6 +167,7 @@ public class Perfil extends Fragment {
                                     botao.setText("EDITAR PERFIL");
                                     setInformacoes();
                                     setVisibilidadeEditETxt(false);
+                                    pDialog.dismiss();
                                     Toast.makeText(getActivity().getApplicationContext(), "Informações editadas com sucesso.",
                                             Toast.LENGTH_SHORT).show();
                                 }

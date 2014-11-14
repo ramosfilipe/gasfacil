@@ -1,6 +1,7 @@
 package boleiros.gas_facil.login;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -115,15 +116,19 @@ public class InformacoesNovoUsuario extends Fragment {
                     user.put("endereco",endereco);
                     user.put("telefone",telefone);
                     user.put("fornecedor",false);
+                    final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
+                            "Carregando");
                     user.signUpInBackground(new SignUpCallback() {
                         public void done(ParseException e) {
                             if (e == null) {
+                                pDialog.dismiss();
                                 // Show a simple Toast message upon successful registration
                                 Toast.makeText(getActivity(),
                                         "Usuário criado com sucesso.",
                                         Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(getActivity(),Login.class));
                             } else {
+                                pDialog.dismiss();
                                 Toast.makeText(getActivity(),
                                         "Usuário existente, tente outro.", Toast.LENGTH_LONG)
                                         .show();

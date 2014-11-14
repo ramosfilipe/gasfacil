@@ -2,6 +2,7 @@ package boleiros.gas_facil.login;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -47,7 +48,8 @@ public class LoginSignup extends Activity implements InformacoesNovoUsuario.OnFr
                 // Retrieve the text entered from the EditText
                 usernametxt = username.getText().toString().replaceAll(" ","");
                 passwordtxt = password.getText().toString();
-
+                final ProgressDialog pDialog = ProgressDialog.show(LoginSignup.this, null,
+                        "Carregando");
                 // Send data to Parse.com for verification
                 ParseUser.logInInBackground(usernametxt, passwordtxt,
                         new LogInCallback() {
@@ -58,9 +60,10 @@ public class LoginSignup extends Activity implements InformacoesNovoUsuario.OnFr
                                             LoginSignup.this,
                                             Inicio.class);
                                     startActivity(intent);
-
+                                    pDialog.dismiss();
                                     finish();
                                 } else {
+                                    pDialog.dismiss();
                                     Toast.makeText(
                                             getApplicationContext(),
                                             "Usuário ou  senha inválidos.",
