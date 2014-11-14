@@ -23,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import boleiros.gas_facil.pedido.Produto;
 import boleiros.gas_facil.perfil.Perfil;
 
 /**
@@ -203,7 +204,11 @@ public class NavigationDrawerFragment extends Fragment {
             mCallbacks.onNavigationDrawerItemSelected(position);
         }
         if(position == 0){
-
+            Fragment produto =new boleiros.gas_facil.pedido.Produto();
+            FragmentManager frag = getFragmentManager();
+            FragmentTransaction fragTrans = frag.beginTransaction();
+            fragTrans.replace(R.id.container,produto );
+            fragTrans.commit();
         }
         if(position == 1){
 

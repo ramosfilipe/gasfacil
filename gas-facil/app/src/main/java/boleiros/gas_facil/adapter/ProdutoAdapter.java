@@ -31,6 +31,10 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
         this.rowLayout = rowLayout;
         this.mContext = context;
     }
+    public ProdutoAdapter(List<Produto> produtos, int rowLayout) {
+        this.produtos = produtos;
+        this.rowLayout = rowLayout;
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {

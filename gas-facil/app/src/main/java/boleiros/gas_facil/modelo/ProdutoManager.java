@@ -1,4 +1,6 @@
 package boleiros.gas_facil.modelo;
+import android.app.ProgressDialog;
+
 import com.parse.FindCallback;
 import com.parse.ParseQuery;
 
@@ -16,6 +18,11 @@ public class ProdutoManager {
 
 
     private static ProdutoManager mInstance;
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
     private List<Produto> produtos;
 
     public static ProdutoManager getInstance() {
@@ -38,6 +45,7 @@ public class ProdutoManager {
         ParseQuery<Produto> query = ParseQuery.getQuery("Produto");
         query.orderByDescending("createdAt");
         //query.setLimit(10);
+
         query.findInBackground(new FindCallback<Produto>() {
             @Override
             public void done(List<Produto> parseObjects, com.parse.ParseException e) {

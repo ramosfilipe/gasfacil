@@ -152,21 +152,21 @@ public class Inicio extends Activity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_inicio, container, false);
-            mRecyclerView = (RecyclerView)rootView.findViewById(R.id.list);
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-
-            mAdapter = new ProdutoAdapter(ProdutoManager.getInstance().getprodutos(), R.layout.card_layout, this.getActivity());
-            mRecyclerView.setAdapter(mAdapter);
-            mRecyclerView.addOnItemTouchListener(
-                    new RecyclerItemClickListener(rootView.getContext(), new RecyclerItemClickListener.OnItemClickListener() {
-                        @Override public void onItemClick(View view, int position) {
-                            QuantidadeDeProdutoDialogo newFragment = new QuantidadeDeProdutoDialogo();
-                            ActivityStore.getInstance(getActivity()).setProduto(ProdutoManager.getInstance().getprodutos().get(position));
-                            newFragment.show(getFragmentManager(), "quantidade");
-                        }
-                    })
-            );
+//            mRecyclerView = (RecyclerView)rootView.findViewById(R.id.list);
+//            mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//            mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+//
+//            mAdapter = new ProdutoAdapter(ProdutoManager.getInstance().getprodutos(), R.layout.card_layout, this.getActivity());
+//            mRecyclerView.setAdapter(mAdapter);
+//            mRecyclerView.addOnItemTouchListener(
+//                    new RecyclerItemClickListener(rootView.getContext(), new RecyclerItemClickListener.OnItemClickListener() {
+//                        @Override public void onItemClick(View view, int position) {
+//                            QuantidadeDeProdutoDialogo newFragment = new QuantidadeDeProdutoDialogo();
+//                            ActivityStore.getInstance(getActivity()).setProduto(ProdutoManager.getInstance().getprodutos().get(position));
+//                            newFragment.show(getFragmentManager(), "quantidade");
+//                        }
+//                    })
+//            );
 
             return rootView;
         }
