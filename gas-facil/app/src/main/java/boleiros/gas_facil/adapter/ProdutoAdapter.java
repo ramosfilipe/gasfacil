@@ -45,7 +45,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Produto produto = produtos.get(i);
-        viewHolder.countryName.setText(produto.getType());
+        //viewHolder.countryName.setText(produto.getType());
         viewHolder.precoProduto.setText("R$"+produto.getPrice());
 
         try {

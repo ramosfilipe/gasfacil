@@ -28,6 +28,9 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:textSize="45sp"
+            android:textStyle="italic"
+
+            android:shadowColor="@color/cardview_dark_background"
             android:layout_centerInParent="true"
             android:textColor="@android:color/white"
             />
@@ -38,7 +41,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/precoProduto"
             android:textSize="25sp"
-            android:textColor="@android:color/holo_blue_dark"
+            android:textColor="#2196F3"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
