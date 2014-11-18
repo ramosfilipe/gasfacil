@@ -1,56 +1,114 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:padding="10dip"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:baselineAligned="false"
     android:id="@+id/relativeInfos">
 
-    <TextView
-    android:id="@+id/txtNome"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="Username" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/relativeInfoLogin"
+        android:id="@+id/relativeLogoLogin"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
-<EditText
-android:id="@+id/campoUsername"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-android:layout_below="@+id/txtNome"
-android:inputType="text" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/logogasquatr"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 
-<TextView
-android:id="@+id/txtSenha"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-    android:text="Senha:"
-    android:layout_below="@+id/campoUsername"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentEnd="true" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/relativeInfoLogin"
+        android:layout_above="@+id/frameLogin"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
-<EditText
-android:id="@+id/campoSenha"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-    android:inputType="textPassword"
-    android:layout_below="@+id/txtSenha"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentEnd="true" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
-<Button
-android:id="@+id/login"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-    android:text="Entrar"
-    android:layout_below="@+id/campoSenha"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true" />
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="17dp"></FrameLayout>
 
-<Button
-android:id="@+id/signup"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-android:layout_below="@+id/login"
-    android:text="Novo usuario" />
+            <EditText
+        android:id="@+id/campoUsername"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+            android:inputType="text"
+                android:singleLine="true"
+                android:layout_above="@+id/txtSenha"
+                android:text="Nome de usuário" />
+
+            <EditText
+            android:id="@+id/campoSenha"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+                android:inputType="text"
+                android:singleLine="true"
+                android:layout_above="@+id/login"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:text="Senha" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <Button
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+                android:text="Entrar"
+                    android:layout_weight="1"
+                    android:layout_above="@+id/signup"
+                    android:layout_gravity="center_vertical" />
+
+                <Button
+                android:id="@+id/signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                    android:text="Novo usuário"
+                    android:layout_weight="0.74"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_gravity="center_vertical" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/frameLogin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/white"
+            android:text="Esqueceu a senha?"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal|top" />
+    </FrameLayout>
 
 
 </RelativeLayout>

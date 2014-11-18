@@ -19,6 +19,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
+import com.parse.ParseUser;
+
 import boleiros.gas_facil.adapter.ProdutoAdapter;
 import boleiros.gas_facil.adapter.RecyclerItemClickListener;
 import boleiros.gas_facil.dialogos.QuantidadeDeProdutoDialogo;
@@ -110,6 +112,7 @@ public class Inicio extends Activity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            ParseUser.logOut();
             Intent intent = new Intent(Inicio.this,LoginSignup.class);
             startActivity(intent);
         }

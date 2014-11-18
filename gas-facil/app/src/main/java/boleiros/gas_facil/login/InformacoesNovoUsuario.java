@@ -80,9 +80,7 @@ public class InformacoesNovoUsuario extends Fragment {
         // Inflate the layout for this fragment
 
         View v = inflater.inflate(R.layout.fragment_informacoes_novo_usuario, container, false);
-        getActivity().findViewById(R.id.txtNome).setVisibility(View.INVISIBLE);
         getActivity().findViewById(R.id.campoUsername).setVisibility(View.INVISIBLE);
-        getActivity().findViewById(R.id.txtSenha).setVisibility(View.INVISIBLE);
         getActivity().findViewById(R.id.campoSenha).setVisibility(View.INVISIBLE);
         getActivity().findViewById(R.id.login).setVisibility(View.INVISIBLE);
         getActivity().findViewById(R.id.signup).setVisibility(View.INVISIBLE);
