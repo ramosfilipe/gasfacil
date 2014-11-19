@@ -21,25 +21,24 @@ import java.util.ArrayList;
 
 import boleiros.gas_facil.Inicio;
 import boleiros.gas_facil.R;
-import boleiros.gas_facil.adapter.ProdutoAdapter;
 import boleiros.gas_facil.adapter.ProdutoAdapterPedido;
 import boleiros.gas_facil.modelo.Pedido;
 import boleiros.gas_facil.modelo.Produto;
-import boleiros.gas_facil.modelo.ProdutoManager;
 import boleiros.gas_facil.util.ActivityStore;
 
 public class EfetuarPedido extends Activity {
     private RecyclerView mRecyclerView;
     private ProdutoAdapterPedido mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_efetuar_pedido);
-        System.out.println(ActivityStore.getInstance(this).getProduto().getType());
-        mRecyclerView = (RecyclerView)findViewById(R.id.listEfetuarPedido);
+        //  System.out.println(ActivityStore.getInstance(this).getProduto().getType());
+        mRecyclerView = (RecyclerView) findViewById(R.id.listEfetuarPedido);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        final ArrayList<Produto> aux= new ArrayList<Produto>();
+        final ArrayList<Produto> aux = new ArrayList<Produto>();
         aux.add(ActivityStore.getInstance(this).getProduto());
         mAdapter = new ProdutoAdapterPedido(
                 aux,
@@ -55,24 +54,22 @@ public class EfetuarPedido extends Activity {
 
                 EditText dinheiro = (EditText) findViewById(R.id.editTextDinheiro);
 
-                if(dinheiro.getText().toString().length()>0){
+                if (dinheiro.getText().toString().length() > 0) {
 
 
                     double dinheiroDbl = Double.parseDouble(dinheiro.getText().toString());
                     double precoProduto = Double.parseDouble(aux.get(0).getPrice());
                     double valorDoPedido = qtd * precoProduto;
-
-                    if (dinheiroDbl < valorDoPedido ) {
+                    double troco = dinheiroDbl - valorDoPedido;
+                    if (dinheiroDbl < valorDoPedido) {
                         Toast.makeText(getApplicationContext(),
                                 "Ops... Verifique o campo Dinheiro",
                                 Toast.LENGTH_LONG).show();
-                    }
-                    else if((dinheiroDbl - valorDoPedido)>100){
+                    } else if ((dinheiroDbl - valorDoPedido) > 100) {
                         Toast.makeText(getApplicationContext(),
                                 "Ops... Favor não exceder 100 reais de troco",
                                 Toast.LENGTH_LONG).show();
-                    }
-                    else {
+                    } else {
                         final ProgressDialog pDialog = ProgressDialog.show(EfetuarPedido.this, null,
                                 "Comprando...");
                         Pedido pedido = new Pedido();
@@ -80,6 +77,8 @@ public class EfetuarPedido extends Activity {
                         pedido.setComprador(ParseUser.getCurrentUser());
                         pedido.setPrice(dinheiro.getText().toString());
                         pedido.setQuantidade(qtd);
+                        pedido.setStatus("pendente");
+                        pedido.setTroco("" + troco);
                         pedido.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(com.parse.ParseException e) {
@@ -102,7 +101,7 @@ public class EfetuarPedido extends Activity {
 
                         });
                     }
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(),
                             "Ops... Verifique o campo Dinheiro",
                             Toast.LENGTH_LONG).show();

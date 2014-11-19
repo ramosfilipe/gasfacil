@@ -1,11 +1,11 @@
 package boleiros.gas_facil.login;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -27,21 +27,22 @@ import boleiros.gas_facil.R;
  * to handle interaction events.
  * Use the {@link FragmentEnderecoNovoUsuario#newInstance} factory method to
  * create an instance of this fragment.
- *
  */
 public class FragmentEnderecoNovoUsuario extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    EditText rua, numero, cep, complemento, bairro, referencia;
+    Button continuar;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    EditText rua, numero, cep, complemento, bairro, referencia;
-    Button continuar;
-
     private OnFragmentInteractionListener mListener;
+
+    public FragmentEnderecoNovoUsuario() {
+        // Required empty public constructor
+    }
 
     /**
      * Use this factory method to create a new instance of
@@ -59,9 +60,6 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
-    public FragmentEnderecoNovoUsuario() {
-        // Required empty public constructor
     }
 
     @Override
@@ -85,20 +83,20 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         getActivity().findViewById(R.id.buttonContinuarInformacoesPessoais).setVisibility(View.INVISIBLE);
         View v = inflater.inflate(R.layout.fragment_fragment_endereco_novo_usuario, container, false);
         v.findViewById(R.id.relativeEnderecoNovoUsuario).setBackgroundColor(Color.WHITE);
-        continuar = (Button)v.findViewById(R.id.buttonContinuarEndereco);
+        continuar = (Button) v.findViewById(R.id.buttonContinuarEndereco);
 
-        rua = (EditText)v.findViewById(R.id.editTextNomeRua);
-        numero = (EditText)v.findViewById(R.id.editTextNumeroRua);
-        cep = (EditText)v.findViewById(R.id.editTextCEP);
-        complemento = (EditText)v.findViewById(R.id.editTextComplemento);
-        bairro = (EditText)v.findViewById(R.id.editTextBairro);
-        referencia = (EditText)v.findViewById(R.id.editTextPontoDeReferencia);
+        rua = (EditText) v.findViewById(R.id.editTextNomeRua);
+        numero = (EditText) v.findViewById(R.id.editTextNumeroRua);
+        cep = (EditText) v.findViewById(R.id.editTextCEP);
+        complemento = (EditText) v.findViewById(R.id.editTextComplemento);
+        bairro = (EditText) v.findViewById(R.id.editTextBairro);
+        referencia = (EditText) v.findViewById(R.id.editTextPontoDeReferencia);
         numero.setNextFocusDownId(R.id.editTextCEP);
 
         rua.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(rua.getText().toString().equals("Rua")){
+                if (rua.getText().toString().equals("Rua")) {
                     rua.setText("");
                     rua.setTextColor(Color.BLACK);
                 }
@@ -108,8 +106,8 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         rua.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i == EditorInfo.IME_ACTION_NEXT) {
-                    if(numero.getText().toString().equals("Número")) {
+                if (i == EditorInfo.IME_ACTION_NEXT) {
+                    if (numero.getText().toString().equals("Número")) {
                         numero.setText("");
                         numero.setTextColor(Color.BLACK);
                         numero.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -121,7 +119,7 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         numero.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(numero.getText().toString().equals("Número")) {
+                if (numero.getText().toString().equals("Número")) {
                     numero.setText("");
                     numero.setTextColor(Color.BLACK);
                     numero.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -132,8 +130,8 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         numero.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i == EditorInfo.IME_ACTION_NEXT) {
-                    if(cep.getText().toString().equals("CEP")){
+                if (i == EditorInfo.IME_ACTION_NEXT) {
+                    if (cep.getText().toString().equals("CEP")) {
                         cep.setText("");
                         cep.setInputType(InputType.TYPE_CLASS_NUMBER);
                         cep.setTextColor(Color.BLACK);
@@ -147,7 +145,7 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         cep.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(cep.getText().toString().equals("CEP")){
+                if (cep.getText().toString().equals("CEP")) {
                     cep.setText("");
                     cep.setInputType(InputType.TYPE_CLASS_NUMBER);
                     cep.setTextColor(Color.BLACK);
@@ -158,8 +156,8 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         cep.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i == EditorInfo.IME_ACTION_NEXT){
-                    if(complemento.getText().toString().equals("Complemento")){
+                if (i == EditorInfo.IME_ACTION_NEXT) {
+                    if (complemento.getText().toString().equals("Complemento")) {
                         complemento.setText("");
                         complemento.setTextColor(Color.BLACK);
                     }
@@ -170,7 +168,7 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         complemento.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(complemento.getText().toString().equals("Complemento")){
+                if (complemento.getText().toString().equals("Complemento")) {
                     complemento.setText("");
                     complemento.setTextColor(Color.BLACK);
                 }
@@ -180,8 +178,8 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         complemento.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i == EditorInfo.IME_ACTION_NEXT){
-                    if(bairro.getText().toString().equals("Bairro")){
+                if (i == EditorInfo.IME_ACTION_NEXT) {
+                    if (bairro.getText().toString().equals("Bairro")) {
                         bairro.setText("");
                         bairro.setTextColor(Color.BLACK);
                     }
@@ -192,7 +190,7 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         bairro.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(bairro.getText().toString().equals("Bairro")){
+                if (bairro.getText().toString().equals("Bairro")) {
                     bairro.setText("");
                     bairro.setTextColor(Color.BLACK);
                 }
@@ -202,8 +200,8 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         bairro.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i == EditorInfo.IME_ACTION_NEXT){
-                    if(referencia.getText().toString().equals("Ponto de referência")){
+                if (i == EditorInfo.IME_ACTION_NEXT) {
+                    if (referencia.getText().toString().equals("Ponto de referência")) {
                         referencia.setText("");
                         referencia.setTextColor(Color.BLACK);
                     }
@@ -214,7 +212,7 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         referencia.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(referencia.getText().toString().equals("Ponto de referência")){
+                if (referencia.getText().toString().equals("Ponto de referência")) {
                     referencia.setText("");
                     referencia.setTextColor(Color.BLACK);
                 }
@@ -224,7 +222,7 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         referencia.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i == EditorInfo.IME_ACTION_DONE){
+                if (i == EditorInfo.IME_ACTION_DONE) {
                     continuar.performClick();
                 }
                 return false;
@@ -234,27 +232,27 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String ruatxt = ((EditText)getActivity().findViewById(R.id.editTextNomeRua)).getText().toString();
-                String numerotxt = ((EditText)getActivity().findViewById(R.id.editTextNumeroRua)).getText().toString();
-                String ceptxt = ((EditText)getActivity().findViewById(R.id.editTextCEP)).getText().toString();
-                String complementotxt = ((EditText)getActivity().findViewById(R.id.editTextComplemento)).getText().toString();
-                String bairrotxt = ((EditText)getActivity().findViewById(R.id.editTextBairro)).getText().toString();
-                String referenciatxt  = ((EditText)getActivity().findViewById(R.id.editTextPontoDeReferencia)).getText().toString();
-                if(!rua.equals("") && !rua.equals("Rua") && !numero.equals("") && !numero.equals("Número") && !cep.equals("CEP") && !cep.equals("")
-                         && !bairro.equals("Bairro") && !bairro.equals("")
-                        && !referencia.equals("Ponto de referência") && !referencia.equals("")){
+                String ruatxt = ((EditText) getActivity().findViewById(R.id.editTextNomeRua)).getText().toString();
+                String numerotxt = ((EditText) getActivity().findViewById(R.id.editTextNumeroRua)).getText().toString();
+                String ceptxt = ((EditText) getActivity().findViewById(R.id.editTextCEP)).getText().toString();
+                String complementotxt = ((EditText) getActivity().findViewById(R.id.editTextComplemento)).getText().toString();
+                String bairrotxt = ((EditText) getActivity().findViewById(R.id.editTextBairro)).getText().toString();
+                String referenciatxt = ((EditText) getActivity().findViewById(R.id.editTextPontoDeReferencia)).getText().toString();
+                if (!rua.equals("") && !rua.equals("Rua") && !numero.equals("") && !numero.equals("Número") && !cep.equals("CEP") && !cep.equals("")
+                        && !bairro.equals("Bairro") && !bairro.equals("")
+                        && !referencia.equals("Ponto de referência") && !referencia.equals("")) {
                     Bundle bundle = b;
-                    bundle.putString("rua",ruatxt);
-                    bundle.putString("numero",numerotxt);
-                    bundle.putString("cep",ceptxt);
-                    bundle.putString("complemento",complementotxt);
-                    bundle.putString("bairro",bairrotxt);
-                    bundle.putString("referencia",referenciatxt);
+                    bundle.putString("rua", ruatxt);
+                    bundle.putString("numero", numerotxt);
+                    bundle.putString("cep", ceptxt);
+                    bundle.putString("complemento", complementotxt);
+                    bundle.putString("bairro", bairrotxt);
+                    bundle.putString("referencia", referenciatxt);
                     bundle.putString("endereco", ruatxt + " " + numerotxt + " " + complementotxt + " " + ceptxt + " " + bairrotxt + " " + referenciatxt);
                     Fragment fragment = new InformacoesNovoUsuario();
                     fragment.setArguments(bundle);
                     FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.relativeEnderecoNovoUsuario,fragment);
+                    fragmentTransaction.replace(R.id.relativeEnderecoNovoUsuario, fragment);
                     fragmentTransaction.commit();
 
                 } else {
@@ -295,7 +293,7 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
+     * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.

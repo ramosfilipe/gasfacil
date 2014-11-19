@@ -1,4 +1,5 @@
 package boleiros.gas_facil.adapter;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,7 +21,7 @@ import boleiros.gas_facil.modelo.Produto;
 /**
  * Created by filipe on 28/10/14.
  */
-public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHolder>{
+public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHolder> {
 
     private List<Produto> produtos;
     private int rowLayout;
@@ -31,49 +32,12 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
         this.rowLayout = rowLayout;
         this.mContext = context;
     }
+
     public ProdutoAdapter(List<Produto> produtos, int rowLayout) {
         this.produtos = produtos;
         this.rowLayout = rowLayout;
     }
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
-        return new ViewHolder(v);
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Produto produto = produtos.get(i);
-        //viewHolder.countryName.setText(produto.getType());
-        viewHolder.precoProduto.setText("R$"+produto.getPrice());
-
-        try {
-            viewHolder.produtoImage.setImageBitmap(decodeSampledBitmapFromResource(produto.getPhotoFile(),1000,1000));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public int getItemCount() {
-        return produtos == null ? 0 : produtos.size();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView countryName;
-        public ImageView produtoImage;
-        public TextView precoProduto;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            countryName = (TextView) itemView.findViewById(R.id.countryName);
-            precoProduto = (TextView) itemView.findViewById(R.id.precoProduto);
-
-            produtoImage = (ImageView)itemView.findViewById(R.id.produtoImagem);
-        }
-
-    }
     public static Bitmap decodeSampledBitmapFromResource(ParseFile pf,
                                                          int reqWidth,
                                                          int reqHeight) throws ParseException {
@@ -115,6 +79,45 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
         }
 
         return inSampleSize;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
+        return new ViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder viewHolder, int i) {
+        Produto produto = produtos.get(i);
+        //viewHolder.countryName.setText(produto.getType());
+        viewHolder.precoProduto.setText("R$" + produto.getPrice());
+
+        try {
+            viewHolder.produtoImage.setImageBitmap(decodeSampledBitmapFromResource(produto.getPhotoFile(), 1000, 1000));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return produtos == null ? 0 : produtos.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView countryName;
+        public ImageView produtoImage;
+        public TextView precoProduto;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            countryName = (TextView) itemView.findViewById(R.id.countryName);
+            precoProduto = (TextView) itemView.findViewById(R.id.precoProduto);
+
+            produtoImage = (ImageView) itemView.findViewById(R.id.produtoImagem);
+        }
+
     }
 
 }

@@ -7,8 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import boleiros.gas_facil.R;
-import boleiros.gas_facil.modelo.Produto;
 import boleiros.gas_facil.pedido.EfetuarPedido;
 import boleiros.gas_facil.util.ActivityStore;
 
@@ -16,7 +14,7 @@ import boleiros.gas_facil.util.ActivityStore;
  * Created by filipe on 03/11/14.
  */
 public class QuantidadeDeProdutoDialogo extends DialogFragment {
-    private String[] quantidade = {"Um","Dois","Três","Quatro","Cinco"};
+    private String[] quantidade = {"Um", "Dois", "Três", "Quatro", "Cinco"};
 
 
     @Override
@@ -32,7 +30,7 @@ public class QuantidadeDeProdutoDialogo extends DialogFragment {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ActivityStore.getInstance(getActivity()).setQuantidadeDeProdutoDesejadaPeloUser(which+1);
+                        ActivityStore.getInstance(getActivity()).setQuantidadeDeProdutoDesejadaPeloUser(which + 1);
                         System.out.println(which);
 
                         //dialog.dismiss();

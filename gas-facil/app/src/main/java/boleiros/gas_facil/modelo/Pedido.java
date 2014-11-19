@@ -1,4 +1,5 @@
 package boleiros.gas_facil.modelo;
+
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
@@ -13,9 +14,11 @@ public class Pedido extends ParseObject {
 
     public Pedido() {
     }
-    public void setProduto(Produto produto){
-        put("produto",produto);
+
+    public void setProduto(Produto produto) {
+        put("produto", produto);
     }
+
     public String getPrice() {
         return getString("price");
     }
@@ -44,11 +47,28 @@ public class Pedido extends ParseObject {
         put("problemaEmVenda", bool);
     }
 
-    public void setQuantidade(int quantidade){
-        put("quantidade",quantidade);
-    }
-    public int getQuantidade(){
+    public int getQuantidade() {
         return getInt("quantidade");
+    }
+
+    public void setQuantidade(int quantidade) {
+        put("quantidade", quantidade);
+    }
+
+    public String getStatus() {
+        return getString("status");
+    }
+
+    public void setStatus(String status) {
+        put("status", status);
+    }
+
+    public String getTroco() {
+        return getString("troco");
+    }
+
+    public void setTroco(String troco) {
+        put("troco", troco);
     }
 
 }

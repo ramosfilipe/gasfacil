@@ -1,8 +1,8 @@
 package boleiros.gas_facil.modelo;
+
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
-import com.parse.ParseUser;
 
 /**
  * Created by filipe on 28/10/14.
@@ -23,11 +23,14 @@ public class Produto extends ParseObject {
         put("price", price);
     }
 
-    public String getType(){ return getString("type");}
-
-    public void setType(String type){
-        put("type",type);
+    public String getType() {
+        return getString("type");
     }
+
+    public void setType(String type) {
+        put("type", type);
+    }
+
     public ParseFile getPhotoFile() {
         return getParseFile("photo");
     }

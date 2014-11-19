@@ -1,33 +1,25 @@
 package boleiros.gas_facil;
 
-import android.app.Activity;
-
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
 
 import com.parse.ParseUser;
 
 import boleiros.gas_facil.adapter.ProdutoAdapter;
-import boleiros.gas_facil.adapter.RecyclerItemClickListener;
-import boleiros.gas_facil.dialogos.QuantidadeDeProdutoDialogo;
 import boleiros.gas_facil.login.LoginSignup;
-import boleiros.gas_facil.modelo.ProdutoManager;
 import boleiros.gas_facil.perfil.Perfil;
-import boleiros.gas_facil.util.ActivityStore;
 
 
 public class Inicio extends Activity
@@ -113,7 +105,7 @@ public class Inicio extends Activity
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             ParseUser.logOut();
-            Intent intent = new Intent(Inicio.this,LoginSignup.class);
+            Intent intent = new Intent(Inicio.this, LoginSignup.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
@@ -128,13 +120,16 @@ public class Inicio extends Activity
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
+        private static final String ARG_SECTION_NUMBER = "section_number";
         /**
          * The fragment argument representing the section number for this
          * fragment.
          */
         private RecyclerView mRecyclerView;
         private ProdutoAdapter mAdapter;
-        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public PlaceholderFragment() {
+        }
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -146,9 +141,6 @@ public class Inicio extends Activity
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
             return fragment;
-        }
-
-        public PlaceholderFragment() {
         }
 
         @Override

@@ -1,13 +1,11 @@
 package boleiros.gas_facil.login;
 
 import android.app.Activity;
-import android.app.DialogFragment;
+import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -32,21 +30,22 @@ import boleiros.gas_facil.R;
  * to handle interaction events.
  * Use the {@link FragmentInformacoesPessoais#newInstance} factory method to
  * create an instance of this fragment.
- *
  */
 public class FragmentInformacoesPessoais extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    EditText nome, email, telefone;
+    Button continuar;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    EditText nome, email, telefone;
-    Button continuar;
-
     private OnFragmentInteractionListener mListener;
+
+    public FragmentInformacoesPessoais() {
+        // Required empty public constructor
+    }
 
     /**
      * Use this factory method to create a new instance of
@@ -65,19 +64,6 @@ public class FragmentInformacoesPessoais extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    public FragmentInformacoesPessoais() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     public static boolean emailValido(String emailId) {
         Pattern pattern = Pattern.compile("\\w+([-+.]\\w+)*" + "\\@"
@@ -91,6 +77,16 @@ public class FragmentInformacoesPessoais extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -101,16 +97,16 @@ public class FragmentInformacoesPessoais extends Fragment {
         getActivity().findViewById(R.id.login).setVisibility(View.INVISIBLE);
         getActivity().findViewById(R.id.signup).setVisibility(View.INVISIBLE);
 
-        continuar = (Button)v.findViewById(R.id.buttonContinuarInformacoesPessoais);
+        continuar = (Button) v.findViewById(R.id.buttonContinuarInformacoesPessoais);
 
-        nome = (EditText)v.findViewById(R.id.editTextNomeInfoPessoais);
-        email = (EditText)v.findViewById(R.id.editTextEmail);
-        telefone = (EditText)v.findViewById(R.id.editTextTelefoneInfoPessoais);
+        nome = (EditText) v.findViewById(R.id.editTextNomeInfoPessoais);
+        email = (EditText) v.findViewById(R.id.editTextEmail);
+        telefone = (EditText) v.findViewById(R.id.editTextTelefoneInfoPessoais);
 
         nome.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(nome.getText().toString().equals("Nome")) {
+                if (nome.getText().toString().equals("Nome")) {
                     nome.setText("");
                     nome.setTextColor(Color.BLACK);
                 }
@@ -144,7 +140,7 @@ public class FragmentInformacoesPessoais extends Fragment {
         email.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i == EditorInfo.IME_ACTION_NEXT){
+                if (i == EditorInfo.IME_ACTION_NEXT) {
                     if (telefone.getText().toString().equals("Telefone")) {
                         telefone.setText("");
                         telefone.setInputType(InputType.TYPE_CLASS_PHONE);
@@ -168,7 +164,7 @@ public class FragmentInformacoesPessoais extends Fragment {
         telefone.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i == EditorInfo.IME_ACTION_DONE){
+                if (i == EditorInfo.IME_ACTION_DONE) {
                     continuar.performClick();
                 }
                 return false;
@@ -179,25 +175,24 @@ public class FragmentInformacoesPessoais extends Fragment {
         continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nome = ((EditText)getActivity().findViewById(R.id.editTextNomeInfoPessoais)).getText().toString();
-                String email = ((EditText)getActivity().findViewById(R.id.editTextEmail)).getText().toString();
-                String telefone = ((EditText)getActivity().findViewById(R.id.editTextTelefoneInfoPessoais)).getText().toString();
-                if(!nome.equals("Nome") && !nome.equals("") && !email.equals("E-mail") && !email.equals("") && !telefone.equals("Telefone") && !telefone.equals("") && emailValido(email)){
+                String nome = ((EditText) getActivity().findViewById(R.id.editTextNomeInfoPessoais)).getText().toString();
+                String email = ((EditText) getActivity().findViewById(R.id.editTextEmail)).getText().toString();
+                String telefone = ((EditText) getActivity().findViewById(R.id.editTextTelefoneInfoPessoais)).getText().toString();
+                if (!nome.equals("Nome") && !nome.equals("") && !email.equals("E-mail") && !email.equals("") && !telefone.equals("Telefone") && !telefone.equals("") && emailValido(email)) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("nome",nome);
-                    bundle.putString("email",email);
-                    bundle.putString("telefone",telefone);
+                    bundle.putString("nome", nome);
+                    bundle.putString("email", email);
+                    bundle.putString("telefone", telefone);
                     Fragment fragment = new FragmentEnderecoNovoUsuario();
                     fragment.setArguments(bundle);
                     FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.relativeInformacoesPessoais,fragment);
+                    fragmentTransaction.replace(R.id.relativeInformacoesPessoais, fragment);
                     fragmentTransaction.commit();
                 } else {
-                    Toast.makeText(getActivity().getApplicationContext(),"Por favor, preencha todos os campos corretamente.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), "Por favor, preencha todos os campos corretamente.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
 
 
         return v;
@@ -232,7 +227,7 @@ public class FragmentInformacoesPessoais extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
+     * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.

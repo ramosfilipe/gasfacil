@@ -1,12 +1,12 @@
 package boleiros.gas_facil.login;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.view.KeyEvent;
@@ -34,29 +34,30 @@ import boleiros.gas_facil.R;
  * to handle interaction events.
  * Use the {@link InformacoesNovoUsuario#newInstance} factory method to
  * create an instance of this fragment.
- *
  */
 public class InformacoesNovoUsuario extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    EditText username, senha;
+    Button continua;
     // TODO: Rename and change types of parameters
     private String mParam1;
-    EditText username, senha;
     private String mParam2;
-    Button continua;
-
     private OnFragmentInteractionListener mListener;
 
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment InformacoesNovoUsuario.
+    public InformacoesNovoUsuario() {
+        // Required empty public constructor
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment InformacoesNovoUsuario.
      */
     // TODO: Rename and change types and number of parameters
     public static InformacoesNovoUsuario newInstance(String param1, String param2) {
@@ -66,9 +67,6 @@ public class InformacoesNovoUsuario extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
-    public InformacoesNovoUsuario() {
-        // Required empty public constructor
     }
 
     @Override
@@ -89,7 +87,7 @@ public class InformacoesNovoUsuario extends Fragment {
         // Inflate the layout for this fragment
         final Bundle b = getArguments();
         View v = inflater.inflate(R.layout.fragment_informacoes_novo_usuario, container, false);
-      //  v.findViewById(R.id.frame).setBackgroundColor(Color.parseColor("#BBDEFB"));
+        //  v.findViewById(R.id.frame).setBackgroundColor(Color.parseColor("#BBDEFB"));
         v.findViewById(R.id.frame).setBackgroundColor(Color.WHITE);
         getActivity().findViewById(R.id.editTextNomeRua).setVisibility(View.INVISIBLE);
         getActivity().findViewById(R.id.editTextNumeroRua).setVisibility(View.INVISIBLE);
@@ -98,13 +96,13 @@ public class InformacoesNovoUsuario extends Fragment {
         getActivity().findViewById(R.id.editTextBairro).setVisibility(View.INVISIBLE);
         getActivity().findViewById(R.id.editTextPontoDeReferencia).setVisibility(View.INVISIBLE);
         getActivity().findViewById(R.id.buttonContinuarEndereco).setVisibility(View.INVISIBLE);
-        continua = (Button)v.findViewById(R.id.botaoContinuar);
-        username = (EditText)v.findViewById(R.id.campoUser);
-        senha = (EditText)v.findViewById(R.id.campoPasswd);
+        continua = (Button) v.findViewById(R.id.botaoContinuar);
+        username = (EditText) v.findViewById(R.id.campoUser);
+        senha = (EditText) v.findViewById(R.id.campoPasswd);
         username.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(username.getText().toString().equals("Nome de usuário")){
+                if (username.getText().toString().equals("Nome de usuário")) {
                     username.setText("");
                     username.setTextColor(Color.BLACK);
                     username.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
@@ -115,8 +113,8 @@ public class InformacoesNovoUsuario extends Fragment {
         username.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i == EditorInfo.IME_ACTION_NEXT){
-                    if(senha.getText().toString().equals("Senha")) {
+                if (i == EditorInfo.IME_ACTION_NEXT) {
+                    if (senha.getText().toString().equals("Senha")) {
                         senha.setTransformationMethod(PasswordTransformationMethod.getInstance());
                         senha.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
                         senha.setTextColor(Color.BLACK);
@@ -129,7 +127,7 @@ public class InformacoesNovoUsuario extends Fragment {
         senha.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(senha.getText().toString().equals("Senha")) {
+                if (senha.getText().toString().equals("Senha")) {
                     senha.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     senha.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
                     senha.setTextColor(Color.BLACK);
@@ -141,7 +139,7 @@ public class InformacoesNovoUsuario extends Fragment {
         senha.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i == EditorInfo.IME_ACTION_DONE){
+                if (i == EditorInfo.IME_ACTION_DONE) {
                     continua.performClick();
                 }
                 return false;
@@ -149,27 +147,26 @@ public class InformacoesNovoUsuario extends Fragment {
         });
 
 
-
         continua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String usernametxt = ((EditText)getActivity().findViewById(R.id.campoUser)).getText().toString();
-                String passwordtxt = ((EditText)getActivity().findViewById(R.id.campoPasswd)).getText().toString();
-                if(!usernametxt.equals("Nome de usuário") && !usernametxt.equals("") && !passwordtxt.equals("Senha") && !passwordtxt.equals("")){
+                String usernametxt = ((EditText) getActivity().findViewById(R.id.campoUser)).getText().toString();
+                String passwordtxt = ((EditText) getActivity().findViewById(R.id.campoPasswd)).getText().toString();
+                if (!usernametxt.equals("Nome de usuário") && !usernametxt.equals("") && !passwordtxt.equals("Senha") && !passwordtxt.equals("")) {
                     ParseUser user = new ParseUser();
                     user.setUsername(usernametxt);
                     user.setPassword(passwordtxt);
                     user.put("nome", b.getString("nome"));
-                    user.put("endereco",b.getString("endereco"));
-                    user.put("telefone",b.getString("telefone"));
-                    user.put("email",b.getString("email"));
-                    user.put("rua",b.getString("rua"));
-                    user.put("numero",b.getString("numero"));
-                    user.put("cep",b.getString("cep"));
-                    user.put("complemento",b.getString("complemento"));
-                    user.put("bairro",b.getString("bairro"));
-                    user.put("referencia",b.getString("referencia"));
-                    user.put("fornecedor",false);
+                    user.put("endereco", b.getString("endereco"));
+                    user.put("telefone", b.getString("telefone"));
+                    user.put("email", b.getString("email"));
+                    user.put("rua", b.getString("rua"));
+                    user.put("numero", b.getString("numero"));
+                    user.put("cep", b.getString("cep"));
+                    user.put("complemento", b.getString("complemento"));
+                    user.put("bairro", b.getString("bairro"));
+                    user.put("referencia", b.getString("referencia"));
+                    user.put("fornecedor", false);
 
                     final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
                             "Carregando");
@@ -181,12 +178,12 @@ public class InformacoesNovoUsuario extends Fragment {
                                 Toast.makeText(getActivity(),
                                         "Usuário criado com sucesso.",
                                         Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(getActivity(),Login.class));
+                                startActivity(new Intent(getActivity(), Login.class));
                             } else {
                                 System.out.println(e.toString());
                                 if (e.toString().equals("com.parse.ParseException: java.lang.IllegalArgumentException: Cannot save a ParseUser until it has been signed up. Call signUp first.")) {
-                                   pDialog.dismiss();
-                                    Toast.makeText(getActivity(),"Ocorreu um erro, tente novamente",Toast.LENGTH_SHORT).show();
+                                    pDialog.dismiss();
+                                    Toast.makeText(getActivity(), "Ocorreu um erro, tente novamente", Toast.LENGTH_SHORT).show();
 
                                 } else {
                                     pDialog.dismiss();
@@ -198,18 +195,17 @@ public class InformacoesNovoUsuario extends Fragment {
                         }
                     });
                 } else {
-                    Toast.makeText(getActivity().getApplicationContext(),"Por favor, preencha todos os campos corretamente.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), "Por favor, preencha todos os campos corretamente.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
 
 
 //                } else {
 //                    // Save new user data into Parse.com Data Storage
 
 
-        return v ;
+        return v;
     }
 
 
@@ -244,7 +240,7 @@ public class InformacoesNovoUsuario extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
+     * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.

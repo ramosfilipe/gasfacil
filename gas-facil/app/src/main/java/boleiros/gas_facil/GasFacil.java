@@ -1,11 +1,11 @@
 package boleiros.gas_facil;
-import com.parse.Parse;
-import com.parse.ParseACL;
-import com.parse.ParseAnalytics;
-import com.parse.ParseObject;
-import com.parse.ParseUser;
 
 import android.app.Application;
+
+import com.parse.Parse;
+import com.parse.ParseACL;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import boleiros.gas_facil.modelo.Pedido;
 import boleiros.gas_facil.modelo.Produto;

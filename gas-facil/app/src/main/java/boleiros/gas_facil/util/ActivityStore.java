@@ -1,16 +1,14 @@
 package boleiros.gas_facil.util;
+
 import android.content.Context;
 
 import com.parse.ParseUser;
-
-import java.util.ArrayList;
 
 import boleiros.gas_facil.modelo.Produto;
 
 /**
  * Created by filipe on 11/11/14.
  */
-
 
 
 public class ActivityStore {
@@ -20,6 +18,17 @@ public class ActivityStore {
     private Produto produto;
     private int quantidadeDeProdutoDesejadaPeloUser;
 
+
+    private ActivityStore(Context ctx) {
+        mContext = ctx;
+    }
+
+    public static ActivityStore getInstance(Context ctx) {
+        if (sActivityStore == null) {
+            sActivityStore = new ActivityStore(ctx.getApplicationContext());
+        }
+        return sActivityStore;
+    }
 
     public Produto getProduto() {
         return produto;
@@ -44,21 +53,6 @@ public class ActivityStore {
     public void setUser(ParseUser user) {
         this.user = user;
     }
-
-
-
-
-    private ActivityStore(Context ctx) {
-        mContext = ctx;
-    }
-
-    public static ActivityStore getInstance(Context ctx) {
-        if (sActivityStore == null) {
-            sActivityStore = new ActivityStore(ctx.getApplicationContext());
-        }
-        return sActivityStore;
-    }
-
 
 
 }

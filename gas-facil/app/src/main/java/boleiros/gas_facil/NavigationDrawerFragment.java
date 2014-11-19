@@ -1,18 +1,18 @@
 package boleiros.gas_facil;
 
 
-import android.app.Activity;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,7 +23,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import boleiros.gas_facil.pedido.Produto;
 import boleiros.gas_facil.perfil.Perfil;
 
 /**
@@ -84,7 +83,7 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated (Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         // Indicate that this fragment would like to influence the set of actions in the action bar.
         setHasOptionsMenu(true);
@@ -92,7 +91,7 @@ public class NavigationDrawerFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         mDrawerListView = (ListView) inflater.inflate(
                 R.layout.fragment_navigation_drawer, container, false);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -203,22 +202,22 @@ public class NavigationDrawerFragment extends Fragment {
         if (mCallbacks != null) {
             mCallbacks.onNavigationDrawerItemSelected(position);
         }
-        if(position == 0){
-            Fragment produto =new boleiros.gas_facil.pedido.Produto();
+        if (position == 0) {
+            Fragment produto = new boleiros.gas_facil.pedido.Produto();
             FragmentManager frag = getFragmentManager();
             FragmentTransaction fragTrans = frag.beginTransaction();
-            fragTrans.replace(R.id.container,produto );
+            fragTrans.replace(R.id.container, produto);
             fragTrans.commit();
         }
-        if(position == 1){
+        if (position == 1) {
 
 
         }
-        if(position == 2){
-            Fragment perfil =new Perfil();
+        if (position == 2) {
+            Fragment perfil = new Perfil();
             FragmentManager frag = getFragmentManager();
             FragmentTransaction fragTrans = frag.beginTransaction();
-            fragTrans.replace(R.id.container,perfil );
+            fragTrans.replace(R.id.container, perfil);
             fragTrans.commit();
         }
     }

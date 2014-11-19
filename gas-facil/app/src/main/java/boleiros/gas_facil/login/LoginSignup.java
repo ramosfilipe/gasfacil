@@ -1,4 +1,5 @@
 package boleiros.gas_facil.login;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -26,7 +27,7 @@ import com.parse.ParseUser;
 import boleiros.gas_facil.Inicio;
 import boleiros.gas_facil.R;
 
-public class LoginSignup extends Activity implements InformacoesNovoUsuario.OnFragmentInteractionListener, FragmentEnderecoNovoUsuario.OnFragmentInteractionListener, FragmentInformacoesPessoais.OnFragmentInteractionListener{
+public class LoginSignup extends Activity implements InformacoesNovoUsuario.OnFragmentInteractionListener, FragmentEnderecoNovoUsuario.OnFragmentInteractionListener, FragmentInformacoesPessoais.OnFragmentInteractionListener {
     // Declare Variables
     Button loginbutton;
     Button signup;
@@ -35,7 +36,9 @@ public class LoginSignup extends Activity implements InformacoesNovoUsuario.OnFr
     EditText password;
     EditText username;
 
-    /** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created.
+     */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Get the view from main.xml
@@ -63,7 +66,7 @@ public class LoginSignup extends Activity implements InformacoesNovoUsuario.OnFr
         username.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(username.getText().toString().equals("Nome de usuário")) {
+                if (username.getText().toString().equals("Nome de usuário")) {
                     username.setTextColor(Color.WHITE);
                     username.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
                     username.setText("");
@@ -74,8 +77,8 @@ public class LoginSignup extends Activity implements InformacoesNovoUsuario.OnFr
         username.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i == EditorInfo.IME_ACTION_NEXT){
-                    if(password.getText().toString().equals("Senha")) {
+                if (i == EditorInfo.IME_ACTION_NEXT) {
+                    if (password.getText().toString().equals("Senha")) {
                         password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                         password.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
                         password.setTextColor(Color.WHITE);
@@ -88,7 +91,7 @@ public class LoginSignup extends Activity implements InformacoesNovoUsuario.OnFr
         password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i == EditorInfo.IME_ACTION_DONE){
+                if (i == EditorInfo.IME_ACTION_DONE) {
                     loginbutton.performClick();
                 }
                 return false;
@@ -96,8 +99,8 @@ public class LoginSignup extends Activity implements InformacoesNovoUsuario.OnFr
         });
 
         findViewById(R.id.relativeInfos).setBackgroundColor(Color.parseColor("#BBDEFB"));
-     //   findViewById(R.id.relativeInfoLogin).setBackgroundColor(Color.WHITE);
-     //   findViewById(R.id.frameLogin).setBackgroundColor(Color.WHITE);
+        //   findViewById(R.id.relativeInfoLogin).setBackgroundColor(Color.WHITE);
+        //   findViewById(R.id.frameLogin).setBackgroundColor(Color.WHITE);
         // Locate Buttons in main.xml
 
         loginbutton.setBackgroundColor(Color.parseColor("#90CAF9"));
@@ -138,9 +141,9 @@ public class LoginSignup extends Activity implements InformacoesNovoUsuario.OnFr
         signup.setOnClickListener(new OnClickListener() {
 
             public void onClick(View arg0) {
-                Fragment fragment = new FragmentInformacoesPessoais()   ;
+                Fragment fragment = new FragmentInformacoesPessoais();
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.relativeInfos,fragment);
+                fragmentTransaction.replace(R.id.relativeInfos, fragment);
                 fragmentTransaction.commit();
             }
         });
