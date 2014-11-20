@@ -1,112 +1,346 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="boleiros.gas_facil.perfil.Perfil">
+    android:background="#EEEEEE"
+    tools:context="boleiros.gas_facil.perfil.Perfil"
+    android:id="@+id/relativeLayoutEnderecoPerfil">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text=" Nome"
-        android:id="@+id/textViewNomePerfil"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="17dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:ems="10"
-        android:id="@+id/editTextNome"
-        android:editable="false"
-        android:visibility="invisible"
-        android:layout_below="@+id/textViewNomePerfil"
-        android:layout_toRightOf="@+id/textViewNomePerfil"
-        android:layout_toEndOf="@+id/textViewNomePerfil"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="10dp"
+        android:id="@+id/relativeLayoutRootPerfil">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textViewNomePerfil"
-        android:layout_toRightOf="@+id/textViewNomePerfil"
-        android:layout_toEndOf="@+id/textViewNomePerfil" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewNomePerfil"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text=" Endereço"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/editTextNome"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:layout_below="@+id/textViewNomePerfil"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:id="@+id/relativeLayoutInformacoesPessoaisPerfil">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textViewEnderecoPerfil"
-        android:layout_alignTop="@+id/editTextEndereco"
-        android:layout_alignLeft="@+id/editTextEndereco"
-        android:layout_alignStart="@+id/editTextEndereco" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Informações Pessoais"
+                android:id="@+id/textViewInformacoesPessoaisTagPerfil"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextEndereco"
-        android:visibility="invisible"
-        android:layout_below="@+id/textView3"
-        android:layout_alignLeft="@+id/editTextNome"
-        android:layout_alignStart="@+id/editTextNome"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Nome"
+                android:textColor="@android:color/darker_gray"
+                android:id="@+id/textView4NomeInform"
+                android:layout_below="@+id/textViewInformacoesPessoaisTagPerfil"
+                android:layout_alignLeft="@+id/textViewInformacoesPessoaisTagPerfil"
+                android:layout_alignStart="@+id/textViewInformacoesPessoaisTagPerfil"
+                android:layout_marginTop="30dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:ems="10"
-        android:id="@+id/editTextTelefone"
-        android:layout_below="@+id/textViewTelefoneInutil"
-        android:layout_alignLeft="@+id/editTextEndereco"
-        android:layout_alignStart="@+id/editTextEndereco"
-        android:layout_alignRight="@+id/editTextEndereco"
-        android:layout_alignEnd="@+id/editTextEndereco"
-        android:visibility="invisible" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextNomePerfil"
+                android:singleLine="true"
+                android:layout_below="@+id/textView4NomeInform"
+                android:layout_alignLeft="@+id/textView4NomeInform"
+                android:layout_alignStart="@+id/textView4NomeInform"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="20dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="EDITAR PERFIL"
-        android:id="@+id/buttonEditarPerfil"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="E-mail"
+                android:textColor="@android:color/darker_gray"
+                android:id="@+id/textView4emailPessoais"
+                android:layout_below="@+id/editTextNomePerfil"
+                android:layout_alignLeft="@+id/textView4NomeInform"
+                android:layout_alignStart="@+id/textView4NomeInform"
+                android:layout_marginTop="10dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text=" Telefone"
-        android:id="@+id/textViewTelefoneInutil"
-        android:layout_below="@+id/editTextEndereco"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextEmailInformacoesPerfil"
+                android:singleLine="true"
+                android:inputType="textEmailAddress"
+                android:layout_below="@+id/textView4emailPessoais"
+                android:layout_alignLeft="@+id/editTextNomePerfil"
+                android:layout_alignStart="@+id/editTextNomePerfil"
+                android:layout_marginTop="5dp"
+                android:layout_alignRight="@+id/editTextNomePerfil"
+                android:layout_alignEnd="@+id/editTextNomePerfil"
+                 />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textViewTelefonePerfil"
-        android:layout_below="@+id/textViewTelefoneInutil"
-        android:layout_alignLeft="@+id/editTextTelefone"
-        android:layout_alignStart="@+id/editTextTelefone" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-</RelativeLayout>
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Telefone"
+                android:textColor="@android:color/darker_gray"
+                android:id="@+id/textView4Telefoneperfil"
+                android:layout_below="@+id/editTextEmailInformacoesPerfil"
+                android:layout_alignLeft="@+id/textView4emailPessoais"
+                android:layout_alignStart="@+id/textView4emailPessoais"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextTelefoneInformacoesPessoaisPerfil"
+                android:layout_below="@+id/textView4Telefoneperfil"
+                android:layout_alignLeft="@+id/editTextEmailInformacoesPerfil"
+                android:layout_alignStart="@+id/editTextEmailInformacoesPerfil"
+                android:layout_marginTop="5dp"
+                android:singleLine="true"
+                android:inputType="phone"
+                android:layout_alignRight="@+id/editTextEmailInformacoesPerfil"
+                android:layout_alignEnd="@+id/editTextEmailInformacoesPerfil" />
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/buttonSalvarInformacoesPessoaisPerfil"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"></FrameLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salvar"
+                android:id="@+id/buttonSalvarInformacoesPessoaisPerfil"
+                android:layout_below="@+id/editTextTelefoneInformacoesPessoaisPerfil"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_border"
+                android:textColor="@android:color/holo_blue_light"
+                android:layout_alignRight="@+id/editTextTelefoneInformacoesPessoaisPerfil"
+                android:layout_alignEnd="@+id/editTextTelefoneInformacoesPessoaisPerfil"
+                android:layout_alignLeft="@+id/editTextTelefoneInformacoesPessoaisPerfil"
+                android:layout_alignStart="@+id/editTextTelefoneInformacoesPessoaisPerfil" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_below="@id/relativeLayoutInformacoesPessoaisPerfil"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:layout_marginTop="25dp"
+            android:id="@+id/relativeLayoutEnderecoPessoaisPerfil">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Endereço"
+                android:id="@+id/textView5enderecoPessoaisPerfil"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="false"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Rua"
+                android:textColor="@android:color/darker_gray"
+                android:id="@+id/textViewRuaEnderecoPerfil"
+                android:layout_below="@+id/textView5enderecoPessoaisPerfil"
+                android:layout_alignLeft="@+id/textView5enderecoPessoaisPerfil"
+                android:layout_alignStart="@+id/textView5enderecoPessoaisPerfil"
+                android:layout_marginTop="30dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextRuaEnderecoPerfil"
+                android:layout_below="@+id/textViewRuaEnderecoPerfil"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentRight="true"
+                android:singleLine="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="20dp"
+                android:layout_alignLeft="@+id/textViewRuaEnderecoPerfil"
+                android:layout_alignStart="@+id/textViewRuaEnderecoPerfil" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Número"
+                android:id="@+id/textView6numeroPerfil"
+                android:textColor="@android:color/darker_gray"
+                android:layout_below="@+id/editTextRuaEnderecoPerfil"
+                android:layout_alignLeft="@+id/textViewRuaEnderecoPerfil"
+                android:layout_alignStart="@+id/textViewRuaEnderecoPerfil"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="CEP"
+                android:id="@+id/textView6CEPPerfil"
+                android:textColor="@android:color/darker_gray"
+                android:layout_alignTop="@+id/textView6numeroPerfil"
+                android:layout_toRightOf="@+id/textView5enderecoPessoaisPerfil"
+                android:layout_toEndOf="@+id/textView5enderecoPessoaisPerfil"
+                android:layout_marginLeft="99dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView6numeroPerfil"
+                android:layout_alignLeft="@+id/textView6numeroPerfil"
+                android:layout_alignStart="@+id/textView6numeroPerfil"
+                android:layout_marginTop="5dp"
+                android:id="@+id/linearLayout"
+                android:layout_marginRight="20dp">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:id="@+id/editTextNumeroEnderecoPerfil"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:id="@+id/editTextCepEnderecoPerfil"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Complemento"
+                android:id="@+id/textView7ComplementoEnderecoPergil"
+                android:layout_below="@+id/linearLayout"
+                android:textColor="@android:color/darker_gray"
+                android:layout_alignLeft="@+id/linearLayout"
+                android:layout_alignStart="@+id/linearLayout"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextComplementoEnderecoPerfil"
+                android:layout_below="@+id/textView7ComplementoEnderecoPergil"
+                android:layout_alignLeft="@+id/textView7ComplementoEnderecoPergil"
+                android:layout_alignStart="@+id/textView7ComplementoEnderecoPergil"
+                android:layout_marginTop="5dp"
+                android:singleLine="true"
+                android:layout_alignRight="@+id/linearLayout"
+                android:layout_alignEnd="@+id/linearLayout" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Bairro"
+                android:id="@+id/textView7BairroEnderecoPerfil"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/editTextComplementoEnderecoPerfil"
+                android:layout_alignLeft="@+id/editTextComplementoEnderecoPerfil"
+                android:layout_alignStart="@+id/editTextComplementoEnderecoPerfil" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextBairroEnderecoPerfil"
+                android:layout_below="@+id/textView7BairroEnderecoPerfil"
+                android:layout_alignLeft="@+id/textView7BairroEnderecoPerfil"
+                android:layout_alignStart="@+id/textView7BairroEnderecoPerfil"
+                android:layout_marginTop="5dp"
+                android:singleLine="true"
+                android:layout_alignRight="@+id/editTextComplementoEnderecoPerfil"
+                android:layout_alignEnd="@+id/editTextComplementoEnderecoPerfil" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Ponto de referência"
+                android:textColor="@android:color/darker_gray"
+                android:id="@+id/textView7PontoReferenciaPerfil"
+                android:layout_below="@+id/editTextBairroEnderecoPerfil"
+                android:layout_alignLeft="@+id/editTextBairroEnderecoPerfil"
+                android:layout_alignStart="@+id/editTextBairroEnderecoPerfil"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextPontoReferenciaEnderecoPerfil"
+                android:layout_below="@+id/textView7PontoReferenciaPerfil"
+                android:layout_alignLeft="@+id/textView7PontoReferenciaPerfil"
+                android:layout_alignStart="@+id/textView7PontoReferenciaPerfil"
+                android:layout_marginTop="5dp"
+                android:singleLine="true"
+                android:layout_alignRight="@+id/editTextBairroEnderecoPerfil"
+                android:layout_alignEnd="@+id/editTextBairroEnderecoPerfil" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salvar"
+                android:id="@+id/buttonSalvarEnderecoPerfil"
+                android:layout_below="@+id/editTextPontoReferenciaEnderecoPerfil"
+                android:layout_marginTop="20dp"
+                android:textColor="@android:color/holo_blue_light"
+                android:background="@drawable/button_border"
+                android:layout_toRightOf="@+id/textViewRuaEnderecoPerfil"
+                android:layout_toEndOf="@+id/textViewRuaEnderecoPerfil"
+                android:layout_alignRight="@+id/editTextPontoReferenciaEnderecoPerfil"
+                android:layout_alignEnd="@+id/editTextPontoReferenciaEnderecoPerfil"
+                android:layout_marginRight="20dp" />
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/buttonSalvarEnderecoPerfil"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"></FrameLayout>
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_below="@id/relativeLayoutEnderecoPessoaisPerfil"
+            android:layout_height="20dp"></FrameLayout>
+    </RelativeLayout>
+
+
+</ScrollView>

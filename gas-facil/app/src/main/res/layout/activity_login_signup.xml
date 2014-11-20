@@ -106,7 +106,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@android:color/white"
             android:text="Esqueceu a senha?"
-            android:id="@+id/textView"
+            android:id="@+id/textViewInformacoesPessoaisTagPerfil"
             android:layout_gravity="center_horizontal|top" />
     </FrameLayout>
 

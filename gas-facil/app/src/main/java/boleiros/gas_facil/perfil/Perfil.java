@@ -3,6 +3,7 @@ package boleiros.gas_facil.perfil;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,6 +22,8 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import boleiros.gas_facil.R;
 
@@ -42,6 +45,9 @@ public class Perfil extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    EditText nome, email, telefone, rua, numero, cep, complemento, bairro, referencia;
+    TextView nomePerfil;
+    Button botaoSalvarPessoais, botaoSalvarEndereco;
 
     private OnFragmentInteractionListener mListener;
 
@@ -76,8 +82,9 @@ public class Perfil extends Fragment {
         }
     }
 
-    public void setInformacoes() {
+    public void setInformacoes(String flag) {
         ParseQuery<ParseUser> query = ParseUser.getQuery();
+        final String flagAux = flag;
         query.whereEqualTo("objectId", ParseUser.getCurrentUser().getObjectId());
         final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
                 "Carregando");
@@ -85,72 +92,69 @@ public class Perfil extends Fragment {
             @Override
             public void done(List<ParseUser> parseUsers, com.parse.ParseException e) {
                 ParseObject user = parseUsers.get(0);
-                TextView txtViewEndereco = (TextView) getActivity().findViewById(R.id.textViewEnderecoPerfil);
-                EditText editTextEndereco = (EditText) getActivity().findViewById(R.id.editTextEndereco);
-                TextView txtViewNome = (TextView) getActivity().findViewById(R.id.textView2);
-                EditText editTextNome = (EditText) getActivity().findViewById(R.id.editTextNome);
-                TextView txtViewTelefone = (TextView) getActivity().findViewById(R.id.textViewTelefonePerfil);
-                EditText editTextTelefone = (EditText) getActivity().findViewById(R.id.editTextTelefone);
-                txtViewEndereco.setText(user.getString("endereco"));
-                editTextEndereco.setText(user.getString("endereco"));
-                txtViewNome.setText(user.getString("nome"));
-                editTextNome.setText(user.getString("nome"));
-                txtViewTelefone.setText(user.getString("telefone"));
-                editTextTelefone.setText(user.getString("telefone"));
+                if(flagAux.equals("pessoais")){
+                    nome.setText(user.getString("nome"));
+                    nomePerfil.setText(user.getString("nome"));
+                    email.setText(user.getString("email"));
+                    telefone.setText(user.getString("telefone"));
+                }else if (flagAux.equals("endereco")){
+                    rua.setText(user.getString("rua"));
+                    numero.setText(user.getString("numero"));
+                    cep.setText(user.getString("cep"));
+                    complemento.setText(user.getString("complemento"));
+                    bairro.setText(user.getString("bairro"));
+                    referencia.setText(user.getString("referencia"));
+                }
                 pDialog.dismiss();
             }
         });
     }
 
-    public void setVisibilidadeEditETxt(boolean bool) {
-        TextView txtViewEndereco = (TextView) getActivity().findViewById(R.id.textViewEnderecoPerfil);
-        EditText editTextEndereco = (EditText) getActivity().findViewById(R.id.editTextEndereco);
-        TextView txtViewNome = (TextView) getActivity().findViewById(R.id.textView2);
-        EditText editTextNome = (EditText) getActivity().findViewById(R.id.editTextNome);
-        TextView txtViewTelefone = (TextView) getActivity().findViewById(R.id.textViewTelefonePerfil);
-        EditText editTextTelefone = (EditText) getActivity().findViewById(R.id.editTextTelefone);
-        if (bool) {
-            txtViewEndereco.setVisibility(View.INVISIBLE);
-            txtViewNome.setVisibility(View.INVISIBLE);
-            txtViewTelefone.setVisibility(View.INVISIBLE);
-            editTextEndereco.setVisibility(View.VISIBLE);
-            editTextNome.setVisibility(View.VISIBLE);
-            editTextTelefone.setVisibility(View.VISIBLE);
-        } else {
-            txtViewEndereco.setVisibility(View.VISIBLE);
-            txtViewNome.setVisibility(View.VISIBLE);
-            txtViewTelefone.setVisibility(View.VISIBLE);
-            editTextEndereco.setVisibility(View.INVISIBLE);
-            editTextNome.setVisibility(View.INVISIBLE);
-            editTextTelefone.setVisibility(View.INVISIBLE);
-        }
+    public static boolean emailValido(String emailId) {
+        Pattern pattern = Pattern.compile("\\w+([-+.]\\w+)*" + "\\@"
+                + "\\w+([-.]\\w+)*" + "\\." + "\\w+([-.]\\w+)*");
 
+        Matcher matcher = pattern.matcher(emailId);
+        if (matcher.matches())
+            return true;
+        else
+            return false;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_perfil, container, false);
-        final Button editar = ((Button) v.findViewById(R.id.buttonEditarPerfil));
-        setInformacoes();
+        TextView txt = (TextView)v.findViewById(R.id.textViewNomePerfil);
+        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),
+                "roboto.ttf");
+        txt.setTextSize(30);
+        txt.setTypeface(tf);
+        nome = (EditText)v.findViewById(R.id.editTextNomePerfil);
+        nomePerfil = (TextView)v.findViewById(R.id.textViewNomePerfil);
+        email = (EditText)v.findViewById(R.id.editTextEmailInformacoesPerfil);
+        telefone = (EditText)v.findViewById(R.id.editTextTelefoneInformacoesPessoaisPerfil);
+        rua = (EditText)v.findViewById(R.id.editTextRuaEnderecoPerfil);
+        numero = (EditText)v.findViewById(R.id.editTextNumeroEnderecoPerfil);
+        cep = (EditText)v.findViewById(R.id.editTextCepEnderecoPerfil);
+        complemento = (EditText)v.findViewById(R.id.editTextComplementoEnderecoPerfil);
+        bairro = (EditText)v.findViewById(R.id.editTextBairroEnderecoPerfil);
+        referencia = (EditText)v.findViewById(R.id.editTextPontoReferenciaEnderecoPerfil);
+        botaoSalvarPessoais = (Button)v.findViewById(R.id.buttonSalvarInformacoesPessoaisPerfil);
+        botaoSalvarEndereco = (Button)v.findViewById(R.id.buttonSalvarEnderecoPerfil);
 
-        editar.setOnClickListener(new View.OnClickListener() {
+        setInformacoes("pessoais");
+        setInformacoes("endereco");
+
+        botaoSalvarPessoais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText editTextEndereco = (EditText) getActivity().findViewById(R.id.editTextEndereco);
-                EditText editTextNome = (EditText) getActivity().findViewById(R.id.editTextNome);
-                EditText editTextTelefone = (EditText) getActivity().findViewById(R.id.editTextTelefone);
-                Button botao = (Button) getActivity().findViewById(R.id.buttonEditarPerfil);
-                if (editar.getText().equals("EDITAR PERFIL")) {
-                    botao.setText("SALVAR");
-                    setVisibilidadeEditETxt(true);
-
-                } else if (editar.getText().equals("SALVAR")) {
-                    final String newNome = editTextNome.getText().toString();
-                    final String newEndereco = editTextEndereco.getText().toString();
-                    final String newTelefone = editTextTelefone.getText().toString();
-                    if (!newNome.equals("") && !newEndereco.equals("") && !newTelefone.equals("")) {
+                final String nometxt = nome.getText().toString();
+                final String emailtxt = email.getText().toString();
+                final String telefonetxt = telefone.getText().toString();
+                if (!nometxt.equals("") && !emailtxt.equals("") && !telefonetxt.equals("") && emailValido(emailtxt)){
                         ParseQuery<ParseUser> query = ParseUser.getQuery();
                         final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
                                 "Carregando");
@@ -158,16 +162,13 @@ public class Perfil extends Fragment {
                             @Override
                             public void done(ParseUser parseUser, com.parse.ParseException e) {
                                 ParseUser user = ParseUser.getCurrentUser();
-                                user.put("endereco", newEndereco);
-                                user.put("nome", newNome);
-                                user.put("telefone", newTelefone);
+                                user.put("email", emailtxt);
+                                user.put("nome", nometxt);
+                                user.put("telefone", telefonetxt);
                                 user.saveInBackground(new SaveCallback() {
                                     @Override
                                     public void done(com.parse.ParseException e) {
-                                        Button botao = (Button) getActivity().findViewById(R.id.buttonEditarPerfil);
-                                        botao.setText("EDITAR PERFIL");
-                                        setInformacoes();
-                                        setVisibilidadeEditETxt(false);
+                                        setInformacoes("pessoais");
                                         pDialog.dismiss();
                                         Toast.makeText(getActivity().getApplicationContext(), "Informações editadas com sucesso.",
                                                 Toast.LENGTH_SHORT).show();
@@ -178,7 +179,49 @@ public class Perfil extends Fragment {
 
                     } else {
                         Toast.makeText(getActivity().getApplicationContext(), "Preencha todos os campos corretamente.", Toast.LENGTH_SHORT).show();
-                    }
+                }
+
+            }
+        });
+
+        botaoSalvarEndereco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String ruatxt = rua.getText().toString();
+                final String numerotxt = numero.getText().toString();
+                final String ceptxt = cep.getText().toString();
+                final String complementotxt = complemento.getText().toString();
+                final String bairrotxt = bairro.getText().toString();
+                final String referenciatxt = referencia.getText().toString();
+                if(!ruatxt.equals("") && !numerotxt.equals("")  && !ceptxt.equals("")  && !complementotxt.equals("")  && !bairrotxt.equals("")  && !referenciatxt.equals("") ){
+                    ParseQuery<ParseUser> query = ParseUser.getQuery();
+                    final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
+                            "Carregando");
+                    query.getInBackground(ParseUser.getCurrentUser().getObjectId(), new GetCallback<ParseUser>() {
+                        @Override
+                        public void done(ParseUser parseUser, com.parse.ParseException e) {
+                            ParseUser user = ParseUser.getCurrentUser();
+                            user.put("rua", ruatxt);
+                            user.put("numero", numerotxt);
+                            user.put("cep", ceptxt);
+                            user.put("complemento", complementotxt);
+                            user.put("bairro", bairrotxt);
+                            user.put("referencia", referenciatxt);
+                            user.put("endereco", ruatxt + " " + numerotxt + " " + complementotxt + " " + ceptxt + " " + bairrotxt + " " + referenciatxt);
+                            user.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(com.parse.ParseException e) {
+                                    setInformacoes("endereco");
+                                    pDialog.dismiss();
+                                    Toast.makeText(getActivity().getApplicationContext(), "Informações editadas com sucesso.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    });
+
+                } else {
+                    Toast.makeText(getActivity().getApplicationContext(), "Preencha todos os campos corretamente.", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -86,6 +86,24 @@ public class FragmentInformacoesPessoais extends Fragment {
         }
     }
 
+
+    public void checkTexts(String campo){
+        if(!campo.equals("nome") && nome.getText().toString().equals("")){
+            nome.setText("Nome");
+            nome.setTextColor(Color.parseColor("#a9a9a9"));
+        }
+        else if(!campo.equals("email") && email.getText().toString().equals("")){
+            email.setText("E-mail");
+            email.setTextColor(Color.parseColor("#a9a9a9"));
+        }
+        else if(!campo.equals("telefone") && telefone.getText().toString().equals("")){
+            telefone.setText("Telefone");
+            telefone.setTextColor(Color.parseColor("#a9a9a9"));
+        }
+    }
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -106,6 +124,7 @@ public class FragmentInformacoesPessoais extends Fragment {
         nome.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
+                checkTexts("nome");
                 if (nome.getText().toString().equals("Nome")) {
                     nome.setText("");
                     nome.setTextColor(Color.BLACK);
@@ -117,6 +136,7 @@ public class FragmentInformacoesPessoais extends Fragment {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 if (i == EditorInfo.IME_ACTION_NEXT) {
+                    checkTexts("email");
                     if (email.getText().toString().equals("E-mail")) {
                         email.setText("");
                         email.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
@@ -129,6 +149,7 @@ public class FragmentInformacoesPessoais extends Fragment {
         email.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
+                checkTexts("email");
                 if (email.getText().toString().equals("E-mail")) {
                     email.setText("");
                     email.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
@@ -141,6 +162,7 @@ public class FragmentInformacoesPessoais extends Fragment {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 if (i == EditorInfo.IME_ACTION_NEXT) {
+                    checkTexts("telefone");
                     if (telefone.getText().toString().equals("Telefone")) {
                         telefone.setText("");
                         telefone.setInputType(InputType.TYPE_CLASS_PHONE);
@@ -153,7 +175,9 @@ public class FragmentInformacoesPessoais extends Fragment {
         telefone.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
+                checkTexts("telefone");
                 if (telefone.getText().toString().equals("Telefone")) {
+
                     telefone.setText("");
                     telefone.setInputType(InputType.TYPE_CLASS_PHONE);
                     telefone.setTextColor(Color.BLACK);

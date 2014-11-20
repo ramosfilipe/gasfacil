@@ -12,7 +12,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Informações pessoais"
         android:textColor="@android:color/holo_blue_dark"
-        android:id="@+id/textView"
+        android:id="@+id/textViewInformacoesPessoaisTagPerfil"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="47dp" />
@@ -25,7 +25,7 @@
         android:textColor="@android:color/darker_gray"
         android:ems="10"
         android:id="@+id/editTextNomeInfoPessoais"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/textViewInformacoesPessoaisTagPerfil"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="61dp"
@@ -72,8 +72,8 @@
         android:id="@+id/buttonContinuarInformacoesPessoais"
         android:layout_below="@+id/editTextTelefoneInfoPessoais"
         android:layout_marginTop="70dp"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+        android:layout_alignLeft="@+id/textViewInformacoesPessoaisTagPerfil"
+        android:layout_alignStart="@+id/textViewInformacoesPessoaisTagPerfil"
+        android:layout_alignRight="@+id/textViewInformacoesPessoaisTagPerfil"
+        android:layout_alignEnd="@+id/textViewInformacoesPessoaisTagPerfil" />
 </RelativeLayout>
