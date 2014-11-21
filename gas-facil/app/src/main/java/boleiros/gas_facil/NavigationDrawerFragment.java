@@ -23,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import boleiros.gas_facil.historico.Historico;
 import boleiros.gas_facil.perfil.Perfil;
 
 /**
@@ -210,7 +211,11 @@ public class NavigationDrawerFragment extends Fragment {
             fragTrans.commit();
         }
         if (position == 1) {
-
+            Fragment historico = new Historico();
+            FragmentManager frag = getFragmentManager();
+            FragmentTransaction fragTrans = frag.beginTransaction();
+            fragTrans.replace(R.id.container, historico);
+            fragTrans.commit();
 
         }
         if (position == 2) {

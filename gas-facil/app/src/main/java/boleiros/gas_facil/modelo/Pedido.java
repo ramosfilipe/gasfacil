@@ -14,7 +14,9 @@ public class Pedido extends ParseObject {
 
     public Pedido() {
     }
-
+    public ParseObject getProduto(){
+        return getParseObject("produto");
+    }
     public void setProduto(Produto produto) {
         put("produto", produto);
     }
