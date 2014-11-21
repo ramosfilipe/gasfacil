@@ -1,6 +1,7 @@
 package boleiros.gas_facil.util;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import com.parse.ParseUser;
 
@@ -16,6 +17,16 @@ public class ActivityStore {
     private Context mContext;
     private ParseUser user;
     private Produto produto;
+
+    public Bitmap getImagemDePedido() {
+        return imagemDePedido;
+    }
+
+    public void setImagemDePedido(Bitmap imagemDePedido) {
+        this.imagemDePedido = imagemDePedido;
+    }
+
+    private Bitmap imagemDePedido;
     private int quantidadeDeProdutoDesejadaPeloUser;
 
 

@@ -7,6 +7,7 @@ package boleiros.gas_facil.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -104,14 +105,15 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Produto prod = (Produto) pedidos.get(i).getProduto();
+        viewHolder.attPedido.setText(" em "+formartaStringData(pedidos.get(i).getUpdatedAt()));
 
         viewHolder.dataCompra.setText(" "+formartaStringData(pedidos.get(i).getCreatedAt()));
-        viewHolder.precoCompra.setText(" "+pedidos.get(i).getPrice()+" reais");
+//        viewHolder.precoCompra.setText(" "+pedidos.get(i).getPrice()+" reais");
         viewHolder.statusCompra.setText(" "+pedidos.get(i).getStatus());
-        viewHolder.qtd.setText(" "+pedidos.get(i).getQuantidade());
+        viewHolder.qtd.setText(""+pedidos.get(i).getQuantidade());
 
         try {
-            viewHolder.produtoImage.setImageBitmap(decodeSampledBitmapFromResource(prod.getPhotoFile(), 1000, 1000));
+            viewHolder.produtoImage.setImageBitmap(decodeSampledBitmapFromResource(prod.getThumbnailBlurFile(), 1000, 1000));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -125,7 +127,7 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView dataCompra;
         public ImageView produtoImage;
-        public TextView precoCompra;
+        public TextView attPedido;
         public TextView statusCompra;
         public TextView qtd;
 
@@ -133,10 +135,11 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
 
         public ViewHolder(View itemView) {
             super(itemView);
+            attPedido = (TextView) itemView.findViewById(R.id.textViewAttPedido);
             qtd = (TextView) itemView.findViewById(R.id.textViewQuantidade);
             dataCompra = (TextView) itemView.findViewById(R.id.textViewDataPedido);
             statusCompra = (TextView) itemView.findViewById(R.id.textViewStatus);
-            precoCompra = (TextView) itemView.findViewById(R.id.textViewValorCompra);
+            //precoCompra = (TextView) itemView.findViewById(R.id.textViewValorCompra);
             produtoImage = (ImageView) itemView.findViewById(R.id.item_icon);
         }
 

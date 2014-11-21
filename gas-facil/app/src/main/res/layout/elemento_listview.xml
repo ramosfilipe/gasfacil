@@ -20,86 +20,52 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <!-- title -->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="data do pedido:"
-        android:id="@+id/textView1"
-        android:layout_toEndOf="@+id/item_icon"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/item_icon" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="12sp"
+        android:textStyle="italic"
         android:text="Medium Text"
         android:id="@+id/textViewDataPedido"
-        android:layout_toEndOf="@+id/textView1"
-        android:layout_alignTop="@+id/textView1"
-        android:layout_toRightOf="@+id/textView1" />
+        android:layout_alignTop="@+id/item_icon"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@android:color/darker_gray" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="valor da compra:"
-        android:id="@+id/textView2"
-        android:layout_toEndOf="@+id/item_icon"
-        android:layout_below="@+id/textView3"
-        android:layout_toRightOf="@+id/item_icon" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Medium Text"
-        android:id="@+id/textViewValorCompra"
-        android:layout_toEndOf="@+id/textView2"
-        android:layout_alignTop="@+id/textView2"
-        android:layout_toRightOf="@+id/textView2" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="status:"
-        android:id="@+id/textView"
-        android:layout_toEndOf="@+id/item_icon"
-        android:layout_below="@+id/textView2"
-        android:layout_toRightOf="@+id/item_icon" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/textViewStatus"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_alignTop="@+id/textView"
-        android:layout_toRightOf="@+id/textView" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="quantidade:"
-        android:id="@+id/textView3"
         android:layout_toEndOf="@+id/item_icon"
-        android:layout_below="@+id/textView1"
-        android:layout_toRightOf="@+id/item_icon" />
+        android:layout_toRightOf="@+id/item_icon"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Small Text"
+        android:id="@+id/textViewAttPedido"
+        android:textColor="@android:color/darker_gray"
+        android:layout_toEndOf="@+id/item_icon"
+        android:layout_below="@+id/textViewStatus"
+        android:layout_toRightOf="@+id/item_icon" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Q"
         android:id="@+id/textViewQuantidade"
-        android:layout_toEndOf="@+id/textView3"
-        android:layout_below="@+id/textView1"
-        android:layout_toRightOf="@+id/textView3" />
+        android:textColor="#F50057"
+
+        android:layout_alignBottom="@+id/item_icon"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

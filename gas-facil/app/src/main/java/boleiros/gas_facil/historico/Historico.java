@@ -71,7 +71,7 @@ public class Historico extends Fragment {
         query.whereEqualTo("comprador", ParseUser.getCurrentUser());
         query.orderByDescending("createdAt");
         //query.setLimit(10);
-        final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
+        final ProgressDialog pDialog = ProgressDialog.show(Historico.this.getActivity(), null,
                 "Carregando");
         query.findInBackground(new FindCallback<Pedido>() {
             @Override

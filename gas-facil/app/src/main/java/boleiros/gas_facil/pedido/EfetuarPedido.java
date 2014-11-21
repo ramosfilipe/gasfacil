@@ -3,6 +3,8 @@ package boleiros.gas_facil.pedido;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,9 +16,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import boleiros.gas_facil.Inicio;
@@ -25,6 +29,7 @@ import boleiros.gas_facil.adapter.ProdutoAdapterPedido;
 import boleiros.gas_facil.modelo.Pedido;
 import boleiros.gas_facil.modelo.Produto;
 import boleiros.gas_facil.util.ActivityStore;
+import boleiros.gas_facil.util.BlurTool;
 
 public class EfetuarPedido extends Activity {
     private RecyclerView mRecyclerView;
@@ -46,7 +51,6 @@ public class EfetuarPedido extends Activity {
                 R.layout.card_layout, this);
         mRecyclerView.setAdapter(mAdapter);
         final int qtd = ActivityStore.getInstance(this).getQuantidadeDeProdutoDesejadaPeloUser();
-
         Button confirmar = (Button) findViewById(R.id.buttonConfirmar);
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,41 +69,45 @@ public class EfetuarPedido extends Activity {
                         Toast.makeText(getApplicationContext(),
                                 "Ops... Verifique o campo Dinheiro",
                                 Toast.LENGTH_LONG).show();
-                    } else if ((dinheiroDbl - valorDoPedido) > 100) {
-                        Toast.makeText(getApplicationContext(),
-                                "Ops... Favor não exceder 100 reais de troco",
-                                Toast.LENGTH_LONG).show();
                     } else {
-                        final ProgressDialog pDialog = ProgressDialog.show(EfetuarPedido.this, null,
-                                "Comprando...");
-                        Pedido pedido = new Pedido();
-                        pedido.setProduto(aux.get(0));
-                        pedido.setComprador(ParseUser.getCurrentUser());
-                        pedido.setPrice(dinheiro.getText().toString());
-                        pedido.setQuantidade(qtd);
-                        pedido.setStatus("pendente");
-                        pedido.setTroco("" + troco);
-                        pedido.saveInBackground(new SaveCallback() {
-                            @Override
-                            public void done(com.parse.ParseException e) {
-                                if (e != null) {
-                                    pDialog.dismiss();
-                                    Toast.makeText(getApplicationContext(),
-                                            "Ops... Tente comprar novamente",
-                                            Toast.LENGTH_LONG).show();
+                        if ((dinheiroDbl - valorDoPedido) > 100) {
+                            Toast.makeText(getApplicationContext(),
+                                    "Ops... Favor não exceder 100 reais de troco",
+                                    Toast.LENGTH_LONG).show();
+                        } else {
+                            final ProgressDialog pDialog = ProgressDialog.show(EfetuarPedido.this, null,
+                                    "Comprando...");
 
-                                } else {
-                                    pDialog.dismiss();
 
-                                    Toast.makeText(getApplicationContext(), "Produto Comprado!",
-                                            Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(getApplicationContext(), Inicio.class);
-                                    startActivity(intent);
+                            Pedido pedido = new Pedido();
+                            pedido.setProduto(aux.get(0));
+                            pedido.setComprador(ParseUser.getCurrentUser());
+                            pedido.setPrice(dinheiro.getText().toString());
+                            pedido.setQuantidade(qtd);
+                            pedido.setStatus("Pendente");
+                            pedido.setTroco("" + troco);
+                            pedido.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(com.parse.ParseException e) {
+                                    if (e != null) {
+                                        pDialog.dismiss();
+                                        Toast.makeText(getApplicationContext(),
+                                                "Ops... Tente comprar novamente",
+                                                Toast.LENGTH_LONG).show();
+
+                                    } else {
+                                        pDialog.dismiss();
+
+                                        Toast.makeText(getApplicationContext(), "Produto Comprado!",
+                                                Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(getApplicationContext(), Inicio.class);
+                                        startActivity(intent);
+                                    }
                                 }
-                            }
 
 
-                        });
+                            });
+                        }
                     }
                 } else {
                     Toast.makeText(getApplicationContext(),

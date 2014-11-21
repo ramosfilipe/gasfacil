@@ -17,6 +17,7 @@ import java.util.List;
 
 import boleiros.gas_facil.R;
 import boleiros.gas_facil.modelo.Produto;
+import boleiros.gas_facil.util.ActivityStore;
 
 /**
  * Created by filipe on 11/11/14.
@@ -26,7 +27,7 @@ public class ProdutoAdapterPedido extends RecyclerView.Adapter<ProdutoAdapterPed
 
     private List<Produto> produtos;
     private int rowLayout, quantidade;
-    private Context mContext;
+    private  Context mContext;
 
     public ProdutoAdapterPedido(List<Produto> produtos, int quantidade, int rowLayout, Context context) {
         this.produtos = produtos;
@@ -92,7 +93,9 @@ public class ProdutoAdapterPedido extends RecyclerView.Adapter<ProdutoAdapterPed
         viewHolder.precoProduto.setText("R$" + dbl * quantidade + "0");
 
         try {
-            viewHolder.produtoImage.setImageBitmap(decodeSampledBitmapFromResource(produtos.get(i).getPhotoFile(), 1000, 1000));
+            Bitmap bit = decodeSampledBitmapFromResource(produtos.get(i).getPhotoFile(), 1000, 1000);
+            viewHolder.produtoImage.setImageBitmap(bit);
+            ActivityStore.getInstance(mContext).setImagemDePedido(bit);
         } catch (ParseException e) {
             e.printStackTrace();
         }

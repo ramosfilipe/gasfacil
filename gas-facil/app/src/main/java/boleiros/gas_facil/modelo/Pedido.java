@@ -1,6 +1,7 @@
 package boleiros.gas_facil.modelo;
 
 import com.parse.ParseClassName;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
@@ -19,6 +20,13 @@ public class Pedido extends ParseObject {
     }
     public void setProduto(Produto produto) {
         put("produto", produto);
+    }
+
+    public void setThumbnail(ParseFile image){
+        put("thumbnail",image);
+    }
+    public ParseFile getThumbnail(ParseFile image){
+        return getParseFile("thumbnail");
     }
 
     public String getPrice() {
