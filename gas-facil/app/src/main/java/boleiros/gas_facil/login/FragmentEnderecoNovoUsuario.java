@@ -286,7 +286,7 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
                     bundle.putString("complemento", complementotxt);
                     bundle.putString("bairro", bairrotxt);
                     bundle.putString("referencia", referenciatxt);
-                    bundle.putString("endereco", ruatxt + " " + numerotxt + " " + complementotxt + " " + ceptxt + " " + bairrotxt + " " + referenciatxt);
+                    bundle.putString("endereco", ruatxt + ", " + numerotxt + ", " + complementotxt + ", " + ceptxt + ", " + bairrotxt + ", " + referenciatxt);
                     Fragment fragment = new InformacoesNovoUsuario();
                     fragment.setArguments(bundle);
                     FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();

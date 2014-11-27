@@ -2,6 +2,7 @@ package boleiros.gas_facil.historico;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -35,6 +37,7 @@ public class Historico extends Fragment {
     private RecyclerView mRecyclerView;
     private HistoricoAdapter mAdapter;
     private List<boleiros.gas_facil.modelo.Produto> produtos;
+    TextView historicoVazio, historicoVazioBaixo;
 
 
 
@@ -79,6 +82,14 @@ public class Historico extends Fragment {
                 if (e == null) {
                     //ProdutoManager.getInstance().setProdutos(parseObjects);
                     mAdapter = new HistoricoAdapter(parseObjects, R.layout.elemento_listview);
+                    if(parseObjects.size() > 0){
+                        historicoVazio.setText("");
+                        historicoVazioBaixo.setText("");
+                    }else{
+                        historicoVazio.setText("Você ainda não comprou");
+                        historicoVazioBaixo.setText("nenhum produto.");
+                    }
+
                     mRecyclerView.setAdapter(mAdapter);
                     pDialog.dismiss();
                 } else {
@@ -98,6 +109,12 @@ public class Historico extends Fragment {
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.listViewHistorico);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        historicoVazio = (TextView)rootView.findViewById(R.id.textViewHistoricoVazio);
+        historicoVazioBaixo = (TextView)rootView.findViewById(R.id.textViewHistoricoVazioBaixo);
+        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),
+                "roboto.ttf");
+        historicoVazio.setTypeface(tf);
+        historicoVazioBaixo.setTypeface(tf);
 
 //        mAdapter = new ProdutoAdapter(ProdutoManager.getInstance().getprodutos(), R.layout.card_layout, this.getActivity());
 //        mRecyclerView.setAdapter(mAdapter);

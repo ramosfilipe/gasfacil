@@ -138,7 +138,10 @@ public class LoginSignup extends Activity implements InformacoesNovoUsuario.OnFr
                                                                 Toast.LENGTH_LONG).show();
                                                         dialog.cancel();
                                                     } else {
-                                                        System.out.println("ERRO - " + e.toString());
+                                                        Toast.makeText(
+                                                                getApplicationContext(),
+                                                                "E-mail inválido, tente novamente",
+                                                                Toast.LENGTH_LONG).show();
                                                     }
                                                 }
                                             });

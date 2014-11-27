@@ -341,7 +341,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Alterar senha"
+                android:text="Alterar Senha"
                 android:id="@+id/textViewAlterarSenhaPerfil"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
