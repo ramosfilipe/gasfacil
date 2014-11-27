@@ -119,13 +119,6 @@
                 android:layout_alignRight="@+id/editTextEmailInformacoesPerfil"
                 android:layout_alignEnd="@+id/editTextEmailInformacoesPerfil" />
 
-            <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="30dp"
-                android:layout_below="@+id/buttonSalvarInformacoesPessoaisPerfil"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"></FrameLayout>
-
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -135,10 +128,13 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button_border"
                 android:textColor="@android:color/holo_blue_light"
-                android:layout_alignRight="@+id/editTextTelefoneInformacoesPessoaisPerfil"
-                android:layout_alignEnd="@+id/editTextTelefoneInformacoesPessoaisPerfil"
-                android:layout_alignLeft="@+id/editTextTelefoneInformacoesPessoaisPerfil"
-                android:layout_alignStart="@+id/editTextTelefoneInformacoesPessoaisPerfil" />
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="30dp" />
 
 
         </RelativeLayout>
@@ -321,25 +317,136 @@
                 android:layout_marginTop="20dp"
                 android:textColor="@android:color/holo_blue_light"
                 android:background="@drawable/button_border"
-                android:layout_toRightOf="@+id/textViewRuaEnderecoPerfil"
-                android:layout_toEndOf="@+id/textViewRuaEnderecoPerfil"
-                android:layout_alignRight="@+id/editTextPontoReferenciaEnderecoPerfil"
-                android:layout_alignEnd="@+id/editTextPontoReferenciaEnderecoPerfil"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="30dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:background="@drawable/bg_card"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativeLayoutEnderecoPessoaisPerfil"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/relativeLayoutAlterarSenhaPerfil"
+            android:layout_marginTop="25dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Alterar senha"
+                android:id="@+id/textViewAlterarSenhaPerfil"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Informe a senha atual"
+                android:textColor="@android:color/darker_gray"
+                android:id="@+id/textViewSenhaAtualPerfil"
+                android:layout_below="@+id/textViewAlterarSenhaPerfil"
+                android:layout_alignLeft="@+id/textViewAlterarSenhaPerfil"
+                android:layout_alignStart="@+id/textViewAlterarSenhaPerfil"
+                android:layout_marginTop="30dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/editTextSenhaAtual"
+                android:layout_below="@+id/textViewSenhaAtualPerfil"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="false"
+                android:layout_alignLeft="@+id/textViewSenhaAtualPerfil"
+                android:layout_alignStart="@+id/textViewSenhaAtualPerfil"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp" />
 
-            <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="30dp"
-                android:layout_below="@+id/buttonSalvarEnderecoPerfil"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"></FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Informe a nova senha"
+                android:textColor="@android:color/darker_gray"
+                android:id="@+id/textViewSenhaNovaPerfil"
+                android:layout_below="@+id/editTextSenhaAtual"
+                android:layout_alignLeft="@+id/editTextSenhaAtual"
+                android:layout_alignStart="@+id/editTextSenhaAtual"
+                android:layout_marginTop="10dp" />
 
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/editTextSenhaNovaPerfil"
+                android:layout_below="@+id/textViewSenhaNovaPerfil"
+                android:layout_alignRight="@+id/editTextSenhaAtual"
+                android:layout_alignEnd="@+id/editTextSenhaAtual"
+                android:layout_alignLeft="@+id/textViewSenhaNovaPerfil"
+                android:layout_alignStart="@+id/textViewSenhaNovaPerfil"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Confirme a nova senha"
+                android:textColor="@android:color/darker_gray"
+                android:id="@+id/textViewConfirmaSenhaNova"
+                android:layout_below="@+id/editTextSenhaNovaPerfil"
+                android:layout_alignLeft="@+id/editTextSenhaNovaPerfil"
+                android:layout_alignStart="@+id/editTextSenhaNovaPerfil"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/editTextConfirmaSenhaNova"
+                android:layout_below="@+id/textViewConfirmaSenhaNova"
+                android:layout_alignLeft="@+id/textViewConfirmaSenhaNova"
+                android:layout_alignStart="@+id/textViewConfirmaSenhaNova"
+                android:layout_alignRight="@+id/editTextSenhaNovaPerfil"
+                android:layout_alignEnd="@+id/editTextSenhaNovaPerfil" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salvar"
+                android:textColor="@android:color/holo_blue_light"
+                android:background="@drawable/button_border"
+                android:id="@+id/buttonSalvarNovaSenha"
+                android:layout_below="@+id/editTextConfirmaSenhaNova"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="30dp" />
         </RelativeLayout>
 
         <FrameLayout
             android:layout_width="fill_parent"
-            android:layout_below="@id/relativeLayoutEnderecoPessoaisPerfil"
-            android:layout_height="20dp"></FrameLayout>
+            android:layout_below="@id/relativeLayoutAlterarSenhaPerfil"
+            android:layout_height="20dp"
+            android:id="@+id/frameLayout"></FrameLayout>
     </RelativeLayout>
 
 

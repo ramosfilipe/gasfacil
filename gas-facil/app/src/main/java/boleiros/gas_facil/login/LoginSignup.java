@@ -1,9 +1,11 @@
 package boleiros.gas_facil.login;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -17,12 +19,14 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.RequestPasswordResetCallback;
 
 import boleiros.gas_facil.Inicio;
 import boleiros.gas_facil.R;
@@ -34,7 +38,10 @@ public class LoginSignup extends Activity implements InformacoesNovoUsuario.OnFr
     String usernametxt;
     String passwordtxt;
     EditText password;
+    TextView esqueceu;
     EditText username;
+    EditText email;
+
 
     /**
      * Called when the activity is first created.
@@ -47,6 +54,7 @@ public class LoginSignup extends Activity implements InformacoesNovoUsuario.OnFr
         getActionBar().hide();
         loginbutton = (Button) findViewById(R.id.login);
         signup = (Button) findViewById(R.id.signup);
+        esqueceu = (TextView) findViewById(R.id.textViewInformacoesPessoaisTagPerfil);
         username = (EditText) findViewById(R.id.campoUsername);
         password = (EditText) findViewById(R.id.campoSenha);
         username.setTextColor(Color.parseColor("#F5F5F5"));
@@ -102,7 +110,44 @@ public class LoginSignup extends Activity implements InformacoesNovoUsuario.OnFr
         //   findViewById(R.id.relativeInfoLogin).setBackgroundColor(Color.WHITE);
         //   findViewById(R.id.frameLogin).setBackgroundColor(Color.WHITE);
         // Locate Buttons in main.xml
+        esqueceu.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(LoginSignup.this);
+                dialog.setTitle("Esqueceu a senha?");
+                dialog.setMessage("Digite seu endereço de e-mail");
+                email = new EditText(LoginSignup.this);
+                email.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                email.setLayoutParams(lp);
+                dialog.setView(email);
+                dialog.setNegativeButton("Enviar",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(final DialogInterface dialog, int which) {
+                                System.out.println("Email - " + email.getText().toString());
+                                if (!email.getText().toString().equals(""))
+                                    ParseUser.requestPasswordResetInBackground(email.getText().toString(),
+                                            new RequestPasswordResetCallback() {
+                                                public void done(ParseException e) {
+                                                    if (e == null) {
+                                                        Toast.makeText(
+                                                                getApplicationContext(),
+                                                                "Instruções para redefinição de senha foram enviadas para seu email",
+                                                                Toast.LENGTH_LONG).show();
+                                                        dialog.cancel();
+                                                    } else {
+                                                        System.out.println("ERRO - " + e.toString());
+                                                    }
+                                                }
+                                            });
+                            }
+                        });
+                dialog.show();
 
+            }
+        });
         loginbutton.setBackgroundColor(Color.parseColor("#90CAF9"));
         signup.setBackgroundColor(Color.parseColor("#64B5F6"));
         // Login Button Click Listener

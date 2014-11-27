@@ -3,6 +3,7 @@ package boleiros.gas_facil.perfil;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.LogInCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -25,6 +28,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import boleiros.gas_facil.Inicio;
 import boleiros.gas_facil.R;
 
 
@@ -45,9 +49,9 @@ public class Perfil extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    EditText nome, email, telefone, rua, numero, cep, complemento, bairro, referencia;
+    EditText nome, email, telefone, rua, numero, cep, complemento, bairro, referencia, senhaAntiga, novaSenha, novaSenhaConf;
     TextView nomePerfil;
-    Button botaoSalvarPessoais, botaoSalvarEndereco;
+    Button botaoSalvarPessoais, botaoSalvarEndereco, botaoSalvarSenha;
 
     private OnFragmentInteractionListener mListener;
 
@@ -142,8 +146,14 @@ public class Perfil extends Fragment {
         complemento = (EditText)v.findViewById(R.id.editTextComplementoEnderecoPerfil);
         bairro = (EditText)v.findViewById(R.id.editTextBairroEnderecoPerfil);
         referencia = (EditText)v.findViewById(R.id.editTextPontoReferenciaEnderecoPerfil);
+        senhaAntiga = (EditText)v.findViewById(R.id.editTextSenhaAtual);
+        novaSenha = (EditText)v.findViewById(R.id.editTextSenhaNovaPerfil);
+        novaSenhaConf = (EditText)v.findViewById(R.id.editTextConfirmaSenhaNova);
+
+
         botaoSalvarPessoais = (Button)v.findViewById(R.id.buttonSalvarInformacoesPessoaisPerfil);
         botaoSalvarEndereco = (Button)v.findViewById(R.id.buttonSalvarEnderecoPerfil);
+        botaoSalvarSenha = (Button)v.findViewById(R.id.buttonSalvarNovaSenha);
 
         setInformacoes("pessoais");
         setInformacoes("endereco");
@@ -223,6 +233,51 @@ public class Perfil extends Fragment {
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(), "Preencha todos os campos corretamente.", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        botaoSalvarSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
+                        "Carregando");
+                ParseUser.logInInBackground(ParseUser.getCurrentUser().getUsername(), senhaAntiga.getText().toString(),
+                        new LogInCallback() {
+                            public void done(ParseUser user, ParseException e) {
+                                if (user != null) {
+                                    final String senhaNova = novaSenha.getText().toString();
+                                    final String senhaNovaConf = novaSenhaConf.getText().toString();
+                                    if(!senhaNova.equals(senhaNovaConf)){
+                                        Toast.makeText(
+                                                getActivity().getApplicationContext(),
+                                                "As novas senhas não são iguais, verifique e tente novamente",
+                                                Toast.LENGTH_LONG).show();
+                                        pDialog.dismiss();
+                                    }else {
+                                        ParseUser currentUser = ParseUser.getCurrentUser();
+                                        currentUser.setPassword(senhaNova);
+                                        currentUser.saveInBackground(new SaveCallback() {
+                                            @Override
+                                            public void done(ParseException e) {
+                                                Toast.makeText(
+                                                        getActivity().getApplicationContext(),
+                                                        "Senha modificada com sucesso",
+                                                        Toast.LENGTH_LONG).show();
+                                                pDialog.dismiss();
+                                            }
+                                        });
+                                    }
+
+
+                                } else {
+                                    Toast.makeText(
+                                            getActivity().getApplicationContext(),
+                                            "Senha atual inválida",
+                                            Toast.LENGTH_LONG).show();
+                                    pDialog.dismiss();
+                                }
+                            }
+                        });
             }
         });
         return v;
