@@ -147,11 +147,14 @@ public class Historico extends Fragment implements AdapterView.OnItemSelectedLis
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("mes")) {
+        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("7 dias atrás")) {
+            consultaAoParse("semana");
+        }
+        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("30 dias atrás")) {
             consultaAoParse("mes");
         }
-        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("semana")) {
-            consultaAoParse("semana");
+        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("tudo")) {
+            consultaAoParse("tudo");
         }
     }
 
