@@ -1,452 +1,451 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayoutEnderecoPerfil"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EEEEEE"
-    tools:context="boleiros.gas_facil.perfil.Perfil"
-    android:id="@+id/relativeLayoutEnderecoPerfil">
+    tools:context="boleiros.gas_facil.perfil.Perfil">
 
 
     <RelativeLayout
+        android:id="@+id/relativeLayoutRootPerfil"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:padding="10dp"
-        android:id="@+id/relativeLayoutRootPerfil">
+        android:padding="10dp">
 
         <TextView
+            android:id="@+id/textViewNomePerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textViewNomePerfil"
-            android:layout_gravity="center_horizontal"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal" />
 
         <RelativeLayout
+            android:id="@+id/relativeLayoutInformacoesPessoaisPerfil"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_card"
             android:layout_below="@+id/textViewNomePerfil"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:id="@+id/relativeLayoutInformacoesPessoaisPerfil">
+            android:background="@drawable/bg_card">
 
             <TextView
+                android:id="@+id/textViewInformacoesPessoaisTagPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Informações Pessoais"
-                android:id="@+id/textViewInformacoesPessoaisTagPerfil"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:text="Informações Pessoais"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
+                android:id="@+id/textView4NomeInform"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Nome"
-                android:textColor="@android:color/darker_gray"
-                android:id="@+id/textView4NomeInform"
-                android:layout_below="@+id/textViewInformacoesPessoaisTagPerfil"
                 android:layout_alignLeft="@+id/textViewInformacoesPessoaisTagPerfil"
                 android:layout_alignStart="@+id/textViewInformacoesPessoaisTagPerfil"
-                android:layout_marginTop="30dp" />
+                android:layout_below="@+id/textViewInformacoesPessoaisTagPerfil"
+                android:layout_marginTop="30dp"
+                android:text="Nome"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/darker_gray" />
 
             <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/editTextNomePerfil"
-                android:singleLine="true"
-                android:layout_below="@+id/textView4NomeInform"
-                android:layout_alignLeft="@+id/textView4NomeInform"
-                android:layout_alignStart="@+id/textView4NomeInform"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="20dp" />
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="E-mail"
-                android:textColor="@android:color/darker_gray"
+                android:layout_alignLeft="@+id/textView4NomeInform"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignStart="@+id/textView4NomeInform"
+                android:layout_below="@+id/textView4NomeInform"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:singleLine="true" />
+
+            <TextView
                 android:id="@+id/textView4emailPessoais"
-                android:layout_below="@+id/editTextNomePerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView4NomeInform"
                 android:layout_alignStart="@+id/textView4NomeInform"
-                android:layout_marginTop="10dp" />
+                android:layout_below="@+id/editTextNomePerfil"
+                android:layout_marginTop="10dp"
+                android:text="E-mail"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/darker_gray" />
 
             <EditText
+                android:id="@+id/editTextEmailInformacoesPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editTextEmailInformacoesPerfil"
-                android:singleLine="true"
-                android:inputType="textEmailAddress"
-                android:layout_below="@+id/textView4emailPessoais"
-                android:layout_alignLeft="@+id/editTextNomePerfil"
-                android:layout_alignStart="@+id/editTextNomePerfil"
-                android:layout_marginTop="5dp"
-                android:layout_alignRight="@+id/editTextNomePerfil"
                 android:layout_alignEnd="@+id/editTextNomePerfil"
-                 />
+                android:layout_alignLeft="@+id/editTextNomePerfil"
+                android:layout_alignRight="@+id/editTextNomePerfil"
+                android:layout_alignStart="@+id/editTextNomePerfil"
+                android:layout_below="@+id/textView4emailPessoais"
+                android:layout_marginTop="5dp"
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Telefone"
-                android:textColor="@android:color/darker_gray"
                 android:id="@+id/textView4Telefoneperfil"
-                android:layout_below="@+id/editTextEmailInformacoesPerfil"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView4emailPessoais"
                 android:layout_alignStart="@+id/textView4emailPessoais"
-                android:layout_marginTop="10dp" />
+                android:layout_below="@+id/editTextEmailInformacoesPerfil"
+                android:layout_marginTop="10dp"
+                android:text="Telefone"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/darker_gray" />
 
             <EditText
+                android:id="@+id/editTextTelefoneInformacoesPessoaisPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editTextTelefoneInformacoesPessoaisPerfil"
-                android:layout_below="@+id/textView4Telefoneperfil"
+                android:layout_alignEnd="@+id/editTextEmailInformacoesPerfil"
                 android:layout_alignLeft="@+id/editTextEmailInformacoesPerfil"
-                android:layout_alignStart="@+id/editTextEmailInformacoesPerfil"
-                android:layout_marginTop="5dp"
-                android:singleLine="true"
-                android:inputType="phone"
                 android:layout_alignRight="@+id/editTextEmailInformacoesPerfil"
-                android:layout_alignEnd="@+id/editTextEmailInformacoesPerfil" />
+                android:layout_alignStart="@+id/editTextEmailInformacoesPerfil"
+                android:layout_below="@+id/textView4Telefoneperfil"
+                android:layout_marginTop="5dp"
+                android:inputType="phone"
+                android:singleLine="true" />
 
             <Button
+                android:id="@+id/buttonSalvarInformacoesPessoaisPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Salvar"
-                android:id="@+id/buttonSalvarInformacoesPessoaisPerfil"
-                android:layout_below="@+id/editTextTelefoneInformacoesPessoaisPerfil"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/button_border"
-                android:textColor="@android:color/holo_blue_light"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginRight="20dp"
+                android:layout_below="@+id/editTextTelefoneInformacoesPessoaisPerfil"
+                android:layout_marginBottom="30dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginBottom="30dp" />
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_border"
+                android:text="Salvar"
+                android:textColor="@android:color/holo_blue_light" />
 
 
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/relativeLayoutEnderecoPessoaisPerfil"
             android:layout_width="fill_parent"
-            android:layout_below="@id/relativeLayoutInformacoesPessoaisPerfil"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_card"
+            android:layout_below="@id/relativeLayoutInformacoesPessoaisPerfil"
             android:layout_marginTop="25dp"
-            android:id="@+id/relativeLayoutEnderecoPessoaisPerfil">
+            android:background="@drawable/bg_card">
 
             <TextView
+                android:id="@+id/textView5enderecoPessoaisPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Endereço"
-                android:id="@+id/textView5enderecoPessoaisPerfil"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="false"
+                android:layout_alignParentTop="true"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:text="Endereço"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
+                android:id="@+id/textViewRuaEnderecoPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Rua"
-                android:textColor="@android:color/darker_gray"
-                android:id="@+id/textViewRuaEnderecoPerfil"
-                android:layout_below="@+id/textView5enderecoPessoaisPerfil"
                 android:layout_alignLeft="@+id/textView5enderecoPessoaisPerfil"
                 android:layout_alignStart="@+id/textView5enderecoPessoaisPerfil"
-                android:layout_marginTop="30dp" />
+                android:layout_below="@+id/textView5enderecoPessoaisPerfil"
+                android:layout_marginTop="30dp"
+                android:text="Rua"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/darker_gray" />
 
             <EditText
+                android:id="@+id/editTextRuaEnderecoPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editTextRuaEnderecoPerfil"
-                android:layout_below="@+id/textViewRuaEnderecoPerfil"
-                android:layout_marginTop="5dp"
-                android:layout_alignParentRight="true"
-                android:singleLine="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="20dp"
                 android:layout_alignLeft="@+id/textViewRuaEnderecoPerfil"
-                android:layout_alignStart="@+id/textViewRuaEnderecoPerfil" />
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignStart="@+id/textViewRuaEnderecoPerfil"
+                android:layout_below="@+id/textViewRuaEnderecoPerfil"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:singleLine="true" />
 
             <TextView
+                android:id="@+id/textView6numeroPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Número"
-                android:id="@+id/textView6numeroPerfil"
-                android:textColor="@android:color/darker_gray"
-                android:layout_below="@+id/editTextRuaEnderecoPerfil"
                 android:layout_alignLeft="@+id/textViewRuaEnderecoPerfil"
                 android:layout_alignStart="@+id/textViewRuaEnderecoPerfil"
-                android:layout_marginTop="10dp" />
+                android:layout_below="@+id/editTextRuaEnderecoPerfil"
+                android:layout_marginTop="10dp"
+                android:text="Número"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/darker_gray" />
 
             <TextView
+                android:id="@+id/textView6CEPPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="CEP"
-                android:id="@+id/textView6CEPPerfil"
-                android:textColor="@android:color/darker_gray"
                 android:layout_alignTop="@+id/textView6numeroPerfil"
-                android:layout_toRightOf="@+id/textView5enderecoPessoaisPerfil"
+                android:layout_marginLeft="99dp"
                 android:layout_toEndOf="@+id/textView5enderecoPessoaisPerfil"
-                android:layout_marginLeft="99dp" />
+                android:layout_toRightOf="@+id/textView5enderecoPessoaisPerfil"
+                android:text="CEP"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/darker_gray" />
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:id="@+id/linearLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView6numeroPerfil"
                 android:layout_alignLeft="@+id/textView6numeroPerfil"
                 android:layout_alignStart="@+id/textView6numeroPerfil"
+                android:layout_below="@+id/textView6numeroPerfil"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
-                android:id="@+id/linearLayout"
-                android:layout_marginRight="20dp">
+                android:orientation="horizontal">
 
                 <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:inputType="number"
                     android:id="@+id/editTextNumeroEnderecoPerfil"
-                    android:layout_weight="1" />
-
-                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:singleLine="true"
+                    android:layout_weight="1"
                     android:inputType="number"
+                    android:singleLine="true" />
+
+                <EditText
                     android:id="@+id/editTextCepEnderecoPerfil"
-                    android:layout_weight="1" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:singleLine="true" />
             </LinearLayout>
 
             <TextView
+                android:id="@+id/textView7ComplementoEnderecoPergil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Complemento"
-                android:id="@+id/textView7ComplementoEnderecoPergil"
-                android:layout_below="@+id/linearLayout"
-                android:textColor="@android:color/darker_gray"
                 android:layout_alignLeft="@+id/linearLayout"
                 android:layout_alignStart="@+id/linearLayout"
-                android:layout_marginTop="10dp" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/editTextComplementoEnderecoPerfil"
-                android:layout_below="@+id/textView7ComplementoEnderecoPergil"
-                android:layout_alignLeft="@+id/textView7ComplementoEnderecoPergil"
-                android:layout_alignStart="@+id/textView7ComplementoEnderecoPergil"
-                android:layout_marginTop="5dp"
-                android:singleLine="true"
-                android:layout_alignRight="@+id/linearLayout"
-                android:layout_alignEnd="@+id/linearLayout" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Bairro"
-                android:id="@+id/textView7BairroEnderecoPerfil"
-                android:textColor="@android:color/darker_gray"
+                android:layout_below="@+id/linearLayout"
                 android:layout_marginTop="10dp"
-                android:layout_below="@+id/editTextComplementoEnderecoPerfil"
-                android:layout_alignLeft="@+id/editTextComplementoEnderecoPerfil"
-                android:layout_alignStart="@+id/editTextComplementoEnderecoPerfil" />
+                android:text="Complemento"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/darker_gray" />
 
             <EditText
+                android:id="@+id/editTextComplementoEnderecoPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editTextBairroEnderecoPerfil"
-                android:layout_below="@+id/textView7BairroEnderecoPerfil"
-                android:layout_alignLeft="@+id/textView7BairroEnderecoPerfil"
-                android:layout_alignStart="@+id/textView7BairroEnderecoPerfil"
+                android:layout_alignEnd="@+id/linearLayout"
+                android:layout_alignLeft="@+id/textView7ComplementoEnderecoPergil"
+                android:layout_alignRight="@+id/linearLayout"
+                android:layout_alignStart="@+id/textView7ComplementoEnderecoPergil"
+                android:layout_below="@+id/textView7ComplementoEnderecoPergil"
                 android:layout_marginTop="5dp"
-                android:singleLine="true"
-                android:layout_alignRight="@+id/editTextComplementoEnderecoPerfil"
-                android:layout_alignEnd="@+id/editTextComplementoEnderecoPerfil" />
+                android:singleLine="true" />
 
             <TextView
+                android:id="@+id/textView7BairroEnderecoPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/editTextComplementoEnderecoPerfil"
+                android:layout_alignStart="@+id/editTextComplementoEnderecoPerfil"
+                android:layout_below="@+id/editTextComplementoEnderecoPerfil"
+                android:layout_marginTop="10dp"
+                android:text="Bairro"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Ponto de referência"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="@android:color/darker_gray" />
+
+            <EditText
+                android:id="@+id/editTextBairroEnderecoPerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/editTextComplementoEnderecoPerfil"
+                android:layout_alignLeft="@+id/textView7BairroEnderecoPerfil"
+                android:layout_alignRight="@+id/editTextComplementoEnderecoPerfil"
+                android:layout_alignStart="@+id/textView7BairroEnderecoPerfil"
+                android:layout_below="@+id/textView7BairroEnderecoPerfil"
+                android:layout_marginTop="5dp"
+                android:singleLine="true" />
+
+            <TextView
                 android:id="@+id/textView7PontoReferenciaPerfil"
-                android:layout_below="@+id/editTextBairroEnderecoPerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/editTextBairroEnderecoPerfil"
                 android:layout_alignStart="@+id/editTextBairroEnderecoPerfil"
-                android:layout_marginTop="10dp" />
+                android:layout_below="@+id/editTextBairroEnderecoPerfil"
+                android:layout_marginTop="10dp"
+                android:text="Ponto de referência"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/darker_gray" />
 
             <EditText
+                android:id="@+id/editTextPontoReferenciaEnderecoPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editTextPontoReferenciaEnderecoPerfil"
-                android:layout_below="@+id/textView7PontoReferenciaPerfil"
+                android:layout_alignEnd="@+id/editTextBairroEnderecoPerfil"
                 android:layout_alignLeft="@+id/textView7PontoReferenciaPerfil"
-                android:layout_alignStart="@+id/textView7PontoReferenciaPerfil"
-                android:layout_marginTop="5dp"
-                android:singleLine="true"
                 android:layout_alignRight="@+id/editTextBairroEnderecoPerfil"
-                android:layout_alignEnd="@+id/editTextBairroEnderecoPerfil" />
+                android:layout_alignStart="@+id/textView7PontoReferenciaPerfil"
+                android:layout_below="@+id/textView7PontoReferenciaPerfil"
+                android:layout_marginTop="5dp"
+                android:singleLine="true" />
 
             <Button
+                android:id="@+id/buttonSalvarEnderecoPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Salvar"
-                android:id="@+id/buttonSalvarEnderecoPerfil"
-                android:layout_below="@+id/editTextPontoReferenciaEnderecoPerfil"
-                android:layout_marginTop="20dp"
-                android:textColor="@android:color/holo_blue_light"
-                android:background="@drawable/button_border"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginRight="20dp"
+                android:layout_below="@+id/editTextPontoReferenciaEnderecoPerfil"
+                android:layout_marginBottom="30dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginBottom="30dp" />
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_border"
+                android:text="Salvar"
+                android:textColor="@android:color/holo_blue_light" />
 
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/relativeLayoutAlterarSenhaPerfil"
             android:layout_width="fill_parent"
-            android:background="@drawable/bg_card"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/relativeLayoutEnderecoPessoaisPerfil"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:id="@+id/relativeLayoutAlterarSenhaPerfil"
-            android:layout_marginTop="25dp">
+            android:layout_below="@+id/relativeLayoutEnderecoPessoaisPerfil"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/bg_card">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Alterar Senha"
                 android:id="@+id/textViewAlterarSenhaPerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Informe a senha atual"
-                android:textColor="@android:color/darker_gray"
-                android:id="@+id/textViewSenhaAtualPerfil"
-                android:layout_below="@+id/textViewAlterarSenhaPerfil"
-                android:layout_alignLeft="@+id/textViewAlterarSenhaPerfil"
-                android:layout_alignStart="@+id/textViewAlterarSenhaPerfil"
-                android:layout_marginTop="30dp" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:id="@+id/editTextSenhaAtual"
-                android:layout_below="@+id/textViewSenhaAtualPerfil"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="false"
-                android:layout_alignLeft="@+id/textViewSenhaAtualPerfil"
-                android:layout_alignStart="@+id/textViewSenhaAtualPerfil"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="20dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Informe a nova senha"
-                android:textColor="@android:color/darker_gray"
-                android:id="@+id/textViewSenhaNovaPerfil"
-                android:layout_below="@+id/editTextSenhaAtual"
-                android:layout_alignLeft="@+id/editTextSenhaAtual"
-                android:layout_alignStart="@+id/editTextSenhaAtual"
-                android:layout_marginTop="10dp" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:id="@+id/editTextSenhaNovaPerfil"
-                android:layout_below="@+id/textViewSenhaNovaPerfil"
-                android:layout_alignRight="@+id/editTextSenhaAtual"
-                android:layout_alignEnd="@+id/editTextSenhaAtual"
-                android:layout_alignLeft="@+id/textViewSenhaNovaPerfil"
-                android:layout_alignStart="@+id/textViewSenhaNovaPerfil"
-                android:layout_marginTop="5dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Confirme a nova senha"
-                android:textColor="@android:color/darker_gray"
-                android:id="@+id/textViewConfirmaSenhaNova"
-                android:layout_below="@+id/editTextSenhaNovaPerfil"
-                android:layout_alignLeft="@+id/editTextSenhaNovaPerfil"
-                android:layout_alignStart="@+id/editTextSenhaNovaPerfil"
-                android:layout_marginTop="10dp" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:id="@+id/editTextConfirmaSenhaNova"
-                android:layout_below="@+id/textViewConfirmaSenhaNova"
-                android:layout_alignLeft="@+id/textViewConfirmaSenhaNova"
-                android:layout_alignStart="@+id/textViewConfirmaSenhaNova"
-                android:layout_alignRight="@+id/editTextSenhaNovaPerfil"
-                android:layout_alignEnd="@+id/editTextSenhaNovaPerfil" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Salvar"
-                android:textColor="@android:color/holo_blue_light"
-                android:background="@drawable/button_border"
-                android:id="@+id/buttonSalvarNovaSenha"
-                android:layout_below="@+id/editTextConfirmaSenhaNova"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
+                android:text="Alterar Senha"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/textViewSenhaAtualPerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textViewAlterarSenhaPerfil"
+                android:layout_alignStart="@+id/textViewAlterarSenhaPerfil"
+                android:layout_below="@+id/textViewAlterarSenhaPerfil"
+                android:layout_marginTop="30dp"
+                android:text="Informe a senha atual"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/darker_gray" />
+
+            <EditText
+                android:id="@+id/editTextSenhaAtual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textViewSenhaAtualPerfil"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentRight="true"
+                android:layout_alignStart="@+id/textViewSenhaAtualPerfil"
+                android:layout_below="@+id/textViewSenhaAtualPerfil"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="30dp" />
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/textViewSenhaNovaPerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/editTextSenhaAtual"
+                android:layout_alignStart="@+id/editTextSenhaAtual"
+                android:layout_below="@+id/editTextSenhaAtual"
+                android:layout_marginTop="10dp"
+                android:text="Informe a nova senha"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/darker_gray" />
+
+            <EditText
+                android:id="@+id/editTextSenhaNovaPerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/editTextSenhaAtual"
+                android:layout_alignLeft="@+id/textViewSenhaNovaPerfil"
+                android:layout_alignRight="@+id/editTextSenhaAtual"
+                android:layout_alignStart="@+id/textViewSenhaNovaPerfil"
+                android:layout_below="@+id/textViewSenhaNovaPerfil"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/textViewConfirmaSenhaNova"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/editTextSenhaNovaPerfil"
+                android:layout_alignStart="@+id/editTextSenhaNovaPerfil"
+                android:layout_below="@+id/editTextSenhaNovaPerfil"
+                android:layout_marginTop="10dp"
+                android:text="Confirme a nova senha"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/darker_gray" />
+
+            <EditText
+                android:id="@+id/editTextConfirmaSenhaNova"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/editTextSenhaNovaPerfil"
+                android:layout_alignLeft="@+id/textViewConfirmaSenhaNova"
+                android:layout_alignRight="@+id/editTextSenhaNovaPerfil"
+                android:layout_alignStart="@+id/textViewConfirmaSenhaNova"
+                android:layout_below="@+id/textViewConfirmaSenhaNova"
+                android:ems="10"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/buttonSalvarNovaSenha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editTextConfirmaSenhaNova"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_border"
+                android:text="Salvar"
+                android:textColor="@android:color/holo_blue_light" />
         </RelativeLayout>
 
         <FrameLayout
+            android:id="@+id/frameLayout"
             android:layout_width="fill_parent"
-            android:layout_below="@id/relativeLayoutAlterarSenhaPerfil"
             android:layout_height="20dp"
-            android:id="@+id/frameLayout"></FrameLayout>
+            android:layout_below="@id/relativeLayoutAlterarSenhaPerfil"></FrameLayout>
     </RelativeLayout>
 
 

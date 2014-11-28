@@ -7,7 +7,6 @@ package boleiros.gas_facil.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +25,6 @@ import boleiros.gas_facil.modelo.Pedido;
 import boleiros.gas_facil.modelo.Produto;
 
 
-
-
 public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.ViewHolder> {
 
 
@@ -38,8 +35,8 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
     public HistoricoAdapter(List<Pedido> pedidos, int rowLayout) {
         this.pedidos = pedidos;
         this.rowLayout = rowLayout;
-       // this.mContext = context;
-       // this.quantidade = quantidade;
+        // this.mContext = context;
+        // this.quantidade = quantidade;
     }
 
     public static Bitmap decodeSampledBitmapFromResource(ParseFile pf,
@@ -84,6 +81,7 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
 
         return inSampleSize;
     }
+
     private String formartaStringData(Date data) {
         String minutoAdicionadoComZero = "";
 
@@ -96,6 +94,7 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
         return "" + data.getDate() + "/" + (data.getMonth() + 1) + " às " + data.getHours() + ":" +
                 minutoAdicionadoComZero + "h";
     }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
@@ -105,12 +104,12 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Produto prod = (Produto) pedidos.get(i).getProduto();
-        viewHolder.attPedido.setText(" em "+formartaStringData(pedidos.get(i).getUpdatedAt()));
+        viewHolder.attPedido.setText(" em " + formartaStringData(pedidos.get(i).getUpdatedAt()));
 
-        viewHolder.dataCompra.setText(" "+formartaStringData(pedidos.get(i).getCreatedAt()));
+        viewHolder.dataCompra.setText(" " + formartaStringData(pedidos.get(i).getCreatedAt()));
 //        viewHolder.precoCompra.setText(" "+pedidos.get(i).getPrice()+" reais");
-        viewHolder.statusCompra.setText(" "+pedidos.get(i).getStatus());
-        viewHolder.qtd.setText(""+pedidos.get(i).getQuantidade());
+        viewHolder.statusCompra.setText(" " + pedidos.get(i).getStatus());
+        viewHolder.qtd.setText("" + pedidos.get(i).getQuantidade());
 
         try {
             viewHolder.produtoImage.setImageBitmap(decodeSampledBitmapFromResource(prod.getThumbnailBlurFile(), 1000, 1000));
@@ -130,7 +129,6 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
         public TextView attPedido;
         public TextView statusCompra;
         public TextView qtd;
-
 
 
         public ViewHolder(View itemView) {

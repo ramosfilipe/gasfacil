@@ -2,48 +2,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="1dp"
     android:paddingLeft="1dp"
     android:paddingRight="1dp"
     android:paddingTop="1dp"
-    android:paddingBottom="1dp"
     tools:context=".Inicio$PlaceholderFragment">
+
     <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:id="@+id/spinner"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listViewHistorico"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Inicio"
-
         android:layout_alignParentLeft="true"
+
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/spinner" />
+        android:layout_below="@+id/spinner"
+        tools:context=".Inicio" />
 
     <TextView
+        android:id="@+id/textViewHistoricoVazio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textViewHistoricoVazio"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="201dp" />
+        android:layout_marginTop="201dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
+        android:id="@+id/textViewHistoricoVazioBaixo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textViewHistoricoVazioBaixo"
-        android:layout_alignTop="@+id/listViewHistorico"
         android:layout_alignLeft="@+id/textViewHistoricoVazio"
-        android:layout_alignStart="@+id/textViewHistoricoVazio" />
-
-
+        android:layout_alignStart="@+id/textViewHistoricoVazio"
+        android:layout_alignTop="@+id/listViewHistorico"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
 </RelativeLayout>

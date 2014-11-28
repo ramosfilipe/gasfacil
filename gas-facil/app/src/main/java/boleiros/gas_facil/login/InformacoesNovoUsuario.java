@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
-import android.text.method.TransformationMethod;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -104,7 +103,7 @@ public class InformacoesNovoUsuario extends Fragment {
         username.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(senha.getText().toString().equals("")){
+                if (senha.getText().toString().equals("")) {
                     senha.setText("Senha");
                     senha.setTransformationMethod(null);
                     senha.setTextColor(Color.parseColor("#a9a9a9"));
@@ -121,7 +120,7 @@ public class InformacoesNovoUsuario extends Fragment {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 if (i == EditorInfo.IME_ACTION_NEXT) {
-                    if(username.getText().toString().equals("")){
+                    if (username.getText().toString().equals("")) {
                         username.setText("Nome de usuário");
                         username.setTextColor(Color.parseColor("#a9a9a9"));
                     }
@@ -138,7 +137,7 @@ public class InformacoesNovoUsuario extends Fragment {
         senha.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(username.getText().toString().equals("")){
+                if (username.getText().toString().equals("")) {
                     username.setText("Nome de usuário");
                     username.setTextColor(Color.parseColor("#a9a9a9"));
                 }

@@ -15,17 +15,20 @@ public class Pedido extends ParseObject {
 
     public Pedido() {
     }
-    public ParseObject getProduto(){
+
+    public ParseObject getProduto() {
         return getParseObject("produto");
     }
+
     public void setProduto(Produto produto) {
         put("produto", produto);
     }
 
-    public void setThumbnail(ParseFile image){
-        put("thumbnail",image);
+    public void setThumbnail(ParseFile image) {
+        put("thumbnail", image);
     }
-    public ParseFile getThumbnail(ParseFile image){
+
+    public ParseFile getThumbnail(ParseFile image) {
         return getParseFile("thumbnail");
     }
 

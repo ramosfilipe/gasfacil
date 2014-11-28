@@ -1,11 +1,10 @@
 package boleiros.gas_facil.historico;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,25 +27,20 @@ import java.util.List;
 
 import boleiros.gas_facil.R;
 import boleiros.gas_facil.adapter.HistoricoAdapter;
-import boleiros.gas_facil.adapter.ProdutoAdapter;
-import boleiros.gas_facil.adapter.RecyclerItemClickListener;
-import boleiros.gas_facil.dialogos.QuantidadeDeProdutoDialogo;
 import boleiros.gas_facil.modelo.Pedido;
-import boleiros.gas_facil.modelo.Produto;
-import boleiros.gas_facil.modelo.ProdutoManager;
-import boleiros.gas_facil.util.ActivityStore;
 
 
 public class Historico extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    private RecyclerView mRecyclerView;
-    private HistoricoAdapter mAdapter;
-    private List<boleiros.gas_facil.modelo.Produto> produtos;
     final private long UM_DIA_EM_MILLISEGUNDOS = 86400000;
     TextView historicoVazio, historicoVazioBaixo;
+    private RecyclerView mRecyclerView;
+    private HistoricoAdapter mAdapter;
 
 
-
+    public Historico() {
+        // Required empty public constructor
+    }
 
     /**
      * Use this factory method to create a new instance of
@@ -63,10 +57,6 @@ public class Historico extends Fragment implements AdapterView.OnItemSelectedLis
         return fragment;
     }
 
-    public Historico() {
-        // Required empty public constructor
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,17 +69,17 @@ public class Historico extends Fragment implements AdapterView.OnItemSelectedLis
         query.include("produto");
         query.whereEqualTo("comprador", ParseUser.getCurrentUser());
         query.orderByDescending("createdAt");
-        if(range.equals("semana")){
-           Calendar calendar = Calendar.getInstance();
-           long aux = calendar.getTimeInMillis() - (7*UM_DIA_EM_MILLISEGUNDOS);
-           calendar.setTimeInMillis(aux);
-           Date date = calendar.getTime();
-           query.whereGreaterThanOrEqualTo("createdAt", date);
+        if (range.equals("semana")) {
+            Calendar calendar = Calendar.getInstance();
+            long aux = calendar.getTimeInMillis() - (7 * UM_DIA_EM_MILLISEGUNDOS);
+            calendar.setTimeInMillis(aux);
+            Date date = calendar.getTime();
+            query.whereGreaterThanOrEqualTo("createdAt", date);
         }
 
-        if(range.equals("mes")) {
+        if (range.equals("mes")) {
             Calendar calendar = Calendar.getInstance();
-            long aux = calendar.getTimeInMillis() - (30*UM_DIA_EM_MILLISEGUNDOS);
+            long aux = calendar.getTimeInMillis() - (30 * UM_DIA_EM_MILLISEGUNDOS);
             calendar.setTimeInMillis(aux);
             Date date = calendar.getTime();
             query.whereGreaterThanOrEqualTo("createdAt", date);
@@ -101,12 +91,11 @@ public class Historico extends Fragment implements AdapterView.OnItemSelectedLis
             @Override
             public void done(List<Pedido> parseObjects, com.parse.ParseException e) {
                 if (e == null) {
-                    //ProdutoManager.getInstance().setProdutos(parseObjects);
                     mAdapter = new HistoricoAdapter(parseObjects, R.layout.elemento_listview);
-                    if(parseObjects.size() > 0){
+                    if (parseObjects.size() > 0) {
                         historicoVazio.setText("");
                         historicoVazioBaixo.setText("");
-                    }else{
+                    } else {
                         historicoVazio.setText("Você ainda não comprou");
                         historicoVazioBaixo.setText("nenhum produto.");
                     }
@@ -130,8 +119,8 @@ public class Historico extends Fragment implements AdapterView.OnItemSelectedLis
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.listViewHistorico);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        historicoVazio = (TextView)rootView.findViewById(R.id.textViewHistoricoVazio);
-        historicoVazioBaixo = (TextView)rootView.findViewById(R.id.textViewHistoricoVazioBaixo);
+        historicoVazio = (TextView) rootView.findViewById(R.id.textViewHistoricoVazio);
+        historicoVazioBaixo = (TextView) rootView.findViewById(R.id.textViewHistoricoVazioBaixo);
         Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),
                 "roboto.ttf");
         historicoVazio.setTypeface(tf);
@@ -140,12 +129,8 @@ public class Historico extends Fragment implements AdapterView.OnItemSelectedLis
         spinnerEstados.setOnItemSelectedListener(this);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.array_opcoes_data, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
         spinnerEstados.setAdapter(adapter);
-//        mAdapter = new ProdutoAdapter(ProdutoManager.getInstance().getprodutos(), R.layout.card_layout, this.getActivity());
-//        mRecyclerView.setAdapter(mAdapter);
         consultaAoParse("tudo");
 
 
@@ -162,14 +147,11 @@ public class Historico extends Fragment implements AdapterView.OnItemSelectedLis
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if(parent.getItemAtPosition(position).toString().equalsIgnoreCase("mes")) {
+        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("mes")) {
             consultaAoParse("mes");
-//            Toast.makeText(getActivity(),teste.getStatus().toString(),Toast.LENGTH_LONG).show();
         }
-        if(parent.getItemAtPosition(position).toString().equalsIgnoreCase("semana")) {
+        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("semana")) {
             consultaAoParse("semana");
-
-//            Toast.makeText(getActivity(),"brasil"+teste.getStatus().toString(),Toast.LENGTH_LONG).show();
         }
     }
 

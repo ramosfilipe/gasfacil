@@ -71,28 +71,23 @@ public class FragmentEnderecoNovoUsuario extends Fragment {
         }
     }
 
-    public void checkTexts(String campo){
-        if(!campo.equals("rua") && rua.getText().toString().equals("")){
+    public void checkTexts(String campo) {
+        if (!campo.equals("rua") && rua.getText().toString().equals("")) {
             rua.setText("Rua");
             rua.setTextColor(Color.parseColor("#a9a9a9"));
-        }
-        else if(!campo.equals("numero") && numero.getText().toString().equals("")){
+        } else if (!campo.equals("numero") && numero.getText().toString().equals("")) {
             numero.setText("Número");
-             numero.setTextColor(Color.parseColor("#a9a9a9"));
-        }
-        else if(!campo.equals("cep") && cep.getText().toString().equals("")){
+            numero.setTextColor(Color.parseColor("#a9a9a9"));
+        } else if (!campo.equals("cep") && cep.getText().toString().equals("")) {
             cep.setText("CEP");
             cep.setTextColor(Color.parseColor("#a9a9a9"));
-        }
-        else if(!campo.equals("complemento") && complemento.getText().toString().equals("")){
+        } else if (!campo.equals("complemento") && complemento.getText().toString().equals("")) {
             complemento.setText("Complemento");
             complemento.setTextColor(Color.parseColor("#a9a9a9"));
-        }
-        else if(!campo.equals("bairro") && bairro.getText().toString().equals("")){
+        } else if (!campo.equals("bairro") && bairro.getText().toString().equals("")) {
             bairro.setText("Bairro");
             bairro.setTextColor(Color.parseColor("#a9a9a9"));
-        }
-        else if(!campo.equals("referencia") && referencia.getText().toString().equals("")){
+        } else if (!campo.equals("referencia") && referencia.getText().toString().equals("")) {
             referencia.setText("Ponto de referência");
             referencia.setTextColor(Color.parseColor("#a9a9a9"));
         }

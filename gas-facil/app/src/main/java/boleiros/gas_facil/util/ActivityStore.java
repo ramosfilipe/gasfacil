@@ -17,18 +17,8 @@ public class ActivityStore {
     private Context mContext;
     private ParseUser user;
     private Produto produto;
-
-    public Bitmap getImagemDePedido() {
-        return imagemDePedido;
-    }
-
-    public void setImagemDePedido(Bitmap imagemDePedido) {
-        this.imagemDePedido = imagemDePedido;
-    }
-
     private Bitmap imagemDePedido;
     private int quantidadeDeProdutoDesejadaPeloUser;
-
 
     private ActivityStore(Context ctx) {
         mContext = ctx;
@@ -39,6 +29,14 @@ public class ActivityStore {
             sActivityStore = new ActivityStore(ctx.getApplicationContext());
         }
         return sActivityStore;
+    }
+
+    public Bitmap getImagemDePedido() {
+        return imagemDePedido;
+    }
+
+    public void setImagemDePedido(Bitmap imagemDePedido) {
+        this.imagemDePedido = imagemDePedido;
     }
 
     public Produto getProduto() {

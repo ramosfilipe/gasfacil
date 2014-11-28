@@ -27,7 +27,7 @@ public class ProdutoAdapterPedido extends RecyclerView.Adapter<ProdutoAdapterPed
 
     private List<Produto> produtos;
     private int rowLayout, quantidade;
-    private  Context mContext;
+    private Context mContext;
 
     public ProdutoAdapterPedido(List<Produto> produtos, int quantidade, int rowLayout, Context context) {
         this.produtos = produtos;

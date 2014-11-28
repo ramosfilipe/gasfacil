@@ -3,8 +3,6 @@ package boleiros.gas_facil.pedido;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,11 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import boleiros.gas_facil.Inicio;
@@ -29,7 +25,6 @@ import boleiros.gas_facil.adapter.ProdutoAdapterPedido;
 import boleiros.gas_facil.modelo.Pedido;
 import boleiros.gas_facil.modelo.Produto;
 import boleiros.gas_facil.util.ActivityStore;
-import boleiros.gas_facil.util.BlurTool;
 
 public class EfetuarPedido extends Activity {
     private RecyclerView mRecyclerView;

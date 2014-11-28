@@ -42,6 +42,7 @@ public class Produto extends ParseObject {
     public ParseFile getThumbnailBlurFile() {
         return getParseFile("thumbnailBlur");
     }
+
     public void setThumbnailBlurFile(ParseFile file) {
         put("thumbnailBlur", file);
     }

@@ -1,136 +1,136 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeEnderecoNovoUsuario"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="boleiros.gas_facil.login.FragmentEnderecoNovoUsuario"
-    android:id="@+id/relativeEnderecoNovoUsuario">
+    tools:context="boleiros.gas_facil.login.FragmentEnderecoNovoUsuario">
 
 
     <TextView
+        android:id="@+id/textViewInformacoesPessoaisTagPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Informe seu endereço"
-        android:id="@+id/textViewInformacoesPessoaisTagPerfil"
-        android:textColor="@android:color/holo_blue_dark"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp"
+        android:text="Informe seu endereço"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/holo_blue_dark" />
 
     <EditText
+        android:id="@+id/editTextNomeRua"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Rua"
-        android:ems="10"
-        android:singleLine="true"
-
-        android:textColor="@android:color/darker_gray"
-        android:id="@+id/editTextNomeRua"
-        android:layout_marginTop="34dp"
-        android:layout_below="@+id/textViewInformacoesPessoaisTagPerfil"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textViewInformacoesPessoaisTagPerfil"
+        android:layout_marginTop="34dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:singleLine="true"
+        android:text="Rua"
+        android:textColor="@android:color/darker_gray" />
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/linearNumeroComplemento"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:id="@+id/linearNumeroComplemento"
-        android:layout_below="@+id/editTextNomeRua"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="18dp">
+        android:layout_below="@+id/editTextNomeRua"
+        android:layout_marginTop="18dp"
+        android:orientation="horizontal">
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
             android:id="@+id/editTextNumeroRua"
-            android:textColor="@android:color/darker_gray"
-            android:layout_weight="1"
-            android:text="Número" />
-
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:text="Número"
+            android:textColor="@android:color/darker_gray" />
+
+        <EditText
+            android:id="@+id/editTextCEP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
             android:singleLine="true"
 
-            android:textColor="@android:color/darker_gray"
-            android:inputType="textPersonName"
             android:text="CEP"
-            android:layout_weight="1"
-
-            android:ems="10"
-            android:id="@+id/editTextCEP" />
+            android:textColor="@android:color/darker_gray" />
     </LinearLayout>
 
     <EditText
+        android:id="@+id/editTextComplemento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/darker_gray"
-        android:inputType="textPersonName"
-        android:text="Complemento"
-        android:singleLine="true"
-
-        android:ems="10"
-        android:id="@+id/editTextComplemento"
-        android:layout_below="@+id/linearNumeroComplemento"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearNumeroComplemento"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:singleLine="true"
+        android:text="Complemento"
+        android:textColor="@android:color/darker_gray" />
 
     <Button
+        android:id="@+id/buttonContinuarEndereco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Continuar"
-        android:background="@drawable/button_border"
-        android:id="@+id/buttonContinuarEndereco"
-        android:textColor="@android:color/holo_blue_light"
-        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/textViewInformacoesPessoaisTagPerfil"
         android:layout_alignLeft="@+id/textViewInformacoesPessoaisTagPerfil"
-        android:singleLine="true"
-
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textViewInformacoesPessoaisTagPerfil"
         android:layout_alignStart="@+id/textViewInformacoesPessoaisTagPerfil"
         android:layout_marginBottom="59dp"
-        android:layout_alignRight="@+id/textViewInformacoesPessoaisTagPerfil"
-        android:layout_alignEnd="@+id/textViewInformacoesPessoaisTagPerfil" />
+
+        android:background="@drawable/button_border"
+        android:singleLine="true"
+        android:text="Continuar"
+        android:textColor="@android:color/holo_blue_light" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:textColor="@android:color/darker_gray"
-        android:text="Bairro"
-        android:singleLine="true"
-
-        android:ems="10"
         android:id="@+id/editTextBairro"
-        android:layout_marginTop="17dp"
-        android:layout_below="@+id/editTextComplemento"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editTextComplemento"
+        android:layout_marginTop="17dp"
+        android:ems="10"
         android:inputType="textPersonName"
         android:singleLine="true"
+        android:text="Bairro"
+        android:textColor="@android:color/darker_gray" />
 
-        android:text="Ponto de referência"
-        android:ems="10"
+    <EditText
         android:id="@+id/editTextPontoDeReferencia"
-        android:layout_below="@+id/editTextBairro"
-        android:textColor="@android:color/darker_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editTextBairro"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:singleLine="true"
+        android:text="Ponto de referência"
+        android:textColor="@android:color/darker_gray" />
 
 </RelativeLayout>

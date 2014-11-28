@@ -87,21 +87,18 @@ public class FragmentInformacoesPessoais extends Fragment {
     }
 
 
-    public void checkTexts(String campo){
-        if(!campo.equals("nome") && nome.getText().toString().equals("")){
+    public void checkTexts(String campo) {
+        if (!campo.equals("nome") && nome.getText().toString().equals("")) {
             nome.setText("Nome");
             nome.setTextColor(Color.parseColor("#a9a9a9"));
-        }
-        else if(!campo.equals("email") && email.getText().toString().equals("")){
+        } else if (!campo.equals("email") && email.getText().toString().equals("")) {
             email.setText("E-mail");
             email.setTextColor(Color.parseColor("#a9a9a9"));
-        }
-        else if(!campo.equals("telefone") && telefone.getText().toString().equals("")){
+        } else if (!campo.equals("telefone") && telefone.getText().toString().equals("")) {
             telefone.setText("Telefone");
             telefone.setTextColor(Color.parseColor("#a9a9a9"));
         }
     }
-
 
 
     @Override

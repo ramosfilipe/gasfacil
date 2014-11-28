@@ -3,7 +3,6 @@ package boleiros.gas_facil.perfil;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,7 +27,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import boleiros.gas_facil.Inicio;
 import boleiros.gas_facil.R;
 
 
@@ -45,14 +43,12 @@ public class Perfil extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     EditText nome, email, telefone, rua, numero, cep, complemento, bairro, referencia, senhaAntiga, novaSenha, novaSenhaConf;
     TextView nomePerfil;
     Button botaoSalvarPessoais, botaoSalvarEndereco, botaoSalvarSenha;
-
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
     private OnFragmentInteractionListener mListener;
 
     public Perfil() {
@@ -77,6 +73,17 @@ public class Perfil extends Fragment {
         return fragment;
     }
 
+    public static boolean emailValido(String emailId) {
+        Pattern pattern = Pattern.compile("\\w+([-+.]\\w+)*" + "\\@"
+                + "\\w+([-.]\\w+)*" + "\\." + "\\w+([-.]\\w+)*");
+
+        Matcher matcher = pattern.matcher(emailId);
+        if (matcher.matches())
+            return true;
+        else
+            return false;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,12 +103,12 @@ public class Perfil extends Fragment {
             @Override
             public void done(List<ParseUser> parseUsers, com.parse.ParseException e) {
                 ParseObject user = parseUsers.get(0);
-                if(flagAux.equals("pessoais")){
+                if (flagAux.equals("pessoais")) {
                     nome.setText(user.getString("nome"));
                     nomePerfil.setText(user.getString("nome"));
                     email.setText(user.getString("email"));
                     telefone.setText(user.getString("telefone"));
-                }else if (flagAux.equals("endereco")){
+                } else if (flagAux.equals("endereco")) {
                     rua.setText(user.getString("rua"));
                     numero.setText(user.getString("numero"));
                     cep.setText(user.getString("cep"));
@@ -114,46 +121,34 @@ public class Perfil extends Fragment {
         });
     }
 
-    public static boolean emailValido(String emailId) {
-        Pattern pattern = Pattern.compile("\\w+([-+.]\\w+)*" + "\\@"
-                + "\\w+([-.]\\w+)*" + "\\." + "\\w+([-.]\\w+)*");
-
-        Matcher matcher = pattern.matcher(emailId);
-        if (matcher.matches())
-            return true;
-        else
-            return false;
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_perfil, container, false);
-        TextView txt = (TextView)v.findViewById(R.id.textViewNomePerfil);
+        TextView txt = (TextView) v.findViewById(R.id.textViewNomePerfil);
         Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),
                 "roboto.ttf");
         txt.setTextSize(30);
         txt.setTypeface(tf);
-        nome = (EditText)v.findViewById(R.id.editTextNomePerfil);
-        nomePerfil = (TextView)v.findViewById(R.id.textViewNomePerfil);
-        email = (EditText)v.findViewById(R.id.editTextEmailInformacoesPerfil);
-        telefone = (EditText)v.findViewById(R.id.editTextTelefoneInformacoesPessoaisPerfil);
-        rua = (EditText)v.findViewById(R.id.editTextRuaEnderecoPerfil);
-        numero = (EditText)v.findViewById(R.id.editTextNumeroEnderecoPerfil);
-        cep = (EditText)v.findViewById(R.id.editTextCepEnderecoPerfil);
-        complemento = (EditText)v.findViewById(R.id.editTextComplementoEnderecoPerfil);
-        bairro = (EditText)v.findViewById(R.id.editTextBairroEnderecoPerfil);
-        referencia = (EditText)v.findViewById(R.id.editTextPontoReferenciaEnderecoPerfil);
-        senhaAntiga = (EditText)v.findViewById(R.id.editTextSenhaAtual);
-        novaSenha = (EditText)v.findViewById(R.id.editTextSenhaNovaPerfil);
-        novaSenhaConf = (EditText)v.findViewById(R.id.editTextConfirmaSenhaNova);
+        nome = (EditText) v.findViewById(R.id.editTextNomePerfil);
+        nomePerfil = (TextView) v.findViewById(R.id.textViewNomePerfil);
+        email = (EditText) v.findViewById(R.id.editTextEmailInformacoesPerfil);
+        telefone = (EditText) v.findViewById(R.id.editTextTelefoneInformacoesPessoaisPerfil);
+        rua = (EditText) v.findViewById(R.id.editTextRuaEnderecoPerfil);
+        numero = (EditText) v.findViewById(R.id.editTextNumeroEnderecoPerfil);
+        cep = (EditText) v.findViewById(R.id.editTextCepEnderecoPerfil);
+        complemento = (EditText) v.findViewById(R.id.editTextComplementoEnderecoPerfil);
+        bairro = (EditText) v.findViewById(R.id.editTextBairroEnderecoPerfil);
+        referencia = (EditText) v.findViewById(R.id.editTextPontoReferenciaEnderecoPerfil);
+        senhaAntiga = (EditText) v.findViewById(R.id.editTextSenhaAtual);
+        novaSenha = (EditText) v.findViewById(R.id.editTextSenhaNovaPerfil);
+        novaSenhaConf = (EditText) v.findViewById(R.id.editTextConfirmaSenhaNova);
 
 
-        botaoSalvarPessoais = (Button)v.findViewById(R.id.buttonSalvarInformacoesPessoaisPerfil);
-        botaoSalvarEndereco = (Button)v.findViewById(R.id.buttonSalvarEnderecoPerfil);
-        botaoSalvarSenha = (Button)v.findViewById(R.id.buttonSalvarNovaSenha);
+        botaoSalvarPessoais = (Button) v.findViewById(R.id.buttonSalvarInformacoesPessoaisPerfil);
+        botaoSalvarEndereco = (Button) v.findViewById(R.id.buttonSalvarEnderecoPerfil);
+        botaoSalvarSenha = (Button) v.findViewById(R.id.buttonSalvarNovaSenha);
 
         setInformacoes("pessoais");
         setInformacoes("endereco");
@@ -164,31 +159,31 @@ public class Perfil extends Fragment {
                 final String nometxt = nome.getText().toString();
                 final String emailtxt = email.getText().toString();
                 final String telefonetxt = telefone.getText().toString();
-                if (!nometxt.equals("") && !emailtxt.equals("") && !telefonetxt.equals("") && emailValido(emailtxt)){
-                        ParseQuery<ParseUser> query = ParseUser.getQuery();
-                        final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
-                                "Carregando");
-                        query.getInBackground(ParseUser.getCurrentUser().getObjectId(), new GetCallback<ParseUser>() {
-                            @Override
-                            public void done(ParseUser parseUser, com.parse.ParseException e) {
-                                ParseUser user = ParseUser.getCurrentUser();
-                                user.put("email", emailtxt);
-                                user.put("nome", nometxt);
-                                user.put("telefone", telefonetxt);
-                                user.saveInBackground(new SaveCallback() {
-                                    @Override
-                                    public void done(com.parse.ParseException e) {
-                                        setInformacoes("pessoais");
-                                        pDialog.dismiss();
-                                        Toast.makeText(getActivity().getApplicationContext(), "Informações editadas com sucesso.",
-                                                Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-                        });
+                if (!nometxt.equals("") && !emailtxt.equals("") && !telefonetxt.equals("") && emailValido(emailtxt)) {
+                    ParseQuery<ParseUser> query = ParseUser.getQuery();
+                    final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
+                            "Carregando");
+                    query.getInBackground(ParseUser.getCurrentUser().getObjectId(), new GetCallback<ParseUser>() {
+                        @Override
+                        public void done(ParseUser parseUser, com.parse.ParseException e) {
+                            ParseUser user = ParseUser.getCurrentUser();
+                            user.put("email", emailtxt);
+                            user.put("nome", nometxt);
+                            user.put("telefone", telefonetxt);
+                            user.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(com.parse.ParseException e) {
+                                    setInformacoes("pessoais");
+                                    pDialog.dismiss();
+                                    Toast.makeText(getActivity().getApplicationContext(), "Informações editadas com sucesso.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    });
 
-                    } else {
-                        Toast.makeText(getActivity().getApplicationContext(), "Preencha todos os campos corretamente.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity().getApplicationContext(), "Preencha todos os campos corretamente.", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -203,7 +198,7 @@ public class Perfil extends Fragment {
                 final String complementotxt = complemento.getText().toString();
                 final String bairrotxt = bairro.getText().toString();
                 final String referenciatxt = referencia.getText().toString();
-                if(!ruatxt.equals("") && !numerotxt.equals("")  && !ceptxt.equals("")  && !complementotxt.equals("")  && !bairrotxt.equals("")  && !referenciatxt.equals("") ){
+                if (!ruatxt.equals("") && !numerotxt.equals("") && !ceptxt.equals("") && !complementotxt.equals("") && !bairrotxt.equals("") && !referenciatxt.equals("")) {
                     ParseQuery<ParseUser> query = ParseUser.getQuery();
                     final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
                             "Carregando");
@@ -247,13 +242,13 @@ public class Perfil extends Fragment {
                                 if (user != null) {
                                     final String senhaNova = novaSenha.getText().toString();
                                     final String senhaNovaConf = novaSenhaConf.getText().toString();
-                                    if(!senhaNova.equals(senhaNovaConf)){
+                                    if (!senhaNova.equals(senhaNovaConf)) {
                                         Toast.makeText(
                                                 getActivity().getApplicationContext(),
                                                 "As novas senhas não são iguais, verifique e tente novamente",
                                                 Toast.LENGTH_LONG).show();
                                         pDialog.dismiss();
-                                    }else {
+                                    } else {
                                         ParseUser currentUser = ParseUser.getCurrentUser();
                                         currentUser.setPassword(senhaNova);
                                         currentUser.saveInBackground(new SaveCallback() {
