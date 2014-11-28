@@ -12,6 +12,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +22,8 @@ import com.parse.FindCallback;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import boleiros.gas_facil.R;
@@ -32,11 +37,12 @@ import boleiros.gas_facil.modelo.ProdutoManager;
 import boleiros.gas_facil.util.ActivityStore;
 
 
-public class Historico extends Fragment {
+public class Historico extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private RecyclerView mRecyclerView;
     private HistoricoAdapter mAdapter;
     private List<boleiros.gas_facil.modelo.Produto> produtos;
+    final private long UM_DIA_EM_MILLISEGUNDOS = 86400000;
     TextView historicoVazio, historicoVazioBaixo;
 
 
@@ -67,12 +73,27 @@ public class Historico extends Fragment {
 
     }
 
-    public void consultaAoParse() {
+    public void consultaAoParse(String range) {
         ParseQuery<Pedido> query = ParseQuery.getQuery("Pedido");
         query.include("comprador");
         query.include("produto");
         query.whereEqualTo("comprador", ParseUser.getCurrentUser());
         query.orderByDescending("createdAt");
+        if(range.equals("semana")){
+           Calendar calendar = Calendar.getInstance();
+           long aux = calendar.getTimeInMillis() - (7*UM_DIA_EM_MILLISEGUNDOS);
+           calendar.setTimeInMillis(aux);
+           Date date = calendar.getTime();
+           query.whereGreaterThanOrEqualTo("createdAt", date);
+        }
+
+        if(range.equals("mes")) {
+            Calendar calendar = Calendar.getInstance();
+            long aux = calendar.getTimeInMillis() - (30*UM_DIA_EM_MILLISEGUNDOS);
+            calendar.setTimeInMillis(aux);
+            Date date = calendar.getTime();
+            query.whereGreaterThanOrEqualTo("createdAt", date);
+        }
         //query.setLimit(10);
         final ProgressDialog pDialog = ProgressDialog.show(Historico.this.getActivity(), null,
                 "Carregando");
@@ -115,10 +136,17 @@ public class Historico extends Fragment {
                 "roboto.ttf");
         historicoVazio.setTypeface(tf);
         historicoVazioBaixo.setTypeface(tf);
-
+        Spinner spinnerEstados = (Spinner) rootView.findViewById(R.id.spinner);
+        spinnerEstados.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.array_opcoes_data, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spinnerEstados.setAdapter(adapter);
 //        mAdapter = new ProdutoAdapter(ProdutoManager.getInstance().getprodutos(), R.layout.card_layout, this.getActivity());
 //        mRecyclerView.setAdapter(mAdapter);
-        consultaAoParse();
+        consultaAoParse("tudo");
 
 
         return rootView;
@@ -132,5 +160,21 @@ public class Historico extends Fragment {
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if(parent.getItemAtPosition(position).toString().equalsIgnoreCase("mes")) {
+            consultaAoParse("mes");
+//            Toast.makeText(getActivity(),teste.getStatus().toString(),Toast.LENGTH_LONG).show();
+        }
+        if(parent.getItemAtPosition(position).toString().equalsIgnoreCase("semana")) {
+            consultaAoParse("semana");
 
+//            Toast.makeText(getActivity(),"brasil"+teste.getStatus().toString(),Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
