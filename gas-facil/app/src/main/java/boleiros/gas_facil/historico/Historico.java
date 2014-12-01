@@ -84,6 +84,13 @@ public class Historico extends Fragment implements AdapterView.OnItemSelectedLis
             Date date = calendar.getTime();
             query.whereGreaterThanOrEqualTo("createdAt", date);
         }
+        if (range.equals("2dias")) {
+            Calendar calendar = Calendar.getInstance();
+            long aux = calendar.getTimeInMillis() - (2 * UM_DIA_EM_MILLISEGUNDOS);
+            calendar.setTimeInMillis(aux);
+            Date date = calendar.getTime();
+            query.whereGreaterThanOrEqualTo("createdAt", date);
+        }
         //query.setLimit(10);
         final ProgressDialog pDialog = ProgressDialog.show(Historico.this.getActivity(), null,
                 "Carregando");
@@ -155,6 +162,9 @@ public class Historico extends Fragment implements AdapterView.OnItemSelectedLis
         }
         if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("tudo")) {
             consultaAoParse("tudo");
+        }
+        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("2 dias atrás")) {
+            consultaAoParse("2dias");
         }
     }
 

@@ -30,7 +30,7 @@
         android:id="@+id/textViewHistoricoVazio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/spinner"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="201dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -39,9 +39,9 @@
         android:id="@+id/textViewHistoricoVazioBaixo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewHistoricoVazio"
         android:layout_alignLeft="@+id/textViewHistoricoVazio"
         android:layout_alignStart="@+id/textViewHistoricoVazio"
-        android:layout_alignTop="@+id/listViewHistorico"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
