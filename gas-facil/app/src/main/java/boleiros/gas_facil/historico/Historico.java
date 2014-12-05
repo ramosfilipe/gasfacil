@@ -63,6 +63,96 @@ public class Historico extends Fragment implements AdapterView.OnItemSelectedLis
 
     }
 
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_historico, container, false);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.listViewHistorico);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        historicoVazio = (TextView) rootView.findViewById(R.id.textViewHistoricoVazio);
+        historicoVazioBaixo = (TextView) rootView.findViewById(R.id.textViewHistoricoVazioBaixo);
+        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),
+                "roboto.ttf");
+        historicoVazio.setTypeface(tf);
+        historicoVazioBaixo.setTypeface(tf);
+        Spinner spinnerEstados = (Spinner) rootView.findViewById(R.id.spinner);
+        spinnerEstados.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.array_opcoes_data, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerEstados.setAdapter(adapter);
+        consultaAoParse("tudo");
+
+
+        return rootView;
+    }
+
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("7 dias atrás")) {
+            consultaAoParse("semana");
+        }
+        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("30 dias atrás")) {
+            consultaAoParse("mes");
+        }
+        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("tudo")) {
+            consultaAoParse("tudo");
+        }
+        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("2 dias atrás")) {
+            consultaAoParse("2dias");
+        }
+        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("mais comprados")) {
+            consultaAoParseMaisComprados();
+        }
+    }
+
+    private void consultaAoParseMaisComprados() {
+        ParseQuery<Pedido> query = ParseQuery.getQuery("Pedido");
+        query.include("comprador");
+        query.include("produto");
+        query.whereEqualTo("comprador", ParseUser.getCurrentUser());
+
+        query.orderByDescending("quantidade");
+        query.addDescendingOrder("createdAt");
+
+        //query.setLimit(10);
+        final ProgressDialog pDialog = ProgressDialog.show(Historico.this.getActivity(), null,
+                "Carregando");
+        query.findInBackground(new FindCallback<Pedido>() {
+            @Override
+            public void done(List<Pedido> parseObjects, com.parse.ParseException e) {
+                if (e == null) {
+                    mAdapter = new HistoricoAdapter(parseObjects, R.layout.elemento_listview);
+                    if (parseObjects.size() > 0) {
+                        historicoVazio.setText("");
+                        historicoVazioBaixo.setText("");
+                    } else {
+                        historicoVazio.setText("Você ainda não comprou");
+                        historicoVazioBaixo.setText("nenhum produto.");
+                    }
+
+                    mRecyclerView.setAdapter(mAdapter);
+                    pDialog.dismiss();
+                } else {
+                    pDialog.dismiss();
+                    Toast.makeText(getActivity(),
+                            "Ops... Verifique sua internet",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
     public void consultaAoParse(String range) {
         ParseQuery<Pedido> query = ParseQuery.getQuery("Pedido");
         query.include("comprador");
@@ -118,56 +208,6 @@ public class Historico extends Fragment implements AdapterView.OnItemSelectedLis
             }
         });
     }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_historico, container, false);
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.listViewHistorico);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        historicoVazio = (TextView) rootView.findViewById(R.id.textViewHistoricoVazio);
-        historicoVazioBaixo = (TextView) rootView.findViewById(R.id.textViewHistoricoVazioBaixo);
-        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(),
-                "roboto.ttf");
-        historicoVazio.setTypeface(tf);
-        historicoVazioBaixo.setTypeface(tf);
-        Spinner spinnerEstados = (Spinner) rootView.findViewById(R.id.spinner);
-        spinnerEstados.setOnItemSelectedListener(this);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
-                R.array.array_opcoes_data, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerEstados.setAdapter(adapter);
-        consultaAoParse("tudo");
-
-
-        return rootView;
-    }
-
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-
-    }
-
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("7 dias atrás")) {
-            consultaAoParse("semana");
-        }
-        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("30 dias atrás")) {
-            consultaAoParse("mes");
-        }
-        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("tudo")) {
-            consultaAoParse("tudo");
-        }
-        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("2 dias atrás")) {
-            consultaAoParse("2dias");
-        }
-    }
-
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 

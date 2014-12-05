@@ -2,6 +2,7 @@
 <resources>
     <string-array name="array_opcoes_data">
         <item>Tudo</item>
+        <item>Mais Comprados</item>
         <item>2 dias atrás</item>
         <item>7 dias atrás</item>
         <item>30 dias atrás</item>

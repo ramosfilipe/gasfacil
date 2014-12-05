@@ -24,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import boleiros.gas_facil.historico.Historico;
+import boleiros.gas_facil.pedido.ProdutoRecomendado;
 import boleiros.gas_facil.perfil.Perfil;
 
 /**
@@ -107,6 +108,7 @@ public class NavigationDrawerFragment extends Fragment {
                 android.R.id.text1,
                 new String[]{
                         getString(R.string.title_section1),
+                        "Recomendados",
                         getString(R.string.title_section2),
                         getString(R.string.title_section3),
                 }));
@@ -211,6 +213,13 @@ public class NavigationDrawerFragment extends Fragment {
             fragTrans.commit();
         }
         if (position == 1) {
+            Fragment produtoRec  = new ProdutoRecomendado();
+            FragmentManager frag = getFragmentManager();
+            FragmentTransaction fragTrans = frag.beginTransaction();
+            fragTrans.replace(R.id.container, produtoRec);
+            fragTrans.commit();
+        }
+        if (position == 2) {
             Fragment historico = new Historico();
             FragmentManager frag = getFragmentManager();
             FragmentTransaction fragTrans = frag.beginTransaction();
@@ -218,7 +227,7 @@ public class NavigationDrawerFragment extends Fragment {
             fragTrans.commit();
 
         }
-        if (position == 2) {
+        if (position == 3) {
             Fragment perfil = new Perfil();
             FragmentManager frag = getFragmentManager();
             FragmentTransaction fragTrans = frag.beginTransaction();
