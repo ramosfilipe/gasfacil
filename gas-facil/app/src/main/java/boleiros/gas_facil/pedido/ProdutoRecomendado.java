@@ -70,7 +70,7 @@ public class ProdutoRecomendado extends Fragment {
 
 
                     ProdutoManager.getInstance().setProdutos(produtos);
-                    mAdapter = new ProdutoAdapter(produtos, R.layout.card_layout);
+                    mAdapter = new ProdutoAdapter(produtos, R.layout.card_layout,getActivity());
                     mRecyclerView.setAdapter(mAdapter);
                     pDialog.dismiss();
                 } else {

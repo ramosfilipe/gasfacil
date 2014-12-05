@@ -47,7 +47,7 @@ public class Produto extends Fragment {
             public void done(List<boleiros.gas_facil.modelo.Produto> parseObjects, com.parse.ParseException e) {
                 if (e == null) {
                     ProdutoManager.getInstance().setProdutos(parseObjects);
-                    mAdapter = new ProdutoAdapter(parseObjects, R.layout.card_layout);
+                    mAdapter = new ProdutoAdapter(parseObjects, R.layout.card_layout,getActivity());
                     mRecyclerView.setAdapter(mAdapter);
                     pDialog.dismiss();
                 } else {

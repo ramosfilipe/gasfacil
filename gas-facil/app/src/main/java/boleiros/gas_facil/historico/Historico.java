@@ -133,7 +133,7 @@ public class Historico extends Fragment implements AdapterView.OnItemSelectedLis
             @Override
             public void done(List<Pedido> parseObjects, com.parse.ParseException e) {
                 if (e == null) {
-                    mAdapter = new HistoricoAdapter(parseObjects, R.layout.elemento_listview);
+                    mAdapter = new HistoricoAdapter(parseObjects, R.layout.elemento_listview,getActivity());
                     if (parseObjects.size() > 0) {
                         historicoVazio.setText("");
                         historicoVazioBaixo.setText("");
@@ -188,7 +188,7 @@ public class Historico extends Fragment implements AdapterView.OnItemSelectedLis
             @Override
             public void done(List<Pedido> parseObjects, com.parse.ParseException e) {
                 if (e == null) {
-                    mAdapter = new HistoricoAdapter(parseObjects, R.layout.elemento_listview);
+                    mAdapter = new HistoricoAdapter(parseObjects, R.layout.elemento_listview,getActivity());
                     if (parseObjects.size() > 0) {
                         historicoVazio.setText("");
                         historicoVazioBaixo.setText("");
