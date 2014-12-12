@@ -8,6 +8,7 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import boleiros.gas_facil.modelo.Estatistica;
+import boleiros.gas_facil.modelo.Favorito;
 import boleiros.gas_facil.modelo.Pedido;
 import boleiros.gas_facil.modelo.Produto;
 
@@ -30,6 +31,7 @@ public class GasFacil extends Application {
         ParseObject.registerSubclass(Produto.class);
         ParseObject.registerSubclass(Pedido.class);
         ParseObject.registerSubclass(Estatistica.class);
+        ParseObject.registerSubclass(Favorito.class );
 
 
     }

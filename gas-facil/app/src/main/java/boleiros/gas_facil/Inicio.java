@@ -18,12 +18,13 @@ import android.view.ViewGroup;
 import com.parse.ParseUser;
 
 import boleiros.gas_facil.adapter.ProdutoAdapter;
+import boleiros.gas_facil.favoritos.FragmentFavoritos;
 import boleiros.gas_facil.login.LoginSignup;
 import boleiros.gas_facil.perfil.Perfil;
 
 
 public class Inicio extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks, Perfil.OnFragmentInteractionListener {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks, Perfil.OnFragmentInteractionListener, FragmentFavoritos.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -65,12 +66,17 @@ public class Inicio extends Activity
         switch (number) {
             case 1:
                 mTitle = getString(R.string.title_section1);
-
                 break;
             case 2:
-                mTitle = getString(R.string.title_section2);
+                mTitle = "Recomendados";
                 break;
             case 3:
+                mTitle = "Favoritos";
+                break;
+            case 4:
+                mTitle = getString(R.string.title_section2);
+                break;
+            case 5:
                 mTitle = getString(R.string.title_section3);
                 break;
         }

@@ -29,25 +29,34 @@
         android:textColor="@android:color/holo_blue_light" />
 
     <TextView
-        android:id="@+id/textViewNomePerfil"
+        android:id="@+id/textViewDinheiro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/listEfetuarPedido"
-        android:layout_alignStart="@+id/listEfetuarPedido"
-        android:layout_below="@+id/listEfetuarPedido"
         android:text="Dinheiro:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/textViewDescricaoProduto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp" />
 
     <EditText
         android:id="@+id/editTextDinheiro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/listEfetuarPedido"
-        android:layout_alignLeft="@+id/textViewNomePerfil"
+        android:inputType="numberDecimal"
+        android:layout_below="@+id/textViewDinheiro"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/listEfetuarPedido"
-        android:layout_alignStart="@+id/textViewNomePerfil"
-        android:layout_below="@+id/textViewNomePerfil"
-        android:layout_toEndOf="@+id/textViewNomePerfil"
-        android:inputType="numberDecimal" />
+        android:layout_alignEnd="@+id/listEfetuarPedido" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewDescricaoProduto"
+        android:layout_below="@+id/listEfetuarPedido"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
 
 </RelativeLayout>

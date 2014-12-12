@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="boleiros.gas_facil.favoritos.FragmentFavoritos">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/listFavoritos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Inicio" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewAdicionarFavorito"
+        android:src="@drawable/botao_adicionar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewFavoritoVazioCima"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textViewFavoritoVazioBaixo"
+        android:layout_below="@+id/textViewFavoritoVazioCima"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

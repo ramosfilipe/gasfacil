@@ -5,6 +5,9 @@ import android.graphics.Bitmap;
 
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import boleiros.gas_facil.modelo.Produto;
 
 /**
@@ -19,7 +22,7 @@ public class ActivityStore {
     private Produto produto;
     private Bitmap imagemDePedido;
     private int quantidadeDeProdutoDesejadaPeloUser;
-
+    private List<Produto> arrayProdutos;
     private ActivityStore(Context ctx) {
         mContext = ctx;
     }
@@ -63,5 +66,11 @@ public class ActivityStore {
         this.user = user;
     }
 
+    public void setProdutos(List<Produto> arrayProdutos){
+        this.arrayProdutos = arrayProdutos;
+    }
 
+    public List<Produto> getProdutos(){
+        return arrayProdutos;
+    }
 }

@@ -3,6 +3,7 @@ package boleiros.gas_facil.pedido;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
@@ -34,6 +36,12 @@ public class EfetuarPedido extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_efetuar_pedido);
+        TextView descricao = (TextView) findViewById(R.id.textViewDescricaoProduto);
+        descricao.setText("''" + ActivityStore.getInstance(this).getProduto().getDescricao() + "'''");
+        Typeface tf = Typeface.createFromAsset(getAssets(),
+                "roboto.ttf");
+        descricao.setTypeface(tf,Typeface.ITALIC);
+
         //  System.out.println(ActivityStore.getInstance(this).getProduto().getType());
         mRecyclerView = (RecyclerView) findViewById(R.id.listEfetuarPedido);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -52,6 +60,7 @@ public class EfetuarPedido extends Activity {
             public void onClick(View v) {
 
                 EditText dinheiro = (EditText) findViewById(R.id.editTextDinheiro);
+
 
                 if (dinheiro.getText().toString().length() > 0) {
 

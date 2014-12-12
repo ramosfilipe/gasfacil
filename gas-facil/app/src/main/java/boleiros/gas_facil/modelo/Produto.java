@@ -23,6 +23,14 @@ public class Produto extends ParseObject {
         put("price", price);
     }
 
+    public void setDescricao(String descricao){
+        put("descricao",descricao);
+    }
+
+    public String getDescricao(){
+        return getString("descricao");
+    }
+
     public String getType() {
         return getString("type");
     }
