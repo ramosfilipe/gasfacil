@@ -27,6 +27,7 @@ import boleiros.gas_facil.favoritos.FragmentFavoritos;
 import boleiros.gas_facil.historico.Historico;
 import boleiros.gas_facil.pedido.ProdutoRecomendado;
 import boleiros.gas_facil.perfil.Perfil;
+import boleiros.gas_facil.sugestao.Sugestao;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -113,6 +114,7 @@ public class NavigationDrawerFragment extends Fragment {
                         "Favoritos",
                         getString(R.string.title_section2),
                         getString(R.string.title_section3),
+                        "Sugestão",
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
@@ -241,6 +243,13 @@ public class NavigationDrawerFragment extends Fragment {
             FragmentManager frag = getFragmentManager();
             FragmentTransaction fragTrans = frag.beginTransaction();
             fragTrans.replace(R.id.container, perfil);
+            fragTrans.commit();
+        }
+        if (position == 5) {
+            Fragment sugestao = new boleiros.gas_facil.sugestao.Sugestao();
+            FragmentManager frag = getFragmentManager();
+            FragmentTransaction fragTrans = frag.beginTransaction();
+            fragTrans.replace(R.id.container, sugestao);
             fragTrans.commit();
         }
     }

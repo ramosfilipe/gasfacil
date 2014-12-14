@@ -79,6 +79,9 @@ public class Inicio extends Activity
             case 5:
                 mTitle = getString(R.string.title_section3);
                 break;
+            case 6:
+                mTitle = "Sugestão";
+                break;
         }
     }
 

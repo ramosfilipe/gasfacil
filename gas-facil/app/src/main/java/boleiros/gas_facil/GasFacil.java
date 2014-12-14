@@ -11,6 +11,7 @@ import boleiros.gas_facil.modelo.Estatistica;
 import boleiros.gas_facil.modelo.Favorito;
 import boleiros.gas_facil.modelo.Pedido;
 import boleiros.gas_facil.modelo.Produto;
+import boleiros.gas_facil.modelo.SugestaoModel;
 
 /**
  * Created by filipe on 28/10/14.
@@ -32,6 +33,7 @@ public class GasFacil extends Application {
         ParseObject.registerSubclass(Pedido.class);
         ParseObject.registerSubclass(Estatistica.class);
         ParseObject.registerSubclass(Favorito.class );
+        ParseObject.registerSubclass(SugestaoModel.class );
 
 
     }

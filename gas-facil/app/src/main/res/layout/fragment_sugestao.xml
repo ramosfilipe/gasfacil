@@ -1,0 +1,82 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sugestao"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEEEEE"
+    tools:context="boleiros.gas_facil.sugestao.Sugestao">
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutRootSugestao"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/textViewNomePerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayoutInformacoesPessoaisPerfil"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:id="@+id/textViewCompartilheSugestao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Compartilhe uma sugestão"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/editTextSugestao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewCompartilheSugestao"
+                android:layout_alignLeft="@+id/textViewCompartilheSugestao"
+                android:layout_alignStart="@+id/textViewCompartilheSugestao"
+                android:layout_alignRight="@+id/buttonEnviarSugestao"
+                android:layout_alignEnd="@+id/buttonEnviarSugestao" />
+
+            <Button
+                android:id="@+id/buttonEnviarSugestao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editTextSugestao"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_border"
+                android:text="Enviar"
+                android:textColor="@android:color/holo_blue_light" />
+
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_below="@id/relativeLayoutInformacoesPessoaisPerfil"></FrameLayout>
+    </RelativeLayout>
+
+
+</ScrollView>
