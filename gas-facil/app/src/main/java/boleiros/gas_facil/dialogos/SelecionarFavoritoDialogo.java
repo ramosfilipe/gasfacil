@@ -18,6 +18,7 @@ import com.parse.SaveCallback;
 import java.util.ArrayList;
 import java.util.List;
 
+import boleiros.gas_facil.Inicio;
 import boleiros.gas_facil.R;
 import boleiros.gas_facil.favoritos.FragmentFavoritos;
 import boleiros.gas_facil.modelo.Favorito;
@@ -36,6 +37,7 @@ public class SelecionarFavoritoDialogo extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
+        final Inicio inicio =(Inicio) getActivity();
 
         for (Produto produto : produtos){
             nomeProdutos.add(produto.getType() + " - " + produto.getDescricao());
@@ -63,7 +65,8 @@ public class SelecionarFavoritoDialogo extends DialogFragment {
                         favorito.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(ParseException e) {
-                                dialog.dismiss();
+                                inicio.carregaFragmentFavorito();
+                                //dialog.dismiss();
                             }
                         });
 // User clicked OK, so save the result somewhere
@@ -74,10 +77,12 @@ public class SelecionarFavoritoDialogo extends DialogFragment {
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
+                        inicio.carregaFragmentFavorito();
+                        //dialog.dismiss();
                     }
                 });
 
         return builder.create();
     }
+
 }

@@ -182,5 +182,11 @@ public class Inicio extends Activity
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
+    public void carregaFragmentFavorito()
+    {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, new FragmentFavoritos())
+                .commit();
+    }
 
 }
