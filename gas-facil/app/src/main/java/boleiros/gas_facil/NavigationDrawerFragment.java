@@ -23,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import boleiros.gas_facil.contatoFornecedor.PerfilFornecedor;
 import boleiros.gas_facil.favoritos.FragmentFavoritos;
 import boleiros.gas_facil.historico.Historico;
 import boleiros.gas_facil.pedido.ProdutoRecomendado;
@@ -115,6 +116,7 @@ public class NavigationDrawerFragment extends Fragment {
                         getString(R.string.title_section2),
                         getString(R.string.title_section3),
                         "Sugestão",
+                        "Fornecedor",
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
@@ -250,6 +252,13 @@ public class NavigationDrawerFragment extends Fragment {
             FragmentManager frag = getFragmentManager();
             FragmentTransaction fragTrans = frag.beginTransaction();
             fragTrans.replace(R.id.container, sugestao);
+            fragTrans.commit();
+        }
+        if (position == 6) {
+            Fragment fornecedor = new PerfilFornecedor();
+            FragmentManager frag = getFragmentManager();
+            FragmentTransaction fragTrans = frag.beginTransaction();
+            fragTrans.replace(R.id.container, fornecedor);
             fragTrans.commit();
         }
     }

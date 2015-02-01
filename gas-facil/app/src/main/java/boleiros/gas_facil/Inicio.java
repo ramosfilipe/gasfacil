@@ -82,6 +82,9 @@ public class Inicio extends Activity
             case 6:
                 mTitle = "Sugestão";
                 break;
+            case 7:
+                mTitle = "Fornecedor";
+                break;
         }
     }
 

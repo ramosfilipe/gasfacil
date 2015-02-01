@@ -1,6 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sugestao"
+    android:id="@+id/perfilFornecedor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EEEEEE"
@@ -25,10 +25,14 @@
             android:id="@+id/relativeLayoutInformacoesPessoaisPerfil"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewNomePerfilFornecedor"
+            android:layout_marginTop="20dp"
+
             android:background="@drawable/bg_card"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true">
 
             <TextView
                 android:id="@+id/textViewCompartilheSugestao"
@@ -38,35 +42,42 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:text="Compartilhe uma sugestão"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:text="Endereço"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <EditText
+            <TextView
                 android:id="@+id/TextViewEnderecoFornecedor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+
                 android:layout_below="@+id/textViewCompartilheSugestao"
                 android:layout_alignLeft="@+id/textViewCompartilheSugestao"
                 android:layout_alignStart="@+id/textViewCompartilheSugestao"
-                android:layout_alignRight="@+id/buttonEnviarSugestao"
-                android:layout_alignEnd="@+id/buttonEnviarSugestao" />
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-            <Button
-                android:id="@+id/buttonEnviarSugestao"
+            <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentStart="true"
+                android:text="Telefone"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_below="@+id/TextViewEnderecoFornecedor"
+                android:layout_alignLeft="@+id/TextViewEnderecoFornecedor"
+                android:layout_alignStart="@+id/TextViewEnderecoFornecedor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
                 android:layout_marginBottom="30dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/button_border"
-                android:text="Enviar"
-                android:textColor="@android:color/holo_blue_light" />
+
+                android:id="@+id/textViewTelefoneFornecedor"
+                android:layout_below="@+id/textView"
+                android:layout_alignLeft="@+id/textView"
+                android:layout_alignStart="@+id/textViewTelefoneFornecedor" />
 
 
         </RelativeLayout>
@@ -75,7 +86,10 @@
             android:id="@+id/frameLayout"
             android:layout_width="fill_parent"
             android:layout_height="20dp"
-            android:layout_below="@id/relativeLayoutInformacoesPessoaisPerfil"></FrameLayout>
+            android:layout_below="@+id/relativeLayoutInformacoesPessoaisPerfil"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"></FrameLayout>
+
     </RelativeLayout>
 
 

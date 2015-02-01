@@ -2,7 +2,6 @@ package boleiros.gas_facil.sugestao;
 
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,12 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.parse.GetCallback;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import boleiros.gas_facil.Inicio;
 import boleiros.gas_facil.R;
 import boleiros.gas_facil.modelo.SugestaoModel;
 
@@ -36,7 +32,7 @@ public class Sugestao extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_sugestao, container, false);
-        final EditText campoSugestao = (EditText) v.findViewById(R.id.editTextSugestao);
+        final EditText campoSugestao = (EditText) v.findViewById(R.id.TextViewEnderecoFornecedor);
         final Button  buttonEnviarSugestao = (Button) v.findViewById(R.id.buttonEnviarSugestao);
         buttonEnviarSugestao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +49,7 @@ public class Sugestao extends Fragment {
                             if (e != null) {
                                 pDialog.dismiss();
                                 Toast.makeText(getActivity(),
-                                        "Ops... Tente comprar novamente",
+                                        "Ops... Tente enviar novamente",
                                         Toast.LENGTH_LONG).show();
 
                             } else {
