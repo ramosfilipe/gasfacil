@@ -88,9 +88,9 @@ public class ProdutoAdapterPedido extends RecyclerView.Adapter<ProdutoAdapterPed
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         viewHolder.countryName.setText("" + quantidade);
-        double dbl = Double.parseDouble(produtos.get(i).getPrice());
-
-        viewHolder.precoProduto.setText("R$" + dbl * quantidade + "0");
+        double dbl = produtos.get(i).getPrice();
+        String aux = "R$" + dbl * quantidade + "0";
+        viewHolder.precoProduto.setText(aux.replace(".",","));
 
         try {
             Bitmap bit = decodeSampledBitmapFromResource(produtos.get(i).getPhotoFile(), 1000, 1000);

@@ -66,8 +66,8 @@ public class EfetuarPedido extends Activity {
 
 
                     double dinheiroDbl = Double.parseDouble(dinheiro.getText().toString());
-                    double precoProduto = Double.parseDouble(aux.get(0).getPrice());
-                    double valorDoPedido = qtd * precoProduto;
+                    //double precoProduto = Double.parseDouble();
+                    double valorDoPedido = qtd * aux.get(0).getPrice();
                     double troco = dinheiroDbl - valorDoPedido;
                     if (dinheiroDbl < valorDoPedido) {
                         Toast.makeText(getApplicationContext(),

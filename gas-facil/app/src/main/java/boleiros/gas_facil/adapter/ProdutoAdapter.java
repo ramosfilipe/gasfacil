@@ -159,7 +159,8 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Produto produto = produtos.get(i);
         //viewHolder.countryName.setText(produto.getType());
-        viewHolder.precoProduto.setText("R$" + produto.getPrice());
+        String aux = "R$" + produto.getPrice();
+        viewHolder.precoProduto.setText(aux.replace(".",","));
         ParseFile pf = produto.getPhotoFile();
         loadBitmap(pf, viewHolder.produtoImage);
 //        try {

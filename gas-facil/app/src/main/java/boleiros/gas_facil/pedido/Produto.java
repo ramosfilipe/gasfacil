@@ -10,6 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -27,7 +30,7 @@ import boleiros.gas_facil.util.ActivityStore;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class Produto extends Fragment {
+public class Produto extends Fragment implements AdapterView.OnItemSelectedListener  {
     /**
      * The fragment argument representing the section number for this
      * fragment.
@@ -36,9 +39,18 @@ public class Produto extends Fragment {
     private ProdutoAdapter mAdapter;
     private List<boleiros.gas_facil.modelo.Produto> produtos;
 
-    public void consultaAoParse() {
+    public void consultaAoParse(String filtro) {
         ParseQuery<boleiros.gas_facil.modelo.Produto> query = ParseQuery.getQuery("Produto");
-        query.orderByDescending("createdAt");
+        if(filtro.equals("precoAlto")){
+            query.orderByDescending("price_int");
+
+        }   if(filtro.equals("precoBaixo")){
+            query.orderByAscending("price_int");
+
+        }   if(filtro.equals("data")){
+            query.orderByDescending("createdAt");
+
+        }
         //query.setLimit(10);
         final ProgressDialog pDialog = ProgressDialog.show(getActivity(), null,
                 "Carregando");
@@ -71,7 +83,14 @@ public class Produto extends Fragment {
 
 //        mAdapter = new ProdutoAdapter(ProdutoManager.getInstance().getprodutos(), R.layout.card_layout, this.getActivity());
 //        mRecyclerView.setAdapter(mAdapter);
-        consultaAoParse();
+        //consultaAoParse();
+        Spinner spinnerEstados = (Spinner) rootView.findViewById(R.id.spinner2);
+        spinnerEstados.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.array_opcoes_ordenacao_produtos, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerEstados.setAdapter(adapter);
+        consultaAoParse("data");
         mRecyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(rootView.getContext(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
@@ -89,6 +108,24 @@ public class Produto extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+
+
+    }
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("data")) {
+            consultaAoParse("data");
+        }
+        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("Preço mais alto")) {
+            consultaAoParse("precoAlto");
+        }
+        if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("Preço mais baixo")) {
+            consultaAoParse("precoBaixo");
+        }
+
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }

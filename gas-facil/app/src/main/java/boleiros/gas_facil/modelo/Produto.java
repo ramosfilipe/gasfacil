@@ -15,12 +15,12 @@ public class Produto extends ParseObject {
     public Produto() {
     }
 
-    public String getPrice() {
-        return getString("price");
+    public Double getPrice() {
+        return getDouble("price_int");
     }
 
-    public void setPrice(String price) {
-        put("price", price);
+    public void setPrice(Double price) {
+        put("price_int", price);
     }
 
     public void setDescricao(String descricao){
