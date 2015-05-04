@@ -45,7 +45,7 @@
                 android:id="@+id/TextViewEnderecoFornecedor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textViewCompartilheSugestao"
+                android:layout_below="@+id/spinner3"
                 android:layout_alignLeft="@+id/textViewCompartilheSugestao"
                 android:layout_alignStart="@+id/textViewCompartilheSugestao"
                 android:layout_alignRight="@+id/buttonEnviarSugestao"
@@ -67,6 +67,14 @@
                 android:background="@drawable/button_border"
                 android:text="Enviar"
                 android:textColor="@android:color/holo_blue_light" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner3"
+                android:layout_below="@+id/textViewCompartilheSugestao"
+                android:layout_alignLeft="@+id/textViewCompartilheSugestao"
+                android:layout_alignStart="@+id/textViewCompartilheSugestao"/>
 
 
         </RelativeLayout>

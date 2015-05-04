@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_opcoes_sugestao">
+        <item>Prazo de entrega</item>
+        <item>Preço</item>
+        <item>Aplicativo</item>
+        <item>Pagamento</item>
+        <item>Outro</item>
+
+
+    </string-array>
+</resources>

@@ -41,6 +41,7 @@ public class Produto extends Fragment implements AdapterView.OnItemSelectedListe
 
     public void consultaAoParse(String filtro) {
         ParseQuery<boleiros.gas_facil.modelo.Produto> query = ParseQuery.getQuery("Produto");
+        query.whereEqualTo("emCirculacao",true);
         if(filtro.equals("precoAlto")){
             query.orderByDescending("price_int");
 

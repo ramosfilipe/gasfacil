@@ -50,6 +50,8 @@ public class ProdutoRecomendado extends Fragment {
                 if (e == null) {
                     System.out.println(parseObjects.size()+"");
 
+
+
                     if(parseObjects.size()==1){
                         System.out.println("pos1");
                         produtos.add(0,(Produto) parseObjects.get(0).getProduto());

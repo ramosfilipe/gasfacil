@@ -31,6 +31,10 @@ public class SugestaoModel extends ParseObject {
         put("sugestao", sugestao);
     }
 
+    public void setTipoSugestao(String sug) {
+        put("tipo",sug);
+    }
+
 
 
 }

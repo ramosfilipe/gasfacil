@@ -7,8 +7,11 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
@@ -20,7 +23,7 @@ import boleiros.gas_facil.modelo.SugestaoModel;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Sugestao extends Fragment {
+public class Sugestao extends Fragment  implements AdapterView.OnItemSelectedListener {
 
 
     public Sugestao() {
@@ -34,6 +37,12 @@ public class Sugestao extends Fragment {
         View v = inflater.inflate(R.layout.fragment_sugestao, container, false);
         final EditText campoSugestao = (EditText) v.findViewById(R.id.TextViewEnderecoFornecedor);
         final Button  buttonEnviarSugestao = (Button) v.findViewById(R.id.buttonEnviarSugestao);
+        final Spinner spinner = (Spinner) v.findViewById(R.id.spinner3);
+        spinner.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.array_opcoes_sugestao, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
         buttonEnviarSugestao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,6 +51,7 @@ public class Sugestao extends Fragment {
                             "Carregando");
                     SugestaoModel sugestao = new SugestaoModel();
                     sugestao.setUser(ParseUser.getCurrentUser());
+                    sugestao.setTipoSugestao(spinner.getSelectedItem().toString());
                     sugestao.setStatus(campoSugestao.getText().toString());
                     sugestao.saveInBackground(new SaveCallback() {
                         @Override
@@ -78,4 +88,13 @@ public class Sugestao extends Fragment {
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
