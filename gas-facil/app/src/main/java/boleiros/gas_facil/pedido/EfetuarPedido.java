@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import boleiros.gas_facil.Inicio;
@@ -55,17 +58,48 @@ public class EfetuarPedido extends Activity {
         mRecyclerView.setAdapter(mAdapter);
         final int qtd = ActivityStore.getInstance(this).getQuantidadeDeProdutoDesejadaPeloUser();
         Button confirmar = (Button) findViewById(R.id.buttonConfirmar);
+        EditText dinheiro = (EditText) findViewById(R.id.editTextDinheiro);
+        dinheiro.addTextChangedListener(new TextWatcher() {
+            EditText dinheiro = (EditText) findViewById(R.id.editTextDinheiro);
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            private String current = "";
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(!charSequence.toString().equals(current)){
+                    dinheiro.removeTextChangedListener(this);
+                    String replaceable = String.format("[%s,.]", NumberFormat.getCurrencyInstance().getCurrency().getSymbol());
+                    String cleanString = charSequence.toString().replaceAll(replaceable, "");
+                    if(!cleanString.equals("")){
+                        double parsed = Double.parseDouble(cleanString);
+                        String formatted = NumberFormat.getCurrencyInstance().format((parsed / 100));
+                        current = formatted;
+                        dinheiro.setText(formatted);
+                        dinheiro.setSelection(formatted.length());
+
+                    }
+
+
+                    dinheiro.addTextChangedListener(this);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 EditText dinheiro = (EditText) findViewById(R.id.editTextDinheiro);
-
-
-                if (dinheiro.getText().toString().length() > 0) {
-
-
-                    double dinheiroDbl = Double.parseDouble(dinheiro.getText().toString());
+                String dinheiroFormatado = dinheiro.getText().toString();
+                String replaceable = String.format("[%s,.]", NumberFormat.getCurrencyInstance().getCurrency().getSymbol());
+                String dinheiroNumeric = dinheiroFormatado.toString().replaceAll(replaceable, "");
+                if (dinheiroNumeric.length() > 0) {
+                    dinheiroNumeric = new StringBuilder(dinheiroNumeric).insert(dinheiroNumeric.length() - 2, ".").toString();
+                    double dinheiroDbl = Double.parseDouble(dinheiroNumeric);
                     //double precoProduto = Double.parseDouble();
                     double valorDoPedido = qtd * aux.get(0).getPrice();
                     double troco = dinheiroDbl - valorDoPedido;
@@ -86,7 +120,7 @@ public class EfetuarPedido extends Activity {
                             Pedido pedido = new Pedido();
                             pedido.setProduto(aux.get(0));
                             pedido.setComprador(ParseUser.getCurrentUser());
-                            pedido.setPrice(dinheiro.getText().toString());
+                            pedido.setPrice(dinheiroNumeric);
                             pedido.setQuantidade(qtd);
                             pedido.setStatus("Pendente");
                             pedido.setTroco("" + troco);

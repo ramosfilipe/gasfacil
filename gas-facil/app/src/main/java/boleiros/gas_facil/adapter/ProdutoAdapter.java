@@ -19,6 +19,7 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 
 import java.lang.ref.WeakReference;
+import java.text.NumberFormat;
 import java.util.List;
 
 import boleiros.gas_facil.R;
@@ -159,8 +160,9 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ViewHold
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         Produto produto = produtos.get(i);
         //viewHolder.countryName.setText(produto.getType());
-        String aux = "R$" + produto.getPrice();
-        viewHolder.precoProduto.setText(aux.replace(".",","));
+        //String aux = "R$" + produto.getPrice();
+        String aux = NumberFormat.getCurrencyInstance().format((produto.getPrice()));
+        viewHolder.precoProduto.setText(aux);
         ParseFile pf = produto.getPhotoFile();
         loadBitmap(pf, viewHolder.produtoImage);
 //        try {
