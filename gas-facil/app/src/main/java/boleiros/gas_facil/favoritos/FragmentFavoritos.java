@@ -110,7 +110,9 @@ public class FragmentFavoritos extends Fragment {
                         vazioBaixo.setText("produtos favoritos.");
                     }
                     for (int i = 0; i < parseObjects.size() ; i++) {
-                        produtos.add(i,(Produto) parseObjects.get(i).getProduto());
+                        Produto p1 = (Produto) parseObjects.get(i).getProduto();
+                        if(p1.getEmCirculacao()){
+                            produtos.add(p1);}
                     }
                     ProdutoManager.getInstance().setProdutos(produtos);
                     mAdapter = new ProdutoAdapter(produtos, R.layout.card_layout,getActivity());

@@ -37,8 +37,10 @@ public class ProdutoRecomendado extends Fragment {
     public void consultaAoParse() {
         final ArrayList<Produto> produtos = new ArrayList<Produto>();
         ParseQuery<Estatistica> query = ParseQuery.getQuery("Estatistica");
+
         query.include("cliente");
         query.include("produto");
+
         query.whereEqualTo("cliente", ParseUser.getCurrentUser());
         query.orderByDescending("quantidadeComprada");
         query.setLimit(3);
@@ -54,20 +56,36 @@ public class ProdutoRecomendado extends Fragment {
 
                     if(parseObjects.size()==1){
                         System.out.println("pos1");
-                        produtos.add(0,(Produto) parseObjects.get(0).getProduto());
+                        Produto p1 = (Produto) parseObjects.get(0).getProduto();
+                        if(p1.getEmCirculacao()){
+                        produtos.add(p1);}
                     }
                     if(parseObjects.size()==2){
                         System.out.println("pos2");
+                        Produto p1 = (Produto) parseObjects.get(0).getProduto();
+                        Produto p2 = (Produto) parseObjects.get(1).getProduto();
 
-                        produtos.add(0,(Produto) parseObjects.get(0).getProduto());
-                        produtos.add(1,(Produto) parseObjects.get(1).getProduto());
+                        if(p1.getEmCirculacao()){
+                            produtos.add(p1);}
+                        if(p2.getEmCirculacao()){
+                            produtos.add(p2);}
+
+
                     }
                     if(parseObjects.size()==3){
                         System.out.println("pos3");
 
-                        produtos.add(0,(Produto) parseObjects.get(2).getProduto());
-                        produtos.add(1,(Produto) parseObjects.get(1).getProduto());
-                        produtos.add(2,(Produto) parseObjects.get(0).getProduto());
+                        Produto p1 = (Produto) parseObjects.get(0).getProduto();
+                        Produto p2 = (Produto) parseObjects.get(1).getProduto();
+                        Produto p3 = (Produto) parseObjects.get(2).getProduto();
+
+                        if(p1.getEmCirculacao()){
+                            produtos.add(p1);}
+                        if(p2.getEmCirculacao()){
+                            produtos.add(p2);}
+                        if(p3.getEmCirculacao()){
+                            produtos.add(p3);}
+
                     }
 
 

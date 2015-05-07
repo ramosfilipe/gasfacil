@@ -51,6 +51,10 @@ public class Produto extends ParseObject {
         return getParseFile("thumbnailBlur");
     }
 
+    public Boolean getEmCirculacao(){
+        return getBoolean("emCirculacao");
+    }
+
     public void setThumbnailBlurFile(ParseFile file) {
         put("thumbnailBlur", file);
     }
