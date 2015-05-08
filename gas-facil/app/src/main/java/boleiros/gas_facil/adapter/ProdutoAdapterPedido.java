@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 import boleiros.gas_facil.R;
@@ -89,8 +90,12 @@ public class ProdutoAdapterPedido extends RecyclerView.Adapter<ProdutoAdapterPed
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         viewHolder.countryName.setText("" + quantidade);
         double dbl = produtos.get(i).getPrice();
-        String aux = "R$" + dbl * quantidade + "0";
-        viewHolder.precoProduto.setText(aux.replace(".",","));
+        double dblteste = dbl*quantidade;
+        String aux = NumberFormat.getCurrencyInstance().format((dblteste));
+
+        // String aux = "R$" + dbl * quantidade + "0";
+      //  viewHolder.precoProduto.setText(aux.replace(".",","));
+        viewHolder.precoProduto.setText(aux);
 
         try {
             Bitmap bit = decodeSampledBitmapFromResource(produtos.get(i).getPhotoFile(), 1000, 1000);
